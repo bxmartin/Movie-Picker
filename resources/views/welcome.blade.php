@@ -2,6 +2,8 @@
 
     <h1 class="text-3xl font-semibold mb-4">Welcome</h1>
 
-    <p>This is the movie picker project</p>
+    <p>This is the movie picker project.</p>
+
+    <p>Chris is in there now. 2</p>
 
 </x-layout>
