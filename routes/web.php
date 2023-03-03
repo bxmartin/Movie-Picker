@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ use App\Http\Controllers\MovieController;
 //     return view('welcome');
 // });
 
-Route::get('/', [MovieController::class, 'index'])->name('home');
+// Route::get('/', [MovieController::class, 'index'])->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('index');

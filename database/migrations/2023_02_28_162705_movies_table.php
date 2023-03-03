@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('genre');
             $table->integer('runtime');
+            $table->integer('rating');
             $table->boolean('watched');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

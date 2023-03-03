@@ -22,8 +22,10 @@ class MovieFactory extends Factory
             'name' => fake()->word(),
             //a genre picked from three options
             'genre' => fake()->randomElement($array = array ('Horror', 'Comedy', 'Action')),
-            //runtime can be any number with 3 or less digits, so 128 or 50 etc
-            'runtime' => fake()->randomNumber(3, false),
+            //runtime can be any number between 1 and 180
+            'runtime' => fake()->numberBetween(1, 180),
+            //rating between 0 and 10
+            'rating' => fake()->numberBetween(0, 10),
             //true or false
             'watched' => fake()->boolean()
         ];

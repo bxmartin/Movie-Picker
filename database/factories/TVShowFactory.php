@@ -24,6 +24,8 @@ class TVShowFactory extends Factory
             'genre' => fake()->randomElement($array = array ('Horror', 'Comedy', 'Action')),
             //number of episodes can be any number between 1-9
             'episodes' => fake()->randomDigitNotNull(),
+            //rating between 0 and 10
+            'rating' => fake()->numberBetween(0, 10),
             //true or false
             'watched' => fake()->boolean()
         ];
