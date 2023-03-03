@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\FilmController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ use App\Http\Controllers\FilmController;
 //     return view('welcome');
 // });
 
-Route::get('/', [FilmController::class, 'index'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->name('home');

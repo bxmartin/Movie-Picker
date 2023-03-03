@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Film;
+use App\Models\Movie;
 
 use Illuminate\Http\Request;
 
-class FilmController extends Controller
+class MovieController extends Controller
 {
     public function index()
     {
         return view('welcome', [
-            'films' => Film::all()
+            'movies' => Movie::all()
         ]);
     }
 }

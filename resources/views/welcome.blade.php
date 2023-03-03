@@ -1,24 +1,24 @@
 <x-layout>
 
-    <h1 class="text-3xl font-semibold mb-4">Welcome</h1>
+    <h1 class="mb-4 text-3xl font-semibold">Welcome</h1>
 
-    <p>This is the movie picker project.</p>
+    <p>This is the Movie picker project.</p>
 
-    @if ($films->count())
+    @if ($movies->count())
     <table class="min-w-full leading-normal">
         <thead class="table-header-group">
             <tr>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-700 uppercase tracking-wider">Name</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-700 uppercase tracking-wider">Type</th>
-                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left font-semibold text-gray-700 uppercase tracking-wider">Genre</th>
+                <th class="px-5 py-3 font-semibold tracking-wider text-left text-gray-700 uppercase bg-gray-100 border-b-2 border-gray-200">Name</th>
+                <th class="px-5 py-3 font-semibold tracking-wider text-left text-gray-700 uppercase bg-gray-100 border-b-2 border-gray-200">Type</th>
+                <th class="px-5 py-3 font-semibold tracking-wider text-left text-gray-700 uppercase bg-gray-100 border-b-2 border-gray-200">Genre</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($films as $film)
+            @foreach ($movies as $movie)
             <tr>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white">{{ $film->name }}</td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white">{{ $film->type }}</td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white">{{ $film->genre }}</td>
+                <td class="px-5 py-5 bg-white border-b border-gray-200">{{ $movie->name }}</td>
+                <td class="px-5 py-5 bg-white border-b border-gray-200">{{ $movie->type }}</td>
+                <td class="px-5 py-5 bg-white border-b border-gray-200">{{ $movie->genre }}</td>
             </tr>
             @endforeach
         </tbody>
