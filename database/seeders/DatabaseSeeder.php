@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Film;
+use App\Models\Movie;
+use App\Models\TVShow;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,9 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Film::factory(10)->create();
+        Movie::factory(10)->create();
+        TVShow::factory(10)->create();
         // $this->call([
-        //     FilmSeeder::class,
+        //     MovieSeeder::class,
         // ]);
     }
 }

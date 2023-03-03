@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('films', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
             $table->string('genre');
-
+            $table->integer('runtime');
+            $table->boolean('watched');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

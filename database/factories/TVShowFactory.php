@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Film>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TVShow>
  */
-class FilmFactory extends Factory
+class TVShowFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,14 @@ class FilmFactory extends Factory
     public function definition(): array
     {
         return [
+            //a random latin word for the name
             'name' => fake()->word(),
-            'type' => fake()->randomElement($array = array ('Film', 'TV Show')),
+            //a genre picked from three options
             'genre' => fake()->randomElement($array = array ('Horror', 'Comedy', 'Action')),
+            //number of episodes can be any number between 1-9
+            'episodes' => fake()->randomDigitNotNull(),
+            //true or false
+            'watched' => fake()->boolean()
         ];
     }
 }
