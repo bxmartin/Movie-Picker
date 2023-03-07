@@ -1,28 +1,24 @@
 <x-layout>
-    <div class="flex justify-center my-8">
-        <div class="flex basis-1/2">
-            <div class="px-8 py-5 text-center bg-gray-100 basis-2/5 rounded-3xl">
-                <img
-                    src="https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_FMjpg_UX1000_.jpg">
-                <h1 class="my-2 text-2xl font-semibold">Star Wars</h1>
+    <div class="flex justify-center sm:my-8">
+        <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-1/2">
+            <div class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 rounded-b-3xl sm:rounded-3xl">
+                <img class="mx-auto max-w-1/2 sm:max-w-full" src="https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_FMjpg_UX1000_.jpg">
+                <h1 class="my-2 text-4xl font-semibold sm:text-2xl">Star Wars</h1>
 
-                <p class="text-sm tracking-wider uppercase">121 min - 1977 - Sci-fi</p>
+                <p class="text-sm tracking-wider uppercase">121 min  -  1977  -  Sci-fi</p>
             </div>
-            <div class="flex flex-col basis-3/5">
-                <div
-                    class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300font-medium rounded-xl mx-8 py-2.5 text-center mb-4 mt-8 h-24">
+            <div class="flex flex-col sm:basis-3/5">
+                <div class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300font-medium rounded-xl mx-8 py-2.5 text-center mb-4 mt-8 h-24">
                     <h2 class="self-center w-full text-2xl drop-shadow-md">
-                        Pick a Movie
+                        Pick a Film
                     </h2>
                 </div>
-                <div
-                    class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center my-4 h-24">
+                <div class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center my-4 h-24">
                     <h2 class="self-center w-full text-2xl drop-shadow-md">
                         Pick a Series
                     </h2>
                 </div>
-                <div
-                    class="cursor-pointer h-1/5 flex text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center mt-4 mb-8">
+                <div class="cursor-pointer h-1/5 flex text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center mt-4 mb-8">
                     <h2 class="self-center w-full text-2xl drop-shadow-md">
                         Add Something
                     </h2>
@@ -38,11 +34,11 @@
     <div class="flex justify-center">
 
         @if ($movies->count())
-        <table class="w-full leading-normal">
+        <table class="w-full leading-normal table-auto">
             <thead class="table-header-group">
                 <tr>
                     <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl">
+                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-"">
                         Title</th>
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
@@ -96,7 +92,7 @@
     </div>
     <div class="flex justify-center">
         @if ($tvshows->count())
-        <table class="w-full leading-normal">
+        <table class="w-full leading-normal table-auto">
             <thead class="table-header-group">
                 <tr class="odd:bg-white even:bg-slate-50">
                     <th
