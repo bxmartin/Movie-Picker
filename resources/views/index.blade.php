@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <div class="flex justify-center sm:my-8">
         <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-1/2">
             <div class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 rounded-b-3xl sm:rounded-3xl">
