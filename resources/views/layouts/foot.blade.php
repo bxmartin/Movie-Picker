@@ -1,7 +1,7 @@
-<footer class="mt-5 bg-light text-muted">
-    <section class="p-4 d-flex justify-content-center justify-content-lg-between border-bottom">
+<footer class="p-5 mt-5 bg-light text-muted">
+    <section class="flex justify-between">
         <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
+        <div>
             <a class="flex items-center mt-2 mr-1 text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 lg:mt-0"
                 href="#">
                 <x-application-logo class="h-6 mr-3 sm:h-10" alt="MoviePicker Logo" />
@@ -11,11 +11,11 @@
         <!-- Left -->
 
         <!-- Right -->
-        <div class="ml-auto">
-            <a href="" class="me-4 text-reset">
+        <div>
+            <a href="" class="mx-4 text-reset">
                 Link
             </a>
-            <a href="" class="me-4 text-reset">
+            <a href="" class="mx-4 text-reset">
                 Link
             </a>
         </div>

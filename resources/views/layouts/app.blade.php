@@ -25,12 +25,12 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow dark:bg-gray-800">
+                <header class="shadow bg-gradient-to-r from-cyan-200 to-blue-300 dark:bg-gray-800">
                     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -44,7 +44,6 @@
 
             @include('layouts.foot')
         </div>
-
 
     </body>
 </html>

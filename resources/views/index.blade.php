@@ -1,4 +1,11 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            {{ __('Pick something') }}
+        </h2>
+    </x-slot>
+
+
     <div class="flex justify-center sm:my-8">
         <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-1/2">
             <div class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 rounded-b-3xl sm:rounded-3xl">
@@ -67,7 +74,7 @@
                     <td class="px-5 py-3 border-b border-gray-200">{{ $movie->rating }}/10</td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <input id="default-checkbox" type="checkbox" value=""
-                            class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                            class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" {{ $movie->watched == 0 ? 'checked' : ''}}>
                         <label for="default-checkbox" hidden="hidden">Watched</label>
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
@@ -124,7 +131,7 @@
                     <td class="px-5 py-3 border-b border-gray-200">{{ $tvshow->rating }}/10</td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <input id="default-checkbox" type="checkbox" value=""
-                            class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                            class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" {{ $tvshow->watched == 0 ? 'checked' : ''}}>
                         <label for="default-checkbox" hidden="hidden">Watched</label>
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">

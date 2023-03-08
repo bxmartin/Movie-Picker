@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('Pick something') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
+                    <x-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
                         {{ __('Add a Movie') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')">
