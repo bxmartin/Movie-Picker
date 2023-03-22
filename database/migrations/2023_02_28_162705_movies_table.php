@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('genre');
+            $table->integer('releaseyear');
             $table->integer('runtime');
             $table->integer('rating');
             $table->boolean('watched');

@@ -27,7 +27,9 @@ class MovieFactory extends Factory
             //rating between 0 and 10
             'rating' => fake()->numberBetween(0, 10),
             //true or false
-            'watched' => fake()->boolean()
+            'watched' => fake()->boolean(),
+            //runtime can be any number between 1900 and 2023
+            'releaseyear' => fake()->numberBetween(1900, 2024)
         ];
     }
 }
