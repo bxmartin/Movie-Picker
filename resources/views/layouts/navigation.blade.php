@@ -18,12 +18,15 @@
                     <x-nav-link :href="route('randommovie')" :active="request()->routeIs('randommovie')">
                         {{ __('Pick a movie') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
+                    <x-nav-link>
+                        {{ __('Pick a TV Show') }}
+                    </x-nav-link>
+                    {{-- <x-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
                         {{ __('Add a Movie') }}
-                    </x-nav-link>
-                    <x-nav-link >
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link >
                         {{ __('Add a TV Show') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
