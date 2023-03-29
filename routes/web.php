@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +20,21 @@ use App\Http\Controllers\IndexController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
     Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
     Route::get('/random', [MovieController::class, 'random'])->name('randommovie');
     Route::post('/admin/movies', [MovieController::class, 'store']);
+
+    //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //images
+    Route::get('upload-image', [ImageController::class, 'index']);
+    Route::post('upload-image', [ImageController::class, 'store'])->name('image.store');
 });
 
 require __DIR__ . '/auth.php';

@@ -5,12 +5,14 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 dark:bg-gray-900">
+    <div class="flex flex-col items-center min-h-screen pt-1 sm:justify-center sm:pt-0 dark:bg-gray-900">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+            <div class="overflow-hidden bg-white shadow-lg dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-center text-gray-900 dark:text-gray-100">
 
                     <p class="text-2xl">Tonight you're watching: </p>
+
+                    <img src="{{ $movie->image }}" class="w-1/2 mx-auto rounded-lg img-fluid">
 
                     <h3 class="text-4xl">{{ $movie->name }}</h3>
 

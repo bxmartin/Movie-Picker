@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('runtime');
             $table->integer('rating');
             $table->boolean('watched');
+            $table->string('image');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

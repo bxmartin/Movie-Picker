@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -29,7 +30,8 @@ class MovieFactory extends Factory
             //true or false
             'watched' => fake()->boolean(),
             //runtime can be any number between 1900 and 2023
-            'releaseyear' => fake()->numberBetween(1900, 2024)
+            'releaseyear' => fake()->numberBetween(1900, 2024),
+            'image' => fake()->imageUrl(640,480)
         ];
     }
 }

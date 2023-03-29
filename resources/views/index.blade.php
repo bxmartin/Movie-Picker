@@ -181,7 +181,7 @@
         @endif
     </div>
 
-    </x-layout>
+</x-app-layout>
 
     <x-add-something></x-add-something>
 

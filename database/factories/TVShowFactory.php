@@ -27,7 +27,8 @@ class TVShowFactory extends Factory
             //rating between 0 and 10
             'rating' => fake()->numberBetween(0, 10),
             //true or false
-            'watched' => fake()->boolean()
+            'watched' => fake()->boolean(),
+            'image' => fake()->imageUrl(640,480)
         ];
     }
 }
