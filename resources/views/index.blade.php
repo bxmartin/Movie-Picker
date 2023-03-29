@@ -16,7 +16,7 @@
             <div class="flex flex-col sm:basis-3/5">
                 <div class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300font-medium rounded-xl mx-8 py-2.5 text-center mb-4 mt-8 h-24">
                     <h2 class="self-center w-full text-2xl drop-shadow-md">
-                        Pick a Film
+                        Pick a Movie
                     </h2>
                 </div>
                 <div class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center my-4 h-24">
@@ -24,11 +24,11 @@
                         Pick a Series
                     </h2>
                 </div>
-                <div class="cursor-pointer h-1/5 flex text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center mt-4 mb-8">
-                    <h2 class="self-center w-full text-2xl drop-shadow-md">
+
+                <button class="h-1/5 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center mt-4 mb-8 text-2xl drop-shadow-md" id="open-btn">
                         Add Something
-                    </h2>
-                </div>
+                </button>
+
             </div>
         </div>
     </div>
@@ -150,3 +150,30 @@
     </div>
 
 </x-layout>
+
+<x-add-something></x-add-something>
+
+<script>
+        // Grabs all the Elements by their IDs which we had given them
+        let modal = document.getElementById("my-modal");
+
+        let btn = document.getElementById("open-btn");
+
+        let button = document.getElementById("ok-btn");
+
+            // We want the modal to open when the Open button is clicked
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+            // We want the modal to close when the OK button is clicked
+            button.onclick = function() {
+            modal.style.display = "none";
+            }
+
+        // The modal will close when the user clicks anywhere outside the modal
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+</script>
