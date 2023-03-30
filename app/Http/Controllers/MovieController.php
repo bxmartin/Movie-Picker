@@ -26,7 +26,7 @@ class MovieController extends Controller
 
     public function create()
     {
-        return view('addmovie');
+        return view('add.movie');
     }
 
     public function store(Request $request)
@@ -35,11 +35,11 @@ class MovieController extends Controller
         $this->validate(request(), [
 
             'name' => 'required|string|max:255',
-            'genre' => 'required|string|max:255',
-            'releaseyear' => 'required|numeric',
+            'genre' => 'required|string|max:50',
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
             'runtime' => 'required|numeric',
-            'watched' => 'boolean'
-
+            'watched' => 'boolean',
+            'effort' => 'required|string|max:6'
         ]);
 
         if($request->get('watched') == null){
@@ -54,10 +54,11 @@ class MovieController extends Controller
             'genre' => request('genre'),
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
-            'watched' => $watched
+            'watched' => $watched,
+            'effort' => request('effort')
         ]);
 
-        return redirect('addmovie')->with('status', 'Movie added!');
+        return redirect('/addmovie')->with('status', 'Movie added!');
     }
 
 }

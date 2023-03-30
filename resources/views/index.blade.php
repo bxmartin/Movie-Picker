@@ -21,18 +21,20 @@
                     {{ __('Pick a Movie') }}
                 </x-hero-button>
 
-                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                <x-hero-button href="{{ route('randommovie') }}" class="mb-4 bg-purple-800 hover:bg-purple-700">
                     <x-heroicon-o-tv class="inline-block h-12 mr-3" />
                     {{ __('Pick a TV Show') }}
                 </x-hero-button>
 
-                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
-                    <x-heroicon-o-film class="inline-block h-10" /> <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                <x-hero-button href="{{ route('addmovie') }}" class="mb-4">
+                    <x-heroicon-o-film class="inline-block h-10" />
+                    <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a Movie') }}
                 </x-hero-button>
 
-                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
-                    <x-heroicon-o-tv class="inline-block h-10" /> <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                <x-hero-button href="{{ route('addtvshow') }}" class="mb-4 bg-purple-800 hover:bg-purple-700">
+                    <x-heroicon-o-tv class="inline-block h-10" />
+                    <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a TV Show') }}
                 </x-hero-button>
 
@@ -46,14 +48,14 @@
         </div>
     </div>
 
+    @if ($movies->count())
     <div class="flex justify-between">
         <h2 class="px-4 my-8 text-3xl font-bold">Movies</h2>
-        <button @click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }"
+        <button x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }"
             class="px-4 mt-12">Hide watched movies</button>
     </div>
 
-    @if ($movies->count())
-    <table class="table w-full leading-normal table-auto">
+    <table class="table w-full leading-normal table-auto" id="moviesTable">
         <thead class="table-header-group">
             <tr class="hidden md:table-row">
                 <th class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-"">
@@ -64,6 +66,9 @@
                 <th
                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Runtime</th>
+                <th
+                    class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                    Effort</th>
                 <th
                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Rating</th>
@@ -92,17 +97,32 @@
                     {{ $movie->runtime }}min
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
+                    <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Effort</label>
+                    @if($movie->effort =='Easy')
+                    <x-heroicon-o-face-smile class="block w-auto h-8 text-green-500" />
+                    @elseif($movie->effort =='Medium')
+                    <x-heroicon-o-face-smile class="block w-auto h-8 text-orange-500" />
+                    @elseif($movie->effort =='Hard')
+                    <x-heroicon-o-face-smile class="block w-auto h-8 text-red-500" />
+                    @endif
+                    {{-- {{ $movie->effort }} --}}
+                </td>
+                <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Rating</label>
+                    @if(is_null($movie->rating))
+                    No rating!
+                    @else
                     {{ $movie->rating }}/10
+                    @endif
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
                     <input id="default-checkbox" type="checkbox" value=""
                         class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                        {{ $movie->watched == 1 ? 'checked' : ''}}>
+                        {{ $movie->watched == 1 ? 'checked' : ''}}">
                     <label for="default-checkbox" hidden="hidden">Watched</label>
                 </td>
-                <td class="px-5 py-3 border-b border-gray-200">
+                <td class="py-3 border-b border-gray-200">
                     <div
                         class="cursor-pointer flex text-white bg-gradient-to-br from-red-500 to-red-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 w-1/2 rounded-xl font-medium py-2.5 text-center">
                         <p class="w-full">
@@ -123,7 +143,7 @@
     </div>
     <div class="flex justify-center">
         @if ($tvshows->count())
-        <table class="table w-full leading-normal table-auto">
+        <table class="table w-full leading-normal table-auto" id="tvshowsTable">
             <thead class="table-header-group">
                 <tr class="hidden md:table-row">
                     <th
@@ -132,9 +152,15 @@
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                         Genre</th>
+                        <th
+                            class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                            Release Year</th>
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Episodes</th>
+                        Length</th>
+                    <th
+                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                        Effort</th>
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                         Rating</th>
@@ -159,12 +185,30 @@
                         {{ $tvshow->genre }}
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
-                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Episodes</label>
-                        {{ $tvshow->episodes }}
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release year</label>
+                        {{ $tvshow->releaseyear }}
+                    </td>
+                    <td class="px-5 py-3 border-b border-gray-200">
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Length</label>
+                        {{ $tvshow->seasons }} seasons and {{ $tvshow->episodes }} episodes
+                    </td>
+                    <td class="px-5 py-3 border-b border-gray-200">
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Effort</label>
+                        @if($tvshow->effort =='Easy')
+                        <x-heroicon-o-face-smile class="block w-auto h-8 text-green-500" />
+                        @elseif($tvshow->effort =='Medium')
+                        <x-heroicon-o-face-smile class="block w-auto h-8 text-orange-500" />
+                        @elseif($tvshow->effort =='Hard')
+                        <x-heroicon-o-face-smile class="block w-auto h-8 text-red-500" />
+                        @endif
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Rating</label>
+                        @if(is_null($tvshow->rating))
+                        No rating!
+                        @else
                         {{ $tvshow->rating }}/10
+                        @endif
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
@@ -173,7 +217,7 @@
                             {{ $tvshow->watched == 1 ? 'checked' : ''}}>
                         <label for="default-checkbox" hidden="hidden">Watched</label>
                     </td>
-                    <td class="px-5 py-3 border-b border-gray-200">
+                    <td class="py-3 border-b border-gray-200">
                         <div
                             class="cursor-pointer flex text-white bg-gradient-to-br from-red-500 to-red-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 w-1/2 rounded-xl font-medium py-2.5 text-center">
                             <p class="w-full">
@@ -192,5 +236,3 @@
     </x-layout>
 
     <x-add-something></x-add-something>
-
-

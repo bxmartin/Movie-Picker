@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TVShowController;
 use App\Http\Controllers\IndexController;
 
 /*
@@ -24,6 +25,9 @@ Route::middleware('auth')->group(function () {
     //add a movie
     Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
     Route::post('/admin/movies', [MovieController::class, 'store'])->name('createmovie');
+    //add a tv show
+    Route::get('/addtvshow', [TVShowController::class, 'create'])->name('addtvshow');
+    Route::post('/admin/tvshow', [TVShowController::class, 'store'])->name('createtvshow');
     //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

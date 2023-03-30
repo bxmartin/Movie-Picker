@@ -9,4 +9,5 @@ class TVShow extends Model
 {
     use HasFactory;
     public $table = 'tvshows';
+    protected $fillable = ['name', 'genre', 'episodes', 'watched'];
 }

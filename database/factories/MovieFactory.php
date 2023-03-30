@@ -28,8 +28,10 @@ class MovieFactory extends Factory
             'rating' => fake()->numberBetween(0, 10),
             //true or false
             'watched' => fake()->boolean(),
-            //runtime can be any number between 1900 and 2023
-            'releaseyear' => fake()->numberBetween(1900, 2024)
+            //releaseyear can be any number between 1900 and 2023
+            'releaseyear' => fake()->numberBetween(1900, 2024),
+            //effort picked from three options
+            'effort' => fake()->randomElement($array = array ('Easy', 'Medium', 'Hard'))
         ];
     }
 }
