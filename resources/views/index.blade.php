@@ -15,22 +15,29 @@
 
                 <p class="text-sm tracking-wider uppercase">121 min - 1977 - Sci-fi</p>
             </div>
-            <div class="flex flex-col sm:basis-3/5">
-                <a href="{{ route('randommovie') }}"
-                    class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300font-medium rounded-xl mx-8 py-2.5 text-center mb-4 mt-8 h-24">
-                    <h2 class="self-center w-full text-2xl drop-shadow-md">
-                        Pick a Movie
-                    </h2>
-                </a>
-                <a href="{{ route('randommovie') }}"
-                    class="cursor-pointer h-2/5 flex text-white bg-gradient-to-br from-amber-300 to-orange-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center my-4 h-24">
-                    <h2 class="self-center w-full text-2xl drop-shadow-md">
-                        Pick a Series
-                    </h2>
-                </a>
+            <div class="flex flex-col px-8 sm:basis-3/5">
+                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                    <x-heroicon-o-film class="inline-block h-12 mr-3" />
+                    {{ __('Pick a Movie') }}
+                </x-hero-button>
+
+                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                    <x-heroicon-o-tv class="inline-block h-12 mr-3" />
+                    {{ __('Pick a TV Show') }}
+                </x-hero-button>
+
+                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                    <x-heroicon-o-film class="inline-block h-10" /> <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                    {{ __('Add a Movie') }}
+                </x-hero-button>
+
+                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                    <x-heroicon-o-tv class="inline-block h-10" /> <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                    {{ __('Add a TV Show') }}
+                </x-hero-button>
 
                 <button
-                    class="h-1/5 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl mx-8 py-2.5 text-center mt-4 mb-8 text-2xl drop-shadow-md"
+                    class="h-1/5 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl py-2.5 text-center mt-4 mb-8 text-2xl drop-shadow-md"
                     id="open-btn">
                     Add Something
                 </button>
@@ -41,7 +48,8 @@
 
     <div class="flex justify-between">
         <h2 class="px-4 my-8 text-3xl font-bold">Movies</h2>
-        <button @click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" class="px-4 mt-12">Hide watched movies</button>
+        <button @click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }"
+            class="px-4 mt-12">Hide watched movies</button>
     </div>
 
     @if ($movies->count())
@@ -91,7 +99,7 @@
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
                     <input id="default-checkbox" type="checkbox" value=""
                         class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                        {{ $movie->watched == 0 ? 'checked' : ''}}>
+                        {{ $movie->watched == 1 ? 'checked' : ''}}>
                     <label for="default-checkbox" hidden="hidden">Watched</label>
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
@@ -162,7 +170,7 @@
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
                         <input id="default-checkbox" type="checkbox" value=""
                             class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                            {{ $tvshow->watched == 0 ? 'checked' : ''}}>
+                            {{ $tvshow->watched == 1 ? 'checked' : ''}}>
                         <label for="default-checkbox" hidden="hidden">Watched</label>
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
@@ -185,27 +193,4 @@
 
     <x-add-something></x-add-something>
 
-    <script>
-        // Grabs all the Elements by their IDs which we had given them
-        let modal = document.getElementById("my-modal");
 
-        let btn = document.getElementById("open-btn");
-
-        let button = document.getElementById("ok-btn");
-
-            // We want the modal to open when the Open button is clicked
-            btn.onclick = function() {
-            modal.style.display = "block";
-            }
-            // We want the modal to close when the OK button is clicked
-            button.onclick = function() {
-            modal.style.display = "none";
-            }
-
-        // The modal will close when the user clicks anywhere outside the modal
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        }
-    </script>

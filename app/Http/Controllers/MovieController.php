@@ -19,9 +19,6 @@ class MovieController extends Controller
 
     public function random()
     {
-        // $movies = Movie::inRandomOrder()->limit(10)->get();
-        // return view('randommovie');
-
         return view('randommovie', [
             'movie' => Movie::inRandomOrder()->first()
         ]);
@@ -32,16 +29,35 @@ class MovieController extends Controller
         return view('addmovie');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $attributes = request()->validate([
-            'name' => 'required',
-            'genre' => 'required',
-            'runtime' => 'required',
+
+        $this->validate(request(), [
+
+            'name' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
+            'releaseyear' => 'required|numeric',
+            'runtime' => 'required|numeric',
+            'watched' => 'boolean'
+
         ]);
 
-        Movie::create($attributes);
+        if($request->get('watched') == null){
+            $watched = 0;
+        }
+        else{
+            $watched = request('watched');
+        }
 
-        return redirect('/');
+        Movie::create([
+            'name' => request('name'),
+            'genre' => request('genre'),
+            'releaseyear' => request('releaseyear'),
+            'runtime' => request('runtime'),
+            'watched' => $watched
+        ]);
+
+        return redirect('addmovie')->with('status', 'Movie added!');
     }
+
 }

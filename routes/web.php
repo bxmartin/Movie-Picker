@@ -20,9 +20,11 @@ use App\Http\Controllers\IndexController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
-    Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
     Route::get('/random', [MovieController::class, 'random'])->name('randommovie');
-    Route::post('/admin/movies', [MovieController::class, 'store']);
+    //add a movie
+    Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
+    Route::post('/admin/movies', [MovieController::class, 'store'])->name('createmovie');
+    //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
