@@ -124,10 +124,10 @@
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
-                    <input id="default-checkbox" type="checkbox" value=""
+                    <input id="{{ $movie->id }}-checkbox" type="checkbox" value=""
                         class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                        {{ $movie->watched == 1 ? 'checked' : ''}}">
-                    <label for="default-checkbox" hidden="hidden">Watched</label>
+                        {{ $movie->watched == 1 ? 'checked' : ''}}>
+                    <label for="{{ $movie->id }}-checkbox" hidden="hidden">Watched</label>
                 </td>
                 <td class="py-3 border-b border-gray-200">
                     <div
@@ -224,10 +224,10 @@
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
-                        <input id="default-checkbox" type="checkbox" value=""
+                        <input id="{{ $tvshow->id }}-checkbox" type="checkbox" value=""
                             class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                             {{ $tvshow->watched == 1 ? 'checked' : ''}}>
-                        <label for="default-checkbox" hidden="hidden">Watched</label>
+                        <label for="{{ $tvshow->id }}-checkbox" hidden="hidden">Watched</label>
                     </td>
                     <td class="py-3 border-b border-gray-200">
                         <div
