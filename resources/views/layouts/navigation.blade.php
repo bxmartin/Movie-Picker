@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('index') }}">
-                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
+                        <x-application-logo class="block w-auto h-9" alt="Movie Picker" title="Movie Picker" />
                     </a>
                 </div>
 
@@ -16,17 +16,23 @@
                         {{ __('Movie Picker') }}
                     </x-nav-link>
                     <x-nav-link :href="route('randommovie')" :active="request()->routeIs('randommovie')">
+                        <x-heroicon-o-film class="block w-auto h-6 mr-3 text-indigo-600" />
                         {{ __('Pick a movie') }}
                     </x-nav-link>
                     <x-nav-link>
+                        <x-heroicon-o-tv class="block w-auto h-6 mr-3 text-purple-600" />
                         {{ __('Pick a TV Show') }}
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
+                    <x-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
+                        <x-heroicon-o-film class="block w-auto h-6 text-indigo-600" />
+                        <x-heroicon-o-plus class="inline-block h-4 mr-1 text-indigo-600" />
                         {{ __('Add a Movie') }}
-                    </x-nav-link> --}}
-                    {{-- <x-nav-link >
+                    </x-nav-link>
+                    <x-nav-link :href="route('addtvshow')" :active="request()->routeIs('addtvshow')">
+                        <x-heroicon-o-tv class="block w-auto h-6 text-purple-600" />
+                        <x-heroicon-o-plus class="inline-block h-4 mr-1 text-purple-600" />
                         {{ __('Add a TV Show') }}
-                    </x-nav-link> --}}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -79,16 +85,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                {{ __('Pick something') }}
+            <x-responsive-nav-link :href="route('randommovie')" :active="request()->routeIs('randommovie')">
+                {{ __('Pick a Movie') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('index')">
+            <x-responsive-nav-link :href="route('addmovie')">
                 {{ __('Add a Movie') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('index')">
+            <x-responsive-nav-link :href="route('addtvshow')">
                 {{ __('Add a TV Show') }}
             </x-responsive-nav-link>
         </div>

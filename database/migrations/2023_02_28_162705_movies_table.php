@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('genre');
-            $table->integer('releaseyear');
+            $table->year('releaseyear');
             $table->integer('runtime');
-            $table->integer('rating');
-            $table->boolean('watched');
+            $table->integer('rating')->nullable();
+            $table->boolean('watched')->default(false);
+            $table->string('effort');
             $table->string('image');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

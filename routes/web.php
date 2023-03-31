@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TVShowController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ImageController;
 
@@ -23,9 +24,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
     Route::get('/random', [MovieController::class, 'random'])->name('randommovie');
-    Route::post('/admin/movies', [MovieController::class, 'store']);
+    //add a movie
+    Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
+    Route::post('/admin/movies', [MovieController::class, 'store'])->name('createmovie');
+    //add a tv show
+    Route::get('/addtvshow', [TVShowController::class, 'create'])->name('addtvshow');
+    Route::post('/admin/tvshow', [TVShowController::class, 'store'])->name('createtvshow');
+    //profiles
 
     //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
