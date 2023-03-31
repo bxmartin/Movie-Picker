@@ -42,10 +42,33 @@
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
             </div>
             <div class="mb-4">
+                <x-input-label for="releaseyear" :value="__('Release Year')" />
+                <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
+                    :value="old('releaseyear')" required />
+                <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
+            </div>
+            <div class="mb-4">
+                <x-input-label for="seasons" :value="__('Seasons')" />
+                <x-text-input id="seasons" class="block w-auto mt-1" type="number" name="seasons"
+                    :value="old('seasons')" required min="0" />
+                <x-input-error :messages="$errors->get('seasons')" class="mt-2" />
+            </div>
+            <div class="mb-4">
                 <x-input-label for="episodes" :value="__('Episodes')" />
                 <x-text-input id="episodes" class="block w-auto mt-1" type="number" name="episodes"
                     :value="old('episodes')" required min="0" />
                 <x-input-error :messages="$errors->get('episodes')" class="mt-2" />
+            </div>
+            <div class="mb-4">
+                <x-input-label for="effort" :value="__('Effort')" />
+                <select id="effort"
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                    type="text" name="effort" :value="old('effort')" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <x-input-error :messages="$errors->get('effort')" class="mt-2" />
             </div>
             <div class="flex items-center mb-4">
                 <x-checkbox name="watched" id="watched" value="0" />

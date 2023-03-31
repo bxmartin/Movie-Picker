@@ -63,6 +63,9 @@
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Genre</th>
+                    <th
+                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                        Release Year</th>
                 <th
                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Runtime</th>
@@ -86,11 +89,15 @@
                 class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-white even:bg-slate-50">
                 <td class="px-5 py-3 font-bold border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
-                    {{ $movie->name }}
+                    {{ Str::title($movie->name) }}
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Genre</label>
                     {{ $movie->genre }}
+                </td>
+                <td class="px-5 py-3 border-b border-gray-200">
+                    <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release year</label>
+                    {{ $movie->releaseyear }}
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Runtime</label>
@@ -178,7 +185,7 @@
                     class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-white even:bg-slate-50">
                     <td class="px-5 py-3 font-bold border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
-                        {{ $tvshow->name }}
+                        {{ Str::title($tvshow->name) }}
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Genre</label>
@@ -190,7 +197,12 @@
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Length</label>
-                        {{ $tvshow->seasons }} seasons and {{ $tvshow->episodes }} episodes
+                        @if($tvshow->seasons == 1)
+                        {{ $tvshow->seasons }} season <br>
+                        @else
+                        {{ $tvshow->seasons }} seasons <br>
+                        @endif
+                        {{ $tvshow->episodes }} episodes
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Effort</label>

@@ -19,8 +19,11 @@ class TVShowController extends Controller
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'genre' => 'required|string|max:255',
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'seasons' => 'required|numeric',
             'episodes' => 'required|numeric',
-            'watched' => 'boolean'
+            'watched' => 'boolean',
+            'effort' => 'required|string|max:6'
         ]);
 
         if($request->get('watched') == null){
@@ -33,8 +36,11 @@ class TVShowController extends Controller
         TVShow::create([
             'name' => request('name'),
             'genre' => request('genre'),
+            'releaseyear' => request('releaseyear'),
+            'seasons' => request('seasons'),
             'episodes' => request('episodes'),
-            'watched' => $watched
+            'watched' => $watched,
+            'effort' => request('effort')
         ]);
 
         return redirect('/addtvshow')->with('status', 'TV show added!');
