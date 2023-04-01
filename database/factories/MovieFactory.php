@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,8 @@ class MovieFactory extends Factory
             //releaseyear can be any number between 1900 and 2023
             'releaseyear' => fake()->numberBetween(1900, 2024),
             //effort picked from three options
-            'effort' => fake()->randomElement($array = array ('Easy', 'Medium', 'Hard'))
+            'effort' => fake()->randomElement($array = array ('Easy', 'Medium', 'Hard')),
+            'image' => fake()->imageUrl(640,480)
         ];
     }
 }

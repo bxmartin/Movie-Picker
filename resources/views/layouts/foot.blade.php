@@ -4,7 +4,7 @@
         <div>
             <a class="flex items-center mt-2 mr-1 text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 lg:mt-0"
                 href="#">
-                <x-application-logo class="h-6 mr-3 sm:h-10" alt="MoviePicker Logo" />
+                <x-application-logo class="h-6 mr-5 sm:h-10" alt="MoviePicker Logo" />
                 <span class="font-medium dark:text-neutral-200">{{ config('app.name', 'Movie Picker') }}</span>
             </a>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TVShowController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,8 @@ use App\Http\Controllers\IndexController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
     Route::get('/random', [MovieController::class, 'random'])->name('randommovie');
+    Route::get('/randomtv', [TVShowController::class, 'random'])->name('randomtvshow');
     //add a movie
     Route::get('/addmovie', [MovieController::class, 'create'])->name('addmovie');
     Route::post('/admin/movies', [MovieController::class, 'store'])->name('createmovie');

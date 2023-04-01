@@ -17,7 +17,7 @@
             </div>
             @endif
 
-        <form method="POST" action="{{ route('createtvshow') }}" class="w-full px-8 pb-6 md:w-1/2">
+        <form method="POST" action="{{ route('createtvshow') }}" class="w-full px-8 pb-6 md:w-1/2" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">
@@ -25,6 +25,12 @@
                 <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
                     :value="old('name')" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+            <div class="mb-4">
+                <x-input-label for="image" :value="__('Image')" />
+                <input class="block w-full mt-1" id="image" type="file" name="image"
+                :value="old('image')" required />
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
             <div class="mb-4">
                 <x-input-label for="genre" :value="__('Genre')" />

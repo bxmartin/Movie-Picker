@@ -33,7 +33,8 @@ class TVShowFactory extends Factory
             //true or false
             'watched' => fake()->boolean(),
             //effort picked from three options
-            'effort' => fake()->randomElement($array = array ('Easy', 'Medium', 'Hard'))
+            'effort' => fake()->randomElement($array = array ('Easy', 'Medium', 'Hard')),
+            'image' => fake()->imageUrl(640,480)
         ];
     }
 }

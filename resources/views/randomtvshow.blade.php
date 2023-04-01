@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('You have picked a movie!') }}
+            {{ __('You have picked a tv show!') }}
         </h2>
     </x-slot>
 
@@ -12,21 +12,19 @@
 
                     <p class="text-2xl">Tonight you're watching: </p>
 
-                    @if(isset($movie->image))
-                    <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto rounded-lg">
+                    @if(isset($tvshow->image))
+                    <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="" class="w-1/2 mx-auto rounded-lg">
                     @endif
 
-                    <h3 class="text-4xl">{{ $movie->name }}</h3>
+                    <h3 class="text-4xl">{{ $tvshow->name }}</h3>
 
                     <hr  class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 
-                    <p class="mb-2">Released: {{ $movie->releaseyear }}</p>
+                    <p class="mb-2">Released: {{ $tvshow->releaseyear }}</p>
 
-                    <p class="mb-2">Genre: {{ $movie->genre }}</p>
+                    <p class="mb-2">Genre: {{ $tvshow->genre }}</p>
 
-                    <p class="mb-2">{{ $movie->runtime }}min</p>
-
-                    <p class="mb-2">Rating: {{ $movie->rating }}/10</p>
+                    <p class="mb-2">Rating: {{ $tvshow->rating }}/10</p>
 
                 </div>
             </div>
