@@ -22,8 +22,8 @@ class TVShowsList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tvshows-list', [
-            'tvshows' => TVShow::orderBy('name')->paginate(5, ['*'], 'tvshows')
+        return view('components.list-tvshows', [
+            'tvshows' => TVShow::orderBy('name')->paginate(10, ['*'], 'tvshows')
         ]);
     }
 }

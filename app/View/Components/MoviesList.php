@@ -22,8 +22,8 @@ class MoviesList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.movies-list', [
-            'movies' => Movie::orderBy('name')->paginate(5, ['*'], 'movies')
+        return view('components.list-movies', [
+            'movies' => Movie::orderBy('name')->paginate(10, ['*'], 'movies')
         ]);
     }
 }
