@@ -1,1 +1,1 @@
-<img src="/image/popcorn.png" {{ $attributes }}>
+<img src="/images/popcorn.png" {{ $attributes }}>

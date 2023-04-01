@@ -12,7 +12,9 @@
 
                     <p class="text-2xl">Tonight you're watching: </p>
 
-                    <img src="{{ $movie->image }}" class="w-1/2 mx-auto rounded-lg img-fluid">
+                    @if(isset($movie->image))
+                    <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto rounded-lg">
+                    @endif
 
                     <h3 class="text-4xl">{{ $movie->name }}</h3>
 

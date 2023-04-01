@@ -10,7 +10,7 @@
         <tr class="hidden md:table-row">
             <th class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-"">
                         Title</th>
-                    <th class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200  text-slate-50">
+                    <th class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                 Genre</th>
             <th
                 class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
@@ -38,7 +38,11 @@
             class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-white even:bg-slate-50">
             <td class="px-5 py-3 font-bold border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
-                {{ $movie->name }}
+                {{ $movie->name }}<br>
+                @if(isset($movie->image))
+                <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
+                    class="w-full mx-auto rounded-lg md:w-80">
+                @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Genre</label>
