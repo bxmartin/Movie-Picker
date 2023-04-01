@@ -63,9 +63,9 @@
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Genre</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Release Year</th>
+                <th
+                    class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                    Release Year</th>
                 <th
                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                     Runtime</th>
@@ -124,10 +124,10 @@
                 </td>
                 <td class="px-5 py-3 border-b border-gray-200">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
-                    <input id="default-checkbox" type="checkbox" value=""
+                    <input id="{{ $movie->id }}-checkbox" type="checkbox" value=""
                         class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                        {{ $movie->watched == 1 ? 'checked' : ''}}">
-                    <label for="default-checkbox" hidden="hidden">Watched</label>
+                        {{ $movie->watched == 1 ? 'checked' : ''}}>
+                    <label for="{{ $movie->id }}-checkbox" hidden="hidden">Watched</label>
                 </td>
                 <td class="py-3 border-b border-gray-200">
                     <div
@@ -142,13 +142,17 @@
         </tbody>
     </table>
 
+    {{-- Pagination --}}
+    <div class="mt-3 d-flex justify-content-center">
+        {!! $movies->links() !!}
+    </div>
+
     @endif
 
     <div class="flex justify-between">
         <h2 class="px-4 my-8 text-3xl font-bold">Series</h2>
         <a href="/" class="px-4 mt-12">Hide watched series</a>
     </div>
-    <div class="flex justify-center">
         @if ($tvshows->count())
         <table class="table w-full leading-normal table-auto" id="tvshowsTable">
             <thead class="table-header-group">
@@ -159,9 +163,9 @@
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                         Genre</th>
-                        <th
-                            class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                            Release Year</th>
+                    <th
+                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
+                        Release Year</th>
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                         Length</th>
@@ -192,7 +196,8 @@
                         {{ $tvshow->genre }}
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
-                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release year</label>
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release
+                            year</label>
                         {{ $tvshow->releaseyear }}
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
@@ -224,10 +229,10 @@
                     </td>
                     <td class="px-5 py-3 border-b border-gray-200">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Watched?</label>
-                        <input id="default-checkbox" type="checkbox" value=""
+                        <input id="{{ $tvshow->id }}-checkbox" type="checkbox" value=""
                             class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                             {{ $tvshow->watched == 1 ? 'checked' : ''}}>
-                        <label for="default-checkbox" hidden="hidden">Watched</label>
+                        <label for="{{ $tvshow->id }}-checkbox" hidden="hidden">Watched</label>
                     </td>
                     <td class="py-3 border-b border-gray-200">
                         <div
@@ -242,8 +247,12 @@
             </tbody>
         </table>
 
+        {{-- Pagination --}}
+        <div class="mt-3 d-flex justify-content-center">
+            {!! $tvshows->links() !!}
+        </div>
+
         @endif
-    </div>
 
 </x-app-layout>
 
