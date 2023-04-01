@@ -11,8 +11,8 @@ class IndexController extends Controller
     public function index()
     {
         return view('index', [
-            'movies' => Movie::all(),
-            'tvshows' => TVShow::all()
+            'movies' => Movie::paginate(5, ['*'], 'movies'),
+            'tvshows' => TVShow::paginate(5, ['*'], 'tvshows')
         ]);
     }
 }

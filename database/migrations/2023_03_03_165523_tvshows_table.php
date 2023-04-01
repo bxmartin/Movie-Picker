@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('watched')->default(false);
             $table->string('effort');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

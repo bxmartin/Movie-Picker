@@ -18,10 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Movie::factory(10)->create();
-        TVShow::factory(10)->create();
-        // $this->call([
-        //     MovieSeeder::class,
-        // ]);
+        // Movie::factory(10)->create();
+        // TVShow::factory(10)->create();
     }
 }
