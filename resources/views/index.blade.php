@@ -9,11 +9,18 @@
         <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-1/2">
             <div
                 class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 rounded-b-3xl sm:rounded-3xl">
-                <img class="mx-auto max-w-1/2 sm:max-w-full"
+                {{-- <img class="mx-auto max-w-1/2 sm:max-w-full"
                     src="https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_FMjpg_UX1000_.jpg">
                 <h1 class="my-2 text-4xl font-semibold sm:text-2xl">Star Wars</h1>
 
-                <p class="text-sm tracking-wider uppercase">121 min - 1977 - Sci-fi</p>
+                <p class="text-sm tracking-wider uppercase">121 min - 1977 - Sci-fi</p> --}}
+                <p class="text-2xl">Tonight you're watching: </p>
+                <x-pick-movie />
+
+                <hr  class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+
+                <x-pick-tvshow />
+
             </div>
             <div class="flex flex-col px-8 sm:basis-3/5">
                 <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
