@@ -5,9 +5,9 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Movie;
+use App\Models\TVShow;
 
-class MoviesList extends Component
+class TVShowsList extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +22,8 @@ class MoviesList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.movies-list', [
-            'movies' => Movie::orderBy('name')->paginate(5, ['*'], 'movies')
+        return view('components.tvshows-list', [
+            'tvshows' => TVShow::orderBy('name')->paginate(5, ['*'], 'tvshows')
         ]);
     }
 }

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class TVShowController extends Controller
 {
+    public function random()
+    {
+        return view('randomtvshow', [
+            'tvshow' => TVShow::inRandomOrder()->first()
+        ]);
+    }
+
     public function create()
     {
         return view('add.tvshow');

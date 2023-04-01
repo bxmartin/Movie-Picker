@@ -19,7 +19,7 @@
                         <x-heroicon-o-film class="block w-auto h-6 mr-3 text-indigo-600" />
                         {{ __('Pick a movie') }}
                     </x-nav-link>
-                    <x-nav-link>
+                    <x-nav-link :href="route('randomtvshow')" :active="request()->routeIs('randomtvshow')">
                         <x-heroicon-o-tv class="block w-auto h-6 mr-3 text-purple-600" />
                         {{ __('Pick a TV Show') }}
                     </x-nav-link>
@@ -91,10 +91,13 @@
             <x-responsive-nav-link :href="route('randommovie')" :active="request()->routeIs('randommovie')">
                 {{ __('Pick a Movie') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('addmovie')">
+            <x-responsive-nav-link :href="route('randomtvshow')" :active="request()->routeIs('randomtvshow')">
+                {{ __('Pick a TV Show') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
                 {{ __('Add a Movie') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('addtvshow')">
+            <x-responsive-nav-link :href="route('addtvshow')" :active="request()->routeIs('addtvshow')">
                 {{ __('Add a TV Show') }}
             </x-responsive-nav-link>
         </div>
