@@ -1,4 +1,8 @@
 @if ($tvshows->count())
+<div class="flex justify-end">
+    <a href="/" class="px-4 mb-4">Hide watched series</a>
+</div>
+
 <table class="table w-full leading-normal table-auto" id="tvshowsTable">
     <thead class="table-header-group">
         <tr class="hidden md:table-row">

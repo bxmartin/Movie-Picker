@@ -55,15 +55,30 @@
         </div>
     </div>
 
-    <x-movies-list />
+    <div class="w-full mx-auto mt-4">
+        <!-- Tabs -->
+        <ul id="tabs" class="inline-flex w-full border-b">
+            <li class="px-4 py-2 -mb-px text-2xl font-bold text-gray-800 bg-white border-t border-l border-r rounded-t-xl">
+                <a id="default-tab" href="#movies">Movies</a>
+            </li>
+            <li class="px-4 py-2 text-2xl font-bold text-gray-800 rounded-t-xl">
+                <a href="#tvshows">TV Shows</a>
+            </li>
+        </ul>
 
-    <div class="flex justify-between">
-        <h2 class="px-4 my-8 text-3xl font-bold">Series</h2>
-        <a href="/" class="px-4 mt-12">Hide watched series</a>
+        <!-- Tab Contents -->
+        <div id="tab-contents" class="border border-t-0">
+            <div id="movies" class="p-4">
+                <x-movies-list />
+            </div>
+            <div id="tvshows" class="hidden p-4">
+                <x-tvshows-list />
+            </div>
+        </div>
     </div>
-
-    <x-tvshows-list />
 
 </x-app-layout>
 
 <x-add-something></x-add-something>
+
+<script src="{{ asset('/scripts/home-tabs.js') }}"></script>

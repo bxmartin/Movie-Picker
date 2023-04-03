@@ -1,8 +1,7 @@
 @if ($movies->count())
-<div class="flex justify-between">
-    <h2 class="px-4 my-8 text-3xl font-bold">Movies</h2>
+<div class="flex justify-end">
     <button x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }"
-        class="px-4 mt-12">Hide watched movies</button>
+        class="px-4 mb-4">Hide watched movies</button>
 </div>
 
 <table class="table w-full leading-normal table-auto" id="moviesTable">
