@@ -37,14 +37,15 @@
                     <select id="genre_id" name="genre_id"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         required>
+                        @foreach (\App\Models\Genre::all()->sortBy('name') as $genre)
+                        <option
+                            value="{{ $genre->id }}"
+                            {{ old('genre_id') == $genre->id ? 'selected' : '' }}
+                        >{{ ucwords($genre->name) }}</option>
+                    @endforeach
 
-                        @foreach (\App\Models\Genre::all() as $genre)
-                        <option value="{{ $genre->id }}" {{ old('genre_id', $movie->genre_id) == $genre->id ?
-                            'selected' : '' }}
-                            >{{ ucwords($genre->name) }}</option>
-                        @endforeach
                     </select>
-                    <x-input-error :messages="$errors->get('genre', $movie->genre)" class="mt-2" />
+                    <x-input-error :messages="$errors->get('genre')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <x-input-label for="releaseyear" :value="__('Release Year')" />

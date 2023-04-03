@@ -66,10 +66,10 @@
                     <x-input-label for="effort" :value="__('Effort')" />
                     <select id="effort"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                        type="text" name="effort" :value="old('effort', $movie->effort)" required>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
+                        type="text" name="effort" required>
+                        <option value="Easy" @if (old('effort', $movie->effort) == "Easy") {{ 'selected' }} @endif>Easy</option>
+                        <option value="Medium" @if (old('effort', $movie->effort) == "Medium") {{ 'selected' }} @endif>Medium</option>
+                        <option value="Hard" @if (old('effort', $movie->effort) == "Hard") {{ 'selected' }} @endif>Hard</option>
                     </select>
                     <x-input-error :messages="$errors->get('effort')" class="mt-2" />
                 </div>

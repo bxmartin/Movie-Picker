@@ -28,7 +28,7 @@ class MovieController extends Controller
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
-            'genre' => 'required|string|max:50',
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'runtime' => 'required|numeric',
             'watched' => 'boolean',
@@ -47,7 +47,7 @@ class MovieController extends Controller
         Movie::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre' => ['required', Rule::exists('genres', 'id')],
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,
@@ -86,7 +86,7 @@ class MovieController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
         } else {
-            $imageName = request('image');
+            $imageName = $movie->image;
         }
 
         $movie->update([

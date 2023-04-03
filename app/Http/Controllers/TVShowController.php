@@ -88,7 +88,7 @@ class TVShowController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
         } else {
-            $imageName = request('image');
+            $imageName = $tvshow->image;
         }
 
         $tvshow->update([
