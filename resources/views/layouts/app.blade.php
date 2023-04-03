@@ -22,6 +22,8 @@
         <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
+
+        <livewire:styles />
     </head>
 
     <body class="font-sans antialiased">
@@ -46,6 +48,8 @@
         </div>
 
         <x-toast />
+
+        <livewire:scripts />
 
     </body>
 </html>

@@ -6,50 +6,47 @@
     </x-slot>
 
     <div class="flex justify-center sm:my-8">
-        <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-1/2">
+        <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-2/3">
             <div
-                class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 rounded-b-3xl sm:rounded-3xl">
-                {{-- <img class="mx-auto max-w-1/2 sm:max-w-full"
-                    src="https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_FMjpg_UX1000_.jpg">
-                <h1 class="my-2 text-4xl font-semibold sm:text-2xl">Star Wars</h1>
+                class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 md:rounded-b-3xl sm:rounded-3xl">
 
-                <p class="text-sm tracking-wider uppercase">121 min - 1977 - Sci-fi</p> --}}
-                <p class="text-2xl">Tonight you're watching: </p>
-                <x-pick-movie />
+                <div id="movie-result" class="">
+                    <livewire:pick-movie />
+                </div>
 
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700" />
-
-                <x-pick-tvshow />
+                <div id="tv-result" class="hidden">
+                    <livewire:pick-tv-show />
+                </div>
 
             </div>
             <div class="flex flex-col px-8 sm:basis-3/5">
-                <x-hero-button href="{{ route('randommovie') }}" class="mb-4">
+                <x-primary-button class="my-4 !text-left" id="movie-fire">
                     <x-heroicon-o-film class="inline-block h-12 mr-3" />
                     {{ __('Pick a Movie') }}
-                </x-hero-button>
+                </x-primary-button>
 
-                <x-hero-button href="{{ route('randomtvshow') }}" class="mb-4 bg-purple-800 hover:bg-purple-700">
-                    <x-heroicon-o-tv class="inline-block h-12 mr-3" />
+                <x-primary-button class="mb-4 !text-left from-purple-700 to-purple-500" id="tvshow-fire">
+                    <x-heroicon-o-play class="inline-block h-12 mr-3" />
                     {{ __('Pick a TV Show') }}
-                </x-hero-button>
+                </x-primary-button>
 
-                <x-hero-button href="{{ route('addmovie') }}" class="mb-4">
+                <x-hero-link href="{{ route('addmovie') }}" class="mb-4 !text-left">
                     <x-heroicon-o-film class="inline-block h-10" />
                     <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a Movie') }}
-                </x-hero-button>
+                </x-hero-link>
 
-                <x-hero-button href="{{ route('addtvshow') }}" class="mb-4 bg-purple-800 hover:bg-purple-700">
-                    <x-heroicon-o-tv class="inline-block h-10" />
+                <x-hero-link href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+                    <x-heroicon-o-play class="inline-block h-10" />
                     <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a TV Show') }}
-                </x-hero-button>
+                </x-hero-link>
 
-                <button
+                {{-- <button
                     class="h-1/5 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl py-2.5 text-center mt-4 mb-8 text-2xl drop-shadow-md"
                     id="open-btn">
                     Add Something
-                </button>
+                </button> --}}
 
             </div>
         </div>
@@ -58,7 +55,8 @@
     <div class="w-full mx-auto mt-4">
         <!-- Tabs -->
         <ul id="tabs" class="inline-flex w-full border-b">
-            <li class="px-4 py-2 -mb-px text-2xl font-bold text-gray-800 bg-white border-t border-l border-r rounded-t-xl">
+            <li
+                class="px-4 py-2 -mb-px text-2xl font-bold text-gray-800 bg-white border-t border-l border-r rounded-t-xl">
                 <a id="default-tab" href="#movies">Movies</a>
             </li>
             <li class="px-4 py-2 text-2xl font-bold text-gray-800 rounded-t-xl">
@@ -79,6 +77,7 @@
 
 </x-app-layout>
 
-<x-add-something></x-add-something>
+{{-- <x-add-something></x-add-something> --}}
 
 <script src="{{ asset('/scripts/home-tabs.js') }}"></script>
+<script src="{{ asset('/scripts/home-picks.js') }}"></script>

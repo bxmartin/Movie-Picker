@@ -39,7 +39,11 @@
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
                 {{ $movie->name }}<br>
                 @if(isset($movie->image))
-                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}" class="w-full rounded-lg md:w-60">
+                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}"
+                    class="w-full rounded-xl md:w-60">
+                @else
+                <img src="{{ asset('images/no-photo-available.png') }}" alt="no image"
+                    class="w-full rounded-xl md:w-60">
                 @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
@@ -82,16 +86,18 @@
             </td>
             <td class="py-3 border-b border-gray-200">
 
-                <x-primary-link href="/movie/{{ $movie->id }}/edit">
-                    {{ __('Edit') }}
-                </x-primary-link>
-                <form method="POST" action="/movie/{{ $movie->id }}/delete">
-                    @csrf
-                    @method('DELETE')
-                    <x-danger-button>
-                        {{ __('Delete') }}
-                    </x-danger-button>
-                </form>
+                <div class="inline-flex">
+                    <x-primary-link href="/movie/{{ $movie->id }}/edit" class="rounded-none rounded-l-lg">
+                        {{ __('Edit') }}
+                    </x-primary-link>
+                    <form method="POST" action="/movie/{{ $movie->id }}/delete">
+                        @csrf
+                        @method('DELETE')
+                        <x-danger-button class="rounded-none rounded-r-lg">
+                            {{ __('Delete') }}
+                        </x-danger-button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

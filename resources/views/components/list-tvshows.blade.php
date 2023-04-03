@@ -41,7 +41,7 @@
                 {{ $tvshow->name }}<br>
                 @if(isset($tvshow->image))
                 <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
-                    class="w-full rounded-lg md:w-60">
+                    class="w-full rounded-xl md:w-60">
                 @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
@@ -89,16 +89,18 @@
                 <label for="{{ $tvshow->id }}-checkbox" hidden="hidden">Watched</label>
             </td>
             <td class="py-3 border-b border-gray-200">
-                <x-primary-link href="/tvshow/{{ $tvshow->id }}/edit">
-                    {{ __('Edit') }}
-                </x-primary-link>
-                <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
-                    @csrf
-                    @method('DELETE')
-                    <x-danger-button>
-                        {{ __('Delete') }}
-                    </x-danger-button>
-                </form>
+                <div class="inline-flex">
+                    <x-primary-link href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-none rounded-l-lg">
+                        {{ __('Edit') }}
+                    </x-primary-link>
+                    <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
+                        @csrf
+                        @method('DELETE')
+                        <x-danger-button class="rounded-none rounded-r-lg">
+                            {{ __('Delete') }}
+                        </x-danger-button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach
