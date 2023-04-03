@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Movie;
+use App\Models\Genre;
 
 class MoviesList extends Component
 {
@@ -23,7 +24,8 @@ class MoviesList extends Component
     public function render(): View|Closure|string
     {
         return view('components.list-movies', [
-            'movies' => Movie::orderBy('name')->paginate(10, ['*'], 'movies')
+            'movies' => Movie::orderBy('name')->paginate(10, ['*'], 'movies'),
+            'genre' => Genre::all()
         ]);
     }
 }

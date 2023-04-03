@@ -40,12 +40,12 @@
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
                 {{ $movie->name }}<br>
                 @if(isset($movie->image))
-                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-full rounded-lg md:w-60">
+                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}" class="w-full rounded-lg md:w-60">
                 @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Genre</label>
-                {{ $movie->genre }}
+                {{ $movie->genre->name }}
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release year</label>
@@ -83,6 +83,9 @@
             </td>
             <td class="py-3 border-b border-gray-200">
 
+                <x-primary-link href="/movie/{{ $movie->id }}/edit">
+                    {{ __('Edit') }}
+                </x-primary-link>
                 <form method="POST" action="/movie/{{ $movie->id }}/delete">
                     @csrf
                     @method('DELETE')
@@ -90,9 +93,6 @@
                         {{ __('Delete') }}
                     </x-danger-button>
                 </form>
-                <x-primary-link href="/movie/{{ $movie->id }}/edit">
-                    {{ __('Edit') }}
-                </x-primary-link>
             </td>
         </tr>
         @endforeach

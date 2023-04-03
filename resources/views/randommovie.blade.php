@@ -6,12 +6,11 @@
     </x-slot>
 
     <section>
-        <div
-            class="grid col-span-12 gap-4 px-10 pt-6 my-8 text-center md:col-span-6 lg:col-span-4 md:order-1 xl:gap-6">
+        <div class="grid col-span-12 gap-4 px-10 pt-6 my-8 text-center md:col-span-6 lg:col-span-4 md:order-1 xl:gap-6">
 
             <p class="text-2xl">Tonight you're watching: </p>
 
-            <h3 class="text-4xl">{{ $movie->name }}</h3>
+            <h3 class="text-4xl font-bold">{{ $movie->name }}</h3>
 
             @if(isset($movie->image))
             <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto border-2 rounded-xl">
@@ -23,7 +22,15 @@
 
             <p class="mb-2">{{ $movie->runtime }}min</p>
 
-            <p class="mb-2">Rating: {{ $movie->rating }}/10</p>
+            <p class="mb-2">
+                @if($movie->effort =='Easy')
+                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-green-500" />
+                @elseif($movie->effort =='Medium')
+                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-orange-500" />
+                @elseif($movie->effort =='Hard')
+                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-red-500" />
+                @endif
+            </p>
 
         </div>
     </section>

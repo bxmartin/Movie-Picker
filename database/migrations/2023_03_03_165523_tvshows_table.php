@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tvshows', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('genre');
+            $table->foreignId('genre_id');
             $table->year('releaseyear');
             $table->integer('seasons');
             $table->integer('episodes');

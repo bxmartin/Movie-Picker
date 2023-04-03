@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Validation;
-Use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -27,7 +27,7 @@ class MovieController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre' => 'required|string|max:50',
             'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'runtime' => 'required|numeric',
@@ -47,7 +47,7 @@ class MovieController extends Controller
         Movie::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre' => request('genre'),
+            'genre' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,
@@ -67,8 +67,8 @@ class MovieController extends Controller
 
         $attributes = request()->validate([
             'name' => 'required|string|max:255',
-            'image' => 'image',
-            'genre' => 'required|string|max:50',
+            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048',
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'runtime' => 'required|numeric',
             'watched' => 'boolean',
@@ -85,12 +85,14 @@ class MovieController extends Controller
         if (isset($attributes['image'])) {
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
+        } else {
+            $imageName = request('image');
         }
 
         $movie->update([
             'name' => request('name'),
             'image' => $imageName,
-            'genre' => request('genre'),
+            'genre_id' => request('genre_id'),
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,

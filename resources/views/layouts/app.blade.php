@@ -45,5 +45,7 @@
             @include('layouts.foot')
         </div>
 
+        <x-toast />
+
     </body>
 </html>

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TVShowController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/movie/{movie}/edit', [MovieController::class, 'edit']);
     Route::patch('/movie/{movie}/update', [MovieController::class, 'update']);
     Route::delete('/movie/{movie}/delete', [MovieController::class, 'destroy']);
+    //edit a tv show
+    Route::get('/tvshow/{tvshow}/edit', [TVShowController::class, 'edit']);
+    Route::patch('/tvshow/{tvshow}/update', [TVShowController::class, 'update']);
+    Route::delete('/tvshow/{tvshow}/delete', [TVShowController::class, 'destroy']);
 
 });
 

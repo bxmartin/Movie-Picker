@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TVShow;
+use App\Models\Genre;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Validation;
@@ -26,7 +27,7 @@ class TVShowController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre' => 'required|string|max:255',
             'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
             'seasons' => 'required|numeric',
@@ -42,18 +43,13 @@ class TVShowController extends Controller
             $watched = request('watched');
         }
 
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        $request->image->move(public_path('images/tvshows'), $imageName);
+        $imageName = time() . '.' . $request->image->extension();
+        $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
 
         TVShow::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre' => request('genre'),
+            'genre' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => request('releaseyear'),
             'seasons' => request('seasons'),
             'episodes' => request('episodes'),
@@ -63,4 +59,57 @@ class TVShowController extends Controller
 
         return redirect('/addtvshow')->with('status', 'TV show added!');
     }
+    public function edit(TVShow $tvshow)
+    {
+        return view('edit.tvshow', ['tvshow' => $tvshow]);
+    }
+
+    public function update(Request $request, TVShow $tvshow)
+    {
+
+        $attributes = request()->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048',
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'seasons' => 'required|numeric',
+            'episodes' => 'required|numeric',
+            'watched' => 'boolean',
+            'effort' => 'required|string|max:6'
+        ]);
+
+        if ($request->get('watched') == null) {
+            $watched = 0;
+        } else {
+            $watched = request('watched');
+        }
+
+        if (isset($attributes['image'])) {
+            $imageName = time() . '.' . $request->image->extension();
+            $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+        } else {
+            $imageName = request('image');
+        }
+
+        $tvshow->update([
+            'name' => request('name'),
+            'image' => $imageName,
+            'genre_id' => request('genre_id'),
+            'releaseyear' => request('releaseyear'),
+            'seasons' => request('seasons'),
+            'episodes' => request('episodes'),
+            'watched' => $watched,
+            'effort' => request('effort')
+        ]);
+
+        return back()->with('success', 'TV show Updated!');
+    }
+
+    public function destroy(TVShow $tvshow)
+    {
+        $tvshow->delete();
+
+        return back()->with('success', 'TV show Deleted!');
+    }
+
 }
