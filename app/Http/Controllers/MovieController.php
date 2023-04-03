@@ -6,6 +6,7 @@ use App\Models\Movie;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Validation;
+Use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -28,26 +29,20 @@ class MovieController extends Controller
             'name' => 'required|string|max:255',
             'image' => 'required|image',
             'genre' => 'required|string|max:50',
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'runtime' => 'required|numeric',
             'watched' => 'boolean',
             'effort' => 'required|string|max:6'
         ]);
 
-        if($request->get('watched') == null){
+        if ($request->get('watched') == null) {
             $watched = 0;
-        }
-        else{
+        } else {
             $watched = request('watched');
         }
 
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        $request->image->move(public_path('images/movies'), $imageName);
+        $imageName = time() . '.' . $request->image->extension();
+        $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
 
         Movie::create([
             'name' => request('name'),
@@ -62,4 +57,53 @@ class MovieController extends Controller
         return redirect('/addmovie')->with('status', 'Movie added!');
     }
 
+    public function edit(Movie $movie)
+    {
+        return view('edit.movie', ['movie' => $movie]);
+    }
+
+    public function update(Request $request, Movie $movie)
+    {
+
+        $attributes = request()->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'image',
+            'genre' => 'required|string|max:50',
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
+            'runtime' => 'required|numeric',
+            'watched' => 'boolean',
+            'effort' => 'required|string|max:6',
+            'rating' => 'numeric|nullable'
+        ]);
+
+        if ($request->get('watched') == null) {
+            $watched = 0;
+        } else {
+            $watched = request('watched');
+        }
+
+        if (isset($attributes['image'])) {
+            $imageName = time() . '.' . $request->image->extension();
+            $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
+        }
+
+        $movie->update([
+            'name' => request('name'),
+            'image' => $imageName,
+            'genre' => request('genre'),
+            'releaseyear' => request('releaseyear'),
+            'runtime' => request('runtime'),
+            'watched' => $watched,
+            'effort' => request('effort')
+        ]);
+
+        return back()->with('success', 'Movie Updated!');
+    }
+
+    public function destroy(Movie $movie)
+    {
+        $movie->delete();
+
+        return back()->with('success', 'Movie Deleted!');
+    }
 }

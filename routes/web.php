@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //edit a movie
+    Route::get('/movie/{movie}/edit', [MovieController::class, 'edit']);
+    Route::patch('/movie/{movie}/update', [MovieController::class, 'update']);
+    Route::delete('/movie/{movie}/delete', [MovieController::class, 'destroy']);
+
 });
 
 require __DIR__ . '/auth.php';

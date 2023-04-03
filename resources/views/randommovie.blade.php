@@ -5,32 +5,27 @@
         </h2>
     </x-slot>
 
-    <div class="flex flex-col items-center min-h-screen pt-1 sm:justify-center sm:pt-0 dark:bg-gray-900">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-lg dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 text-center text-gray-900 dark:text-gray-100">
+    <section>
+        <div
+            class="grid col-span-12 gap-4 px-10 pt-6 my-8 text-center md:col-span-6 lg:col-span-4 md:order-1 xl:gap-6">
 
-                    <p class="text-2xl">Tonight you're watching: </p>
+            <p class="text-2xl">Tonight you're watching: </p>
 
-                    @if(isset($movie->image))
-                    <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto rounded-lg">
-                    @endif
+            <h3 class="text-4xl">{{ $movie->name }}</h3>
 
-                    <h3 class="text-4xl">{{ $movie->name }}</h3>
+            @if(isset($movie->image))
+            <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto border-2 rounded-xl">
+            @endif
 
-                    <hr  class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+            <p class="mb-2">Released: {{ $movie->releaseyear }}</p>
 
-                    <p class="mb-2">Released: {{ $movie->releaseyear }}</p>
+            <p class="mb-2">Genre: {{ $movie->genre }}</p>
 
-                    <p class="mb-2">Genre: {{ $movie->genre }}</p>
+            <p class="mb-2">{{ $movie->runtime }}min</p>
 
-                    <p class="mb-2">{{ $movie->runtime }}min</p>
+            <p class="mb-2">Rating: {{ $movie->rating }}/10</p>
 
-                    <p class="mb-2">Rating: {{ $movie->rating }}/10</p>
-
-                </div>
-            </div>
         </div>
-    </div>
+    </section>
 
 </x-app-layout>
