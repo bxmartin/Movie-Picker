@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('tvshows', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('genre');
+            $table->foreignId('genre_id');
             $table->year('releaseyear');
             $table->integer('seasons');
             $table->integer('episodes');
             $table->integer('rating')->nullable();
             $table->boolean('watched')->default(false);
             $table->string('effort');
-            $table->string('image');
+            $table->string('image')->nullable();;
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
         });

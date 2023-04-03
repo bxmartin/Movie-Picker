@@ -6,9 +6,8 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Movie;
-use App\Models\Genre;
 
-class MoviesList extends Component
+class PickMovie extends Component
 {
     /**
      * Create a new component instance.
@@ -23,9 +22,8 @@ class MoviesList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.list-movies', [
-            'movies' => Movie::orderBy('name')->paginate(10, ['*'], 'movies'),
-            'genre' => Genre::all()
+        return view('components.pick-movie', [
+            'movie' => Movie::inRandomOrder()->first()
         ]);
     }
 }

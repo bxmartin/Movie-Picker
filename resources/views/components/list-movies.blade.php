@@ -40,13 +40,12 @@
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
                 {{ $movie->name }}<br>
                 @if(isset($movie->image))
-                <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
-                    class="w-full rounded-lg md:w-80">
+                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}" class="w-full rounded-lg md:w-60">
                 @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Genre</label>
-                {{ $movie->genre }}
+                {{ $movie->genre->name }}
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Release year</label>
@@ -83,12 +82,17 @@
                 <label for="{{ $movie->id }}-checkbox" hidden="hidden">Watched</label>
             </td>
             <td class="py-3 border-b border-gray-200">
-                <div
-                    class="cursor-pointer flex text-white bg-gradient-to-br from-red-500 to-red-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 w-1/2 rounded-xl font-medium py-2.5 text-center">
-                    <p class="w-full">
-                        Delete
-                    </p>
-                </div>
+
+                <x-primary-link href="/movie/{{ $movie->id }}/edit">
+                    {{ __('Edit') }}
+                </x-primary-link>
+                <form method="POST" action="/movie/{{ $movie->id }}/delete">
+                    @csrf
+                    @method('DELETE')
+                    <x-danger-button>
+                        {{ __('Delete') }}
+                    </x-danger-button>
+                </form>
             </td>
         </tr>
         @endforeach

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->string('genre');
+            $table->foreignId('genre_id');
             $table->year('releaseyear');
             $table->integer('runtime');
             $table->integer('rating')->nullable();
