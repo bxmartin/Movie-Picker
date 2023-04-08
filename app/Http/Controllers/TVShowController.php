@@ -28,18 +28,17 @@ class TVShowController extends Controller
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
-            'genre' => 'required|string|max:255',
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'seasons' => 'required|numeric',
             'episodes' => 'required|numeric',
             'watched' => 'boolean',
             'effort' => 'required|string|max:6'
         ]);
 
-        if($request->get('watched') == null){
+        if ($request->get('watched') == null) {
             $watched = 0;
-        }
-        else{
+        } else {
             $watched = request('watched');
         }
 
@@ -49,7 +48,7 @@ class TVShowController extends Controller
         TVShow::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre_id' => ['required', Rule::exists('genres', 'id')],
+            'genre_id' => request('genre_id'),
             'releaseyear' => request('releaseyear'),
             'seasons' => request('seasons'),
             'episodes' => request('episodes'),
@@ -71,7 +70,7 @@ class TVShowController extends Controller
             'name' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'seasons' => 'required|numeric',
             'episodes' => 'required|numeric',
             'watched' => 'boolean',
@@ -105,11 +104,13 @@ class TVShowController extends Controller
         return back()->with('success', 'TV show Updated!');
     }
 
-    public function destroy(TVShow $tvshow)
+    public function destroy($id)
     {
+        $tvshow = TVShow::findOrFail($id);
+        $image_path = public_path('images/tvshows') . '/' . $tvshow->image;
+        unlink($image_path);
         $tvshow->delete();
 
-        return back()->with('success', 'TV show Deleted!');
+        return back()->with('danger', 'TV show Deleted!');
     }
-
 }

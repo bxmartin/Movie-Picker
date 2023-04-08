@@ -22,7 +22,7 @@
                 @method('PATCH')
 
                 <div class="mb-4">
-                    <x-input-label for="name" :value="__('Name')" />
+                    <x-input-label for="name" :value="__('Name')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
                         :value="old('name', $movie->name)" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -37,7 +37,7 @@
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="genre" :value="__('Genre')" />
+                    <x-input-label for="genre" :value="__('Genre')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="genre_id" name="genre_id"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         required>
@@ -51,19 +51,19 @@
                     <x-input-error :messages="$errors->get('genre', $movie->genre)" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="releaseyear" :value="__('Release Year')" />
+                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
                         :value="old('releaseyear', $movie->releaseyear)" required />
                     <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="runtime" :value="__('Runtime')" />
+                    <x-input-label for="runtime" :value="__('Runtime')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="runtime" class="block w-auto mt-1" type="number" name="runtime"
                         :value="old('runtime', $movie->runtime)" required />
                     <x-input-error :messages="$errors->get('runtime')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="effort" :value="__('Effort')" />
+                    <x-input-label for="effort" :value="__('Effort')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="effort"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         type="text" name="effort" required>
