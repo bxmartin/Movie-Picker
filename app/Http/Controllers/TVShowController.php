@@ -49,7 +49,7 @@ class TVShowController extends Controller
         TVShow::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre' => ['required', Rule::exists('genres', 'id')],
+            'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => request('releaseyear'),
             'seasons' => request('seasons'),
             'episodes' => request('episodes'),

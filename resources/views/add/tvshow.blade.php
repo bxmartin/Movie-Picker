@@ -34,16 +34,15 @@
             </div>
             <div class="mb-4">
                 <x-input-label for="genre" :value="__('Genre')" />
-                <select id="genre"
+                <select id="genre_id" name="genre_id"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
-                    type="text" name="genre" :value="old('genre')" required>
-                    <option value="Action">Action</option>
-                    <option value="Animation">Animation</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="Horror">Horror</option>
-                    <option value="Sci-Fi">Sci-Fi</option>
+                    required>
+                    @foreach (\App\Models\Genre::all()->sortBy('name') as $genre)
+                    <option
+                        value="{{ $genre->id }}"
+                        {{ old('genre_id') == $genre->id ? 'selected' : '' }}
+                    >{{ ucwords($genre->name) }}</option>
+                @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
             </div>
