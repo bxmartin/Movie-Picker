@@ -84,6 +84,10 @@ class TVShowController extends Controller
         }
 
         if (isset($attributes['image'])) {
+            //delete old image path
+            $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
+            unlink($old_image_path);
+            //update new image
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
         } else {
@@ -107,8 +111,8 @@ class TVShowController extends Controller
     public function destroy($id)
     {
         $tvshow = TVShow::findOrFail($id);
-        $image_path = public_path('images/tvshows') . '/' . $tvshow->image;
-        unlink($image_path);
+        $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
+        unlink($old_image_path);
         $tvshow->delete();
 
         return back()->with('danger', 'TV show Deleted!');

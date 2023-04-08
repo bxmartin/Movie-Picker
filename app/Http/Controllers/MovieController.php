@@ -83,6 +83,8 @@ class MovieController extends Controller
         }
 
         if (isset($attributes['image'])) {
+            $old_image_path = public_path('images/movies') . '/' . $movie->image;
+            unlink($old_image_path);
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
         } else {
@@ -105,8 +107,8 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
-        $image_path = public_path('images/movies') . '/' . $movie->image;
-        unlink($image_path);
+        $old_image_path = public_path('images/movies') . '/' . $movie->image;
+        unlink($old_image_path);
         $movie->delete();
 
         return back()->with('danger', 'Movie Deleted!');
