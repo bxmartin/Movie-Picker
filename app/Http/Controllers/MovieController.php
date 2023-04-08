@@ -47,7 +47,7 @@ class MovieController extends Controller
         Movie::create([
             'name' => request('name'),
             'image' => $imageName,
-            'genre_id' => ['required', Rule::exists('genres', 'id')],
+            'genre_id' => request('genre_id'),
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,
@@ -102,10 +102,13 @@ class MovieController extends Controller
         return back()->with('success', 'Movie Updated!');
     }
 
-    public function destroy(Movie $movie)
+    public function destroy($id)
     {
+        $movie = Movie::findOrFail($id);
+        $image_path = public_path('images/movies') . '/' . $movie->image;
+        unlink($image_path);
         $movie->delete();
 
-        return back()->with('success', 'Movie Deleted!');
+        return back()->with('danger', 'Movie Deleted!');
     }
 }

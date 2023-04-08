@@ -23,13 +23,13 @@
                 @method('PATCH')
 
                 <div class="mb-4">
-                    <x-input-label for="name" :value="__('Name')" />
+                    <x-input-label for="name" :value="__('Name')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
                         :value="old('name', $tvshow->name)" required autofocus />
                     <x-input-error :messages="$errors->get('name', $tvshow->name)" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="image" :value="__('Image')" />
+                    <x-input-label for="image" :value="__('Image')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     @if(isset($tvshow->image))
                     <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="" class="w-full rounded-lg md:w-80">
                     @endif
@@ -37,7 +37,7 @@
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="genre" :value="__('Genre')" />
+                    <x-input-label for="genre" :value="__('Genre')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="genre_id" name="genre_id"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         required>
@@ -51,25 +51,25 @@
                     <x-input-error :messages="$errors->get('genre', $tvshow->genre)" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="releaseyear" :value="__('Release Year')" />
+                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
                         :value="old('releaseyear', $tvshow->releaseyear)" required />
                     <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="seasons" :value="__('Seasons')" />
+                    <x-input-label for="seasons" :value="__('Seasons')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="seasons" class="block w-auto mt-1" type="number" name="seasons"
                         :value="old('seasons', $tvshow->seasons)" required min="0" />
                     <x-input-error :messages="$errors->get('seasons')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="episodes" :value="__('Episodes')" />
+                    <x-input-label for="episodes" :value="__('Episodes')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="episodes" class="block w-auto mt-1" type="number" name="episodes"
                         :value="old('episodes', $tvshow->episodes)" required min="0" />
                     <x-input-error :messages="$errors->get('episodes')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="effort" :value="__('Effort')" />
+                    <x-input-label for="effort" :value="__('Effort')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="effort"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         type="text" name="effort" required>

@@ -35,13 +35,13 @@
     <tbody class="flex-1 text-gray-700 sm:flex-none">
         @foreach ($tvshows as $tvshow)
         <tr
-            class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-white even:bg-slate-50">
+            class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-slate-50 even:bg-slate-100">
             <td class="px-5 py-3 font-bold border-b border-gray-200">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:hidden" for="">Name</label>
                 {{ $tvshow->name }}<br>
                 @if(isset($tvshow->image))
                 <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
-                    class="w-full rounded-lg md:w-60">
+                    class="w-full rounded-xl md:w-60">
                 @endif
             </td>
             <td class="px-5 py-3 border-b border-gray-200">
@@ -88,17 +88,19 @@
                     {{ $tvshow->watched == 1 ? 'checked' : ''}}>
                 <label for="{{ $tvshow->id }}-checkbox" hidden="hidden">Watched</label>
             </td>
-            <td class="py-3 border-b border-gray-200">
-                <x-primary-link href="/tvshow/{{ $tvshow->id }}/edit">
-                    {{ __('Edit') }}
-                </x-primary-link>
-                <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
-                    @csrf
-                    @method('DELETE')
-                    <x-danger-button>
-                        {{ __('Delete') }}
-                    </x-danger-button>
-                </form>
+            <td class="px-5 py-3 border-b border-gray-200">
+                <div class="inline-flex">
+                    <x-primary-link href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-none rounded-l-lg">
+                        {{ __('Edit') }}
+                    </x-primary-link>
+                    <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
+                        @csrf
+                        @method('DELETE')
+                        <x-danger-button class="rounded-none rounded-r-lg" onclick="return confirm('Are you sure?')">
+                            {{ __('Delete') }}
+                        </x-danger-button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

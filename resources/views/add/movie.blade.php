@@ -1,13 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Add a movie') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
     <section>
         <div
             class="grid col-span-12 gap-4 pt-6 my-8 border-l-4 border-indigo-400 md:col-span-6 lg:col-span-4 md:order-1 xl:gap-6">
+
+            <h2 class="ml-6 text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                {{ __('Add a movie') }}
+            </h2>
 
             @if(session('status'))
             <div class="px-5">
@@ -21,19 +25,19 @@
                 @csrf
 
                 <div class="mb-4">
-                    <x-input-label for="name" :value="__('Name')" />
+                    <x-input-label for="name" :value="__('Name')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
-                        :value="old('name')" required autofocus />
+                        :value="old('name')" required autofocus  />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="image" :value="__('Image')" />
+                    <x-input-label for="image" :value="__('Image')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <input class="block w-full mt-1" id="image" type="file" name="image"
                     :value="old('image')" required />
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="genre" :value="__('Genre')" />
+                    <x-input-label for="genre" :value="__('Genre')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="genre_id" name="genre_id"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         required>
@@ -43,24 +47,23 @@
                             {{ old('genre_id') == $genre->id ? 'selected' : '' }}
                         >{{ ucwords($genre->name) }}</option>
                     @endforeach
-
                     </select>
-                    <x-input-error :messages="$errors->get('genre')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('genre_id')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="releaseyear" :value="__('Release Year')" />
+                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
                         :value="old('releaseyear')" required />
                     <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="runtime" :value="__('Runtime')" />
+                    <x-input-label for="runtime" :value="__('Runtime')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <x-text-input id="runtime" class="block w-auto mt-1" type="number" name="runtime"
                         :value="old('runtime')" required />
                     <x-input-error :messages="$errors->get('runtime')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="effort" :value="__('Effort')" />
+                    <x-input-label for="effort" :value="__('Effort')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="effort"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
                         type="text" name="effort" :value="old('effort')" required>
