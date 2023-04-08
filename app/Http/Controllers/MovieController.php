@@ -111,4 +111,18 @@ class MovieController extends Controller
 
         return back()->with('danger', 'Movie Deleted!');
     }
+
+    public function watched(Movie $movie)
+    {
+
+        $this->validate(request(), [
+            'watched' => 'boolean'
+        ]);
+
+        $movie->update([
+            'watched' => request('watched')
+        ]);
+
+        return back()->with('success', 'Movie watched!');
+    }
 }
