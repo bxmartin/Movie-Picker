@@ -27,7 +27,7 @@
             </div>
             @endif
 
-            <div class="flex flex-col px-8 sm:basis-3/5">
+            <div class="flex flex-col sm:basis-3/5">
                 @if ($movies->count())
                 <x-primary-button class="my-4 !text-left" id="movie-fire">
                     <x-heroicon-o-film class="inline-block h-12 mr-3" />

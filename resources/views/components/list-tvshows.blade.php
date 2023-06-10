@@ -125,4 +125,15 @@
         {!! $tvshows->links() !!}
     </div>
 
+    @else
+
+    <p class="text-center">There are no TV shows yet. </p>
+
+    <div class="flex flex-col items-center">
+    <x-primary-link href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+        {{ __('Add a new TV Show') }}
+    </x-primary-link>
+
+</div>
+
 @endif

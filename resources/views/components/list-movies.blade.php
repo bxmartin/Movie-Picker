@@ -137,6 +137,11 @@
 
     @else
 
-    <p>There are no movies yet. Add a new movie?</p>
+    <p class="text-center">There are no movies yet. </p>
+
+    <div class="flex flex-col items-center">
+    <x-primary-link href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+        {{ __('Add a new movie') }}
+    </x-primary-link>
 
 @endif

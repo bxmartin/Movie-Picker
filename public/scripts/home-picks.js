@@ -1,8 +1,3 @@
-var moviefire = document.getElementById("movie-fire");
-var movieresult = document.getElementById("movie-result");
-var tvshowfire = document.getElementById("tvshow-fire");
-var tvresult = document.getElementById("tv-result");
-
 let moviefire = document.getElementById('movie-fire');
 let movieresult = document.getElementById('movie-result');
 
