@@ -74,7 +74,7 @@
                     <x-input-error :messages="$errors->get('effort')" class="mt-2" />
                 </div>
                 <div class="flex items-center mb-4">
-                    <x-checkbox name="watched" id="watched" value="old('watched', $movie->watched)" />
+                    <x-checkbox name="watched" id="watched" value="{{ $movie->watched == 1 ? '1' : '0' }}" />
                     <x-input-label for="watched" :value="__('Watched')"
                         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" />
                     <x-input-error :messages="$errors->get('watched')" class="mt-2" />

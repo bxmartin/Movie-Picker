@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/movie/{movie}/edit', [MovieController::class, 'edit']);
     Route::patch('/movie/{movie}/update', [MovieController::class, 'update']);
     Route::delete('/movie/{movie}/delete', [MovieController::class, 'destroy']);
+    Route::patch('/movie/{movie}/watched', [MovieController::class, 'watched']);
     //edit a tv show
     Route::get('/tvshow/{tvshow}/edit', [TVShowController::class, 'edit']);
     Route::patch('/tvshow/{tvshow}/update', [TVShowController::class, 'update']);

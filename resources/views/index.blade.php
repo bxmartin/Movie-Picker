@@ -5,30 +5,42 @@
         </h2>
     </x-slot> --}}
 
-    <div class="flex justify-center sm:my-8">
+    <div class="flex justify-center sm:my-8 my-4">
         <div class="sm:flex sm:basis-full lg:basis-3/4 xl:basis-2/3">
+
+            @if (($tvshows->count()) or ($movies->count()))
+            {{-- Shown only if atleast one movie or tv show exists --}}
             <div
-                class="flex flex-col justify-center px-8 py-5 text-center bg-gray-100 sm:basis-2/5 md:rounded-b-3xl sm:rounded-3xl">
+                class="flex flex-col justify-center px-8 py-5 mb-4 text-center bg-gray-100 sm:basis-2/5 md:rounded-b-3xl sm:rounded-3xl">
 
-                <div id="movie-result" class="">
-                    <livewire:pick-movie />
-                </div>
+                @if ($movies->count())
+                    <div id="movie-result" class="">
+                        <livewire:pick-movie />
+                    </div>
+                @endif
 
+                @if ($tvshows->count())
                 <div id="tv-result" class="hidden">
                     <livewire:pick-tv-show />
                 </div>
-
+                @endif
             </div>
-            <div class="flex flex-col px-8 sm:basis-3/5">
+            @endif
+
+            <div class="flex flex-col sm:basis-3/5">
+                @if ($movies->count())
                 <x-primary-button class="my-4 !text-left" id="movie-fire">
                     <x-heroicon-o-film class="inline-block h-12 mr-3" />
                     {{ __('Pick a Movie') }}
                 </x-primary-button>
+                @endif
 
+                @if ($tvshows->count())
                 <x-primary-button class="mb-4 !text-left from-purple-700 to-purple-500" id="tvshow-fire">
                     <x-heroicon-o-play class="inline-block h-12 mr-3" />
                     {{ __('Pick a TV Show') }}
                 </x-primary-button>
+                @endif
 
                 <x-hero-link href="{{ route('addmovie') }}" class="mb-4 !text-left">
                     <x-heroicon-o-film class="inline-block h-10" />
