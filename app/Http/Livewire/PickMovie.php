@@ -14,7 +14,8 @@ class PickMovie extends Component
     public function render()
     {
         return view('livewire.pick-movie', [
-            'movie' => Movie::inRandomOrder()->first()
+            'movie' => Movie::inRandomOrder()->first(),
+            'movies' => Movie::all()
         ]);
     }
 }

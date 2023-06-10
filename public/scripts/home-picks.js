@@ -3,15 +3,24 @@ var movieresult = document.getElementById("movie-result");
 var tvshowfire = document.getElementById("tvshow-fire");
 var tvresult = document.getElementById("tv-result");
 
-moviefire.onclick = function(){
-    tvresult.classList.add("hidden");
-    window.livewire.emit('refreshMovie');
-    movieresult.classList.remove("hidden");
-};
+let moviefire = document.getElementById('movie-fire');
+let movieresult = document.getElementById('movie-result');
 
-tvshowfire.onclick = function(){
-    movieresult.classList.add("hidden");
-    window.livewire.emit('refreshTVShow');
-    tvresult.classList.remove("hidden");
-};
+if ((moviefire !== null) && (movieresult !== null)) {
+    moviefire.onclick = function () {
+        tvresult.classList.add("hidden");
+        window.livewire.emit('refreshMovie');
+        movieresult.classList.remove("hidden");
+    };
+}
 
+let tvshowfire = document.getElementById('tvshow-fire');
+let tvresult = document.getElementById('tv-result');
+
+if ((tvshowfire !== null) && (tvshowresult !== null)) {
+    tvshowfire.onclick = function () {
+        movieresult.classList.add("hidden");
+        window.livewire.emit('refreshTVShow');
+        tvresult.classList.remove("hidden");
+    };
+}
