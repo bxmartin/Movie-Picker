@@ -126,6 +126,6 @@ class MovieController extends Controller
             'watched' => 1
         ]);
 
-        return back()->with('success', 'Movie marked as watched!');
+        return back()->with('success', 'Movie marked watched!');
     }
 }
