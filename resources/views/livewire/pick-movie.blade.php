@@ -1,6 +1,6 @@
 <div>
 
-    @if ($movies->count())
+    @isset($movie)
 
         @if (isset($movie->image))
             <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
@@ -33,5 +33,6 @@
             {{ __('Pick another Movie') }}
         </x-primary-button>
 
-    @endif
+    @endisset
+
 </div>

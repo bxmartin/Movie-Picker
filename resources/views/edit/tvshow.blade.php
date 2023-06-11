@@ -80,7 +80,8 @@
                     <x-input-error :messages="$errors->get('effort')" class="mt-2" />
                 </div>
                 <div class="flex items-center mb-4">
-                    <x-checkbox name="watched" id="watched" value="old('watched', $tvshow->watched)" />
+                    <input type="hidden" name="watched" value="0" />
+                    <input type="checkbox" name="watched" value="1" @if (isset($tvshow)) @if ($tvshow->watched == 1) checked @endif @endif />
                     <x-input-label for="watched" :value="__('Watched')"
                         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" />
                     <x-input-error :messages="$errors->get('watched')" class="mt-2" />

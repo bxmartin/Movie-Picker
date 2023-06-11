@@ -14,8 +14,8 @@ class PickTvShow extends Component
     public function render()
     {
         return view('livewire.pick-tv-show', [
-            'tvshow' => TVShow::inRandomOrder()->first(),
-            'tvshows' => TVShow::all()
+            'tvshow' => TVShow::inRandomOrder()->where('watched','=',0)->first(),
+
         ]);
     }
 }
