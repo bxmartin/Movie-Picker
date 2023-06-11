@@ -105,7 +105,7 @@ class TVShowController extends Controller
             'effort' => request('effort')
         ]);
 
-        return back()->with('success', 'TV show Updated!');
+        return redirect('/')->with('success', 'TV show Updated!');
     }
 
     public function destroy($id)
@@ -116,5 +116,19 @@ class TVShowController extends Controller
         $tvshow->delete();
 
         return back()->with('danger', 'TV show Deleted!');
+    }
+
+    public function watched(TVShow $tvshow)
+    {
+
+        $this->validate(request(), [
+            'watched' => 'boolean'
+        ]);
+
+        $tvshow->update([
+            'watched' => 1
+        ]);
+
+        return back()->with('success', 'TV show marked as watched!');
     }
 }

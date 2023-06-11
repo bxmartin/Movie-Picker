@@ -12,7 +12,7 @@ if ((moviefire !== null) && (movieresult !== null)) {
 let tvshowfire = document.getElementById('tvshow-fire');
 let tvresult = document.getElementById('tv-result');
 
-if ((tvshowfire !== null) && (tvshowresult !== null)) {
+if ((tvshowfire !== null) && (tvresult !== null)) {
     tvshowfire.onclick = function () {
         movieresult.classList.add("hidden");
         window.livewire.emit('refreshTVShow');
