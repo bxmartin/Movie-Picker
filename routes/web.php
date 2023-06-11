@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tvshow/{tvshow}/edit', [TVShowController::class, 'edit']);
     Route::patch('/tvshow/{tvshow}/update', [TVShowController::class, 'update']);
     Route::delete('/tvshow/{tvshow}/delete', [TVShowController::class, 'destroy']);
+    Route::patch('/tvshow/{tvshow}/watched', [TVShowController::class, 'watched']);
 
 });
 

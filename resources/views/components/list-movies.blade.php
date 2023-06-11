@@ -4,7 +4,10 @@
     <div x-data="{ show: false }">
         <div class="flex justify-end">
             <button class="px-4 mb-4" @click="show = ! show"
-                x-text="show ? 'Hide watched movies' : 'Show watched movies'">Show watched movies</button>
+                x-text="show ? 'Hide watched movies' : 'Include watched movies'" x-class>
+                <x-heroicon-o-eye class="block w-auto h-8 text-green-500" />
+                Include watched movies
+            </button>
         </div>
 
         <table class="table w-full leading-normal table-auto" id="moviesTable">
@@ -28,9 +31,7 @@
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                         Rating</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Watched</th>
+
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tr-2xl">
                         Actions</th>
@@ -38,8 +39,7 @@
             </thead>
             <tbody class="flex-1 text-gray-700 sm:flex-none">
                 @foreach ($movies as $movie)
-                    <tr class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-slate-50 even:bg-slate-100
-                    "
+                    <tr class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-slate-50 even:bg-slate-100"
                         x-show.transition.in="{{ $movie->watched == 1 ? 'show' : '' }}">
                         <td class="px-5 py-3 font-bold border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
@@ -90,29 +90,26 @@
                                 {{ $movie->rating }}/10
                             @endif
                         </td>
-                        <td class="px-5 py-3 border-b border-gray-200">
-                            @if ($movie->watched == 1)
-                                <x-heroicon-o-check class="block w-auto h-8 text-green-500" />
-                            @elseif ($movie->watched == 0)
-                                <x-heroicon-o-check class="block w-auto h-8 text-slate-300" />
+                        <td class="px-5 py-3 border-b-0 sm:border-b border-gray-200">
+                            @if ($movie->watched == 0)
+                                <form method="POST" action="/movie/{{ $movie->id }}/watched"
+                                    id="watched-{{ $movie->id }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <x-primary-button class="rounded-lg"
+                                        onclick="document.getElementById('watched-{{ $movie->id }}').submit();">
+                                        <x-heroicon-o-eye class="inline-block w-8 h-8" />
+                                        Mark watched
+                                    </x-primary-button>
+                                </form>
                             @endif
-
-                            {{-- <form method="POST" action="/movie/{{ $movie->id }}/watched" id="watched-{{ $movie->id }}">
-                            @csrf
-                            @method('PATCH')
-                            <input id="{{ $movie->id }}-checkbox" type="checkbox" value=""
-                                class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                                {{ $movie->watched == 1 ? 'checked' : '' }} onchange="document.getElementById('watched-{{ $movie->id }}').submit();">
-                            <label for="{{ $movie->id }}-checkbox" hidden="hidden">Watched</label>
-                        </form> --}}
-                        </td>
-                        <td class="px-5 py-3 border-b border-gray-200">
 
                             <div class="inline-flex">
                                 <x-primary-link href="/movie/{{ $movie->id }}/edit"
                                     class="rounded-none rounded-l-lg">
                                     {{ __('Edit') }}
                                 </x-primary-link>
+
                                 <form method="POST" action="/movie/{{ $movie->id }}/delete">
                                     @csrf
                                     @method('DELETE')
@@ -134,14 +131,12 @@
     <div class="mt-3 d-flex justify-content-center">
         {!! $movies->links() !!}
     </div>
-
-    @else
-
+@else
     <p class="text-center">There are no movies yet. </p>
 
     <div class="flex flex-col items-center">
-    <x-primary-link href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
-        {{ __('Add a new movie') }}
-    </x-primary-link>
+        <x-primary-link href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+            {{ __('Add a new movie') }}
+        </x-primary-link>
 
 @endif

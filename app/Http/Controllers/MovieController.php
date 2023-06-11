@@ -98,10 +98,11 @@ class MovieController extends Controller
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,
-            'effort' => request('effort')
+            'effort' => request('effort'),
+            'rating' => request('rating')
         ]);
 
-        return back()->with('success', 'Movie Updated!');
+        return redirect('/')->with('success', 'Movie Updated!');
     }
 
     public function destroy($id)
@@ -122,9 +123,9 @@ class MovieController extends Controller
         ]);
 
         $movie->update([
-            'watched' => request('watched')
+            'watched' => 1
         ]);
 
-        return back()->with('success', 'Movie watched!');
+        return back()->with('success', 'Movie marked as watched!');
     }
 }
