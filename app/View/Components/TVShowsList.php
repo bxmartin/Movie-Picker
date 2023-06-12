@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\TVShow;
-use App\Models\Genre;
+// use App\Models\Genre;
 
 class TVShowsList extends Component
 {
@@ -24,8 +24,8 @@ class TVShowsList extends Component
     public function render(): View|Closure|string
     {
         return view('components.list-tvshows', [
-            'tvshows' => TVShow::orderBy('name')->paginate(10, ['*'], 'tvshows'),
-            'genre' => Genre::all()
+            'tvshows' => TVShow::orderBy('name')->paginate(10, ['*'], 'tvshows')
+            // 'genre' => Genre::all()
         ]);
     }
 }

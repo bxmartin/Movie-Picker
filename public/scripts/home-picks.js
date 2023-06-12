@@ -1,6 +1,9 @@
 let moviefire = document.getElementById('movie-fire');
 let movieresult = document.getElementById('movie-result');
 
+let tvshowfire = document.getElementById('tvshow-fire');
+let tvresult = document.getElementById('tv-result');
+
 if ((moviefire !== null) && (movieresult !== null)) {
     moviefire.onclick = function () {
         tvresult.classList.add("hidden");
@@ -8,9 +11,6 @@ if ((moviefire !== null) && (movieresult !== null)) {
         movieresult.classList.remove("hidden");
     };
 }
-
-let tvshowfire = document.getElementById('tvshow-fire');
-let tvresult = document.getElementById('tv-result');
 
 if ((tvshowfire !== null) && (tvresult !== null)) {
     tvshowfire.onclick = function () {

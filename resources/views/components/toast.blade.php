@@ -2,9 +2,9 @@
     <div x-data="{ show: true }"
          x-init="setTimeout(() => show = false, 4000)"
          x-show="show"
-         class="fixed px-4 py-2 text-sm text-white bg-green-500 rounded-xl bottom-3 right-3"
+         class="w-full fixed px-4 py-2 text-white bg-green-500 bottom-3"
     >
-        <p>{{ session('success') }}</p>
+        <p class="text-center font-bold">{{ session('success') }}</p>
     </div>
 @endif
 
@@ -12,8 +12,8 @@
     <div x-data="{ show: true }"
          x-init="setTimeout(() => show = false, 4000)"
          x-show="show"
-         class="fixed px-4 py-2 text-sm text-white bg-red-500 rounded-xl bottom-3 right-3"
+         class="w-full fixed px-4 py-2 text-white bg-red-500 bottom-3"
     >
-        <p>{{ session('danger') }}</p>
+        <p class="text-center font-bold">{{ session('danger') }}</p>
     </div>
 @endif

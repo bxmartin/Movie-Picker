@@ -8,10 +8,15 @@ use Illuminate\Http\Request;
 class GenreController extends Controller
 {
 
-    public function list()
+    public function list(Genre $genre)
     {
+
+        $genre = Genre::select('name', 'id')
+        ->orderBy('name', 'asc')
+        ->get();
+
         return view('list.genres', [
-            'genres' => Genre::paginate(5, ['*'], 'genres')
+            'genres' => $genre
         ]);
     }
 
@@ -50,6 +55,15 @@ class GenreController extends Controller
             'name' => request('name')
         ]);
 
-        return redirect('/')->with('success', 'Genre Updated!');
+        return redirect('/genres')->with('success', 'Genre Updated!');
     }
+
+    public function destroy($id)
+    {
+        $genre = Genre::findOrFail($id);
+        $genre->delete();
+
+        return back()->with('danger', 'Genre Deleted!');
+    }
+
 }

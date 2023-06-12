@@ -13,7 +13,7 @@ class MovieController extends Controller
     public function random()
     {
         return view('randommovie', [
-            'movie' => Movie::inRandomOrder()->first()
+            'movie' => Movie::inRandomOrder()->where('watched','=',0)->first()
         ]);
     }
 

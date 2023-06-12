@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/genre', [GenreController::class, 'store'])->name('creategenre');
     Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])->name('editgenre');
     Route::patch('/genre/{genre}/update', [GenreController::class, 'update']);
+    Route::delete('/genre/{genre}/delete', [GenreController::class, 'destroy']);
     //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

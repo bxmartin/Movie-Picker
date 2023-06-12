@@ -26,9 +26,18 @@
                 @foreach ($genres as $genre)
                     <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
                         {{ $genre->name }}
-                        <x-secondary-link href="/genre/{{ $genre->id }}/edit" class="rounded-lg">
-                            {{ __('Edit') }}
+                        <div class="inline-flex">
+                            <x-primary-link href="/genre/{{ $genre->id }}/edit" class="mx-2">
+                                {{ __('Edit') }}
                             </x-primary-link>
+                            <form method="POST" action="/genre/{{ $genre->id }}/delete">
+                                @csrf
+                                @method('DELETE')
+                                <x-danger-button class="" onclick="return confirm('Are you sure?')">
+                                    {{ __('Delete') }}
+                                </x-danger-button>
+                            </form>
+                        </div>
                     </li>
                 @endforeach
             </ul>
