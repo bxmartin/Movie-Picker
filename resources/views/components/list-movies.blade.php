@@ -1,11 +1,9 @@
 @if ($movies->count())
 
-
     <div x-data="{ show: false }">
         <div class="flex justify-end">
             <button class="px-4 mb-4" @click="show = ! show"
-                x-text="show ? 'Hide watched movies' : 'Include watched movies'" x-class>
-                <x-heroicon-o-eye class="block w-auto h-8 text-green-500" />
+                x-text="show ? 'Hide watched movies' : 'Include watched movies'">
                 Include watched movies
             </button>
         </div>
@@ -14,7 +12,7 @@
             <thead class="table-header-group">
                 <tr class="hidden md:table-row">
                     <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-"">
+                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-">
                         Title</th>
                     <th
                         class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
@@ -138,5 +136,6 @@
         <x-primary-link href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
             {{ __('Add a new movie') }}
         </x-primary-link>
+    </div>
 
 @endif

@@ -13,7 +13,7 @@ class TVShowController extends Controller
     public function random()
     {
         return view('randomtvshow', [
-            'tvshow' => TVShow::inRandomOrder()->first()
+            'tvshow' => TVShow::inRandomOrder()->where('watched','=',0)->first()
         ]);
     }
 

@@ -10,7 +10,7 @@ class TVShow extends Model
 {
     use HasFactory;
     public $table = 'tvshows';
-    protected $fillable = ['name', 'image', 'releaseyear', 'seasons', 'episodes', 'effort', 'watched'];
+    protected $fillable = ['name', 'image', 'releaseyear', 'seasons', 'episodes', 'effort', 'rating', 'watched'];
     protected $with = ['genre'];
 
     public function genre()

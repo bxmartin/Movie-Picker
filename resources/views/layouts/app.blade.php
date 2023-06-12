@@ -33,18 +33,18 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="shadow bg-gradient-to-r from-cyan-200 to-blue-300 dark:bg-gray-800">
-                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div class="px-4 py-6 mx-auto max-w-7xl">
                         {{ $header }}
                     </div>
                 </header>
             @endif
 
             <!-- Page Content -->
-            <main class="container w-full mx-auto mb-32 overflow-hidden sm:px-16">
+            <main class="container px-3 w-full mx-auto mb-8 overflow-hidden">
                 {{ $slot }}
             </main>
 
-            @include('layouts.foot')
+            {{-- @include('layouts.foot') --}}
         </div>
 
         <x-toast />
