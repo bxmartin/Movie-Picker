@@ -1,13 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Editing ') . $movie->name }}
-        </h2>
-    </x-slot>
 
     <section>
         <div
-            class="grid col-span-12 gap-4 pt-6 my-8 border-l-4 border-indigo-400 md:col-span-6 lg:col-span-4 md:order-1 xl:gap-6">
+            class="my-8 container">
+
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                {{ __('Edit a movie') }}
+            </h2>
 
             @if (session('status'))
                 <div class="px-5">
@@ -17,7 +16,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="/movie/{{ $movie->id }}/update" class="w-full px-8 pb-6 md:w-1/2"
+            <form method="POST" action="/movie/{{ $movie->id }}/update" class="w-full px-8 pb-6"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -51,6 +50,11 @@
                                 {{ ucwords($genre->name) }}</option>
                         @endforeach
                     </select>
+                    <p>
+                        <x-secondary-link :href="route('addgenre')" class="mt-3" target="_blank">
+                            {{ __('Add a new genre') }}
+                        </x-secondary-link>
+                    </p>
                     <x-input-error :messages="$errors->get('genre', $movie->genre)" class="mt-2" />
                 </div>
                 <div class="mb-4">

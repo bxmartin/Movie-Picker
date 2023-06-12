@@ -28,16 +28,12 @@
 <body class="font-sans antialiased text-gray-900">
 
     <div
-        class="flex flex-col items-center min-h-screen pt-6 bg-gradient-to-r from-cyan-200 to-blue-300 sm:justify-center sm:pt-0 dark:bg-gray-900">
-        <div>
+        class="flex flex-col items-center min-h-screen pt-6 bg-gradient-to-r from-cyan-200 to-blue-300 justify-center px-6 dark:bg-gray-900">
+        <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md max-w-md dark:bg-gray-800 rounded-lg">
             <a href="/">
                 <x-application-logo class="w-20 h-20 mx-auto text-gray-500 fill-current" /><br>
-                <h1 class="text-4xl font-semibold">{{ config('app.name', 'Movie Picker') }}</h1>
+                <h1 class="text-4xl text-center font-semibold mb-4">{{ config('app.name', 'Movie Picker') }}</h1>
             </a>
-        </div>
-
-        <div
-            class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md dark:bg-gray-800 sm:rounded-lg">
             {{ $slot }}
         </div>
 </body>

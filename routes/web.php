@@ -29,6 +29,12 @@ Route::middleware('auth')->group(function () {
     //add a tv show
     Route::get('/addtvshow', [TVShowController::class, 'create'])->name('addtvshow');
     Route::post('/admin/tvshow', [TVShowController::class, 'store'])->name('createtvshow');
+    //genres
+    Route::get('/genres', [GenreController::class, 'list'])->name('genres');
+    Route::get('/addgenre', [GenreController::class, 'create'])->name('addgenre');
+    Route::post('/admin/genre', [GenreController::class, 'store'])->name('creategenre');
+    Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])->name('editgenre');
+    Route::patch('/genre/{genre}/update', [GenreController::class, 'update']);
     //profiles
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -43,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/tvshow/{tvshow}/update', [TVShowController::class, 'update']);
     Route::delete('/tvshow/{tvshow}/delete', [TVShowController::class, 'destroy']);
     Route::patch('/tvshow/{tvshow}/watched', [TVShowController::class, 'watched']);
+
 
 });
 

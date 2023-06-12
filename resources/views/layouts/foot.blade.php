@@ -21,7 +21,7 @@
         </div>
         <!-- Right -->
     </section>
-    <!-- Section: Social media -->
+
 
 </footer>
 
