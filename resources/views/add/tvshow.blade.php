@@ -31,9 +31,9 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
             <div class="mb-4">
-                <x-input-label for="image" :value="__('Image')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                <x-input-label for="image" :value="__('Image')" class="!inline-block" />
                 <input class="block w-full mt-1" id="image" type="file" name="image"
-                :value="old('image')" required />
+                :value="old('image')"/>
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
             <div class="mb-4">
@@ -56,21 +56,21 @@
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
             </div>
             <div class="mb-4">
-                <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block"/>
                 <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
-                    :value="old('releaseyear')" required />
+                    :value="old('releaseyear')" />
                 <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
             </div>
             <div class="mb-4">
-                <x-input-label for="seasons" :value="__('Seasons')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                <x-input-label for="seasons" :value="__('Seasons')" class="!inline-block" />
                 <x-text-input id="seasons" class="block w-auto mt-1" type="number" name="seasons"
-                    :value="old('seasons')" required min="0" />
+                    :value="old('seasons')" min="0" />
                 <x-input-error :messages="$errors->get('seasons')" class="mt-2" />
             </div>
             <div class="mb-4">
-                <x-input-label for="episodes" :value="__('Episodes')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                <x-input-label for="episodes" :value="__('Episodes')" class="!inline-block" />
                 <x-text-input id="episodes" class="block w-auto mt-1" type="number" name="episodes"
-                    :value="old('episodes')" required min="0" />
+                    :value="old('episodes')" min="0" />
                 <x-input-error :messages="$errors->get('episodes')" class="mt-2" />
             </div>
             <div class="mb-4">

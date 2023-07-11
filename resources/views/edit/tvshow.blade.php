@@ -55,21 +55,21 @@
                     <x-input-error :messages="$errors->get('genre', $tvshow->genre)" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" />
                     <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
-                        :value="old('releaseyear', $tvshow->releaseyear)" required />
+                        :value="old('releaseyear', $tvshow->releaseyear)"/>
                     <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="seasons" :value="__('Seasons')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                    <x-input-label for="seasons" :value="__('Seasons')" class="!inline-block" />
                     <x-text-input id="seasons" class="block w-auto mt-1" type="number" name="seasons"
-                        :value="old('seasons', $tvshow->seasons)" required min="0" />
+                        :value="old('seasons', $tvshow->seasons)" min="0" />
                     <x-input-error :messages="$errors->get('seasons')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="episodes" :value="__('Episodes')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
+                    <x-input-label for="episodes" :value="__('Episodes')" class="!inline-block" />
                     <x-text-input id="episodes" class="block w-auto mt-1" type="number" name="episodes"
-                        :value="old('episodes', $tvshow->episodes)" required min="0" />
+                        :value="old('episodes', $tvshow->episodes)" min="0" />
                     <x-input-error :messages="$errors->get('episodes')" class="mt-2" />
                 </div>
                 <div class="mb-4">

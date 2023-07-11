@@ -66,12 +66,16 @@
                         <td class="px-5 py-3 border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                 for="">Length</label>
-                            @if ($tvshow->seasons == 1)
-                                {{ $tvshow->seasons }} season <br>
-                            @else
-                                {{ $tvshow->seasons }} seasons <br>
+                            @if (isset($tvshow->seasons))
+                                @if ($tvshow->seasons == 1)
+                                    {{ $tvshow->seasons }} season <br>
+                                @else
+                                    {{ $tvshow->seasons }} seasons <br>
+                                @endif
                             @endif
-                            {{ $tvshow->episodes }} episodes
+                            @if (isset($tvshow->episodes))
+                                {{ $tvshow->episodes }} episodes
+                            @endif
                         </td>
                         <td class="px-5 py-3 border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
@@ -88,7 +92,7 @@
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                 for="">Rating</label>
                             @if (is_null($tvshow->rating))
-                                No rating!
+                                No rating yet!
                             @else
                                 {{ $tvshow->rating }}/10
                             @endif

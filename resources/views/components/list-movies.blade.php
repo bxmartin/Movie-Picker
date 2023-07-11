@@ -65,7 +65,10 @@
                         <td class="px-5 py-3 border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                 for="">Runtime</label>
-                            {{ $movie->runtime }}min
+                            @if (isset($movie->runtime))
+                                {{ $movie->runtime }}min
+                            @endif
+
                         </td>
                         <td class="px-5 py-3 border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
@@ -83,7 +86,7 @@
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                 for="">Rating</label>
                             @if (is_null($movie->rating))
-                                No rating!
+                                No rating yet!
                             @else
                                 {{ $movie->rating }}/10
                             @endif

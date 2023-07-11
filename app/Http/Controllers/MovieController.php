@@ -27,13 +27,21 @@ class MovieController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048|nullable',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'runtime' => 'required|numeric',
+            'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
+            'runtime' => 'numeric|nullable',
             'watched' => 'boolean',
             'effort' => 'required|string|max:6'
         ]);
+
+        //set a default movie image if not set
+        if ($request->get('image') == null) {
+            $imageName = 'no-photo-available.png';
+        } else {
+            $imageName = time() . '.' . $request->image->extension();
+            $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
+        }
 
         if ($request->get('watched') == null) {
             $watched = 0;
@@ -41,8 +49,8 @@ class MovieController extends Controller
             $watched = request('watched');
         }
 
-        $imageName = time() . '.' . $request->image->extension();
-        $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
+        // $imageName = time() . '.' . $request->image->extension();
+        // $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
 
         Movie::create([
             'name' => request('name'),
@@ -69,8 +77,8 @@ class MovieController extends Controller
             'name' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'runtime' => 'required|numeric',
+            'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
+            'runtime' => 'numeric|nullable',
             'watched' => 'boolean',
             'effort' => 'required|string|max:6',
             'rating' => 'numeric|nullable'
@@ -108,8 +116,14 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
-        $old_image_path = public_path('images/movies') . '/' . $movie->image;
-        unlink($old_image_path);
+
+         //check image path, dont delete if default
+         $old_image_path = public_path('images/movies') . '/' . $movie->image;
+         if ($movie->image == 'no-photo-available.png') {
+             //do nothing
+         } else {
+             unlink($old_image_path);
+         }
         $movie->delete();
 
         return back()->with('danger', 'Movie Deleted!');

@@ -27,14 +27,13 @@
                     <x-input-label for="name" :value="__('Name')" class="!inline-block" required /><span
                         class="inline-block font-bold">*</span>
                     <x-text-input id="name" class="block w-full mt-1" type="text" name="name"
-                        :value="old('name')" required autofocus />
+                        :value="old('name')" required />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="image" :value="__('Image')" class="!inline-block" required /><span
-                        class="inline-block font-bold">*</span>
+                    <x-input-label for="image" :value="__('Image')" class="!inline-block" />
                     <input class="block w-full mt-1" id="image" type="file" name="image" :value="old('image')"
-                        required />
+                         />
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -56,17 +55,15 @@
                     <x-input-error :messages="$errors->get('genre_id')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" required /><span
-                        class="inline-block font-bold">*</span>
+                    <x-input-label for="releaseyear" :value="__('Release Year')" class="!inline-block" />
                     <x-text-input id="releaseyear" class="block w-auto mt-1" type="number" name="releaseyear"
-                        :value="old('releaseyear')" required />
+                        :value="old('releaseyear')" />
                     <x-input-error :messages="$errors->get('releaseyear')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <x-input-label for="runtime" :value="__('Runtime')" class="!inline-block" required /><span
-                        class="inline-block font-bold">*</span>
+                    <x-input-label for="runtime" :value="__('Runtime')" class="!inline-block" />
                     <x-text-input id="runtime" class="block w-auto mt-1" type="number" name="runtime"
-                        :value="old('runtime')" required />
+                        :value="old('runtime')" />
                     <x-input-error :messages="$errors->get('runtime')" class="mt-2" />
                 </div>
                 <div class="mb-4">

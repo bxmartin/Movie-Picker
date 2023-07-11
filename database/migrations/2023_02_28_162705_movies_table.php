@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->foreignId('genre_id');
-            $table->year('releaseyear');
-            $table->integer('runtime');
+            $table->year('releaseyear')->nullable();
+            $table->integer('runtime')->nullable();
             $table->integer('rating')->nullable();
             $table->boolean('watched')->default(false);
             $table->string('effort');
