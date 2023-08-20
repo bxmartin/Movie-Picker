@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('genre_id');
-            $table->year('releaseyear');
-            $table->integer('seasons');
-            $table->integer('episodes');
+            $table->year('releaseyear')->nullable();
+            $table->integer('seasons')->nullable();
+            $table->integer('episodes')->nullable();
             $table->integer('rating')->nullable();
             $table->boolean('watched')->default(false);
             $table->string('effort');

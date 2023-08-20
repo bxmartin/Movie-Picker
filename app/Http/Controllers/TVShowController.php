@@ -13,7 +13,7 @@ class TVShowController extends Controller
     public function random()
     {
         return view('randomtvshow', [
-            'tvshow' => TVShow::inRandomOrder()->where('watched','=',0)->first()
+            'tvshow' => TVShow::inRandomOrder()->where('watched', '=', 0)->first()
         ]);
     }
 
@@ -27,23 +27,28 @@ class TVShowController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048|nullable',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'seasons' => 'required|numeric',
-            'episodes' => 'required|numeric',
+            'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
+            'seasons' => 'numeric|nullable',
+            'episodes' => 'numeric|nullable',
             'watched' => 'boolean',
             'effort' => 'required|string|max:6'
         ]);
+
+        //set a default image if not set
+        if ($request->get('image') == null) {
+            $imageName = 'no-photo-available.png';
+        } else {
+            $imageName = time() . '.' . $request->image->extension();
+            $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+        }
 
         if ($request->get('watched') == null) {
             $watched = 0;
         } else {
             $watched = request('watched');
         }
-
-        $imageName = time() . '.' . $request->image->extension();
-        $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
 
         TVShow::create([
             'name' => request('name'),
@@ -56,7 +61,7 @@ class TVShowController extends Controller
             'effort' => request('effort')
         ]);
 
-        return redirect('/addtvshow')->with('status', 'TV show added!');
+        return redirect('/addtvshow')->with('success', 'TV show added!');
     }
     public function edit(TVShow $tvshow)
     {
@@ -68,13 +73,14 @@ class TVShowController extends Controller
 
         $attributes = request()->validate([
             'name' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048|nullable',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
-            'releaseyear' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'seasons' => 'required|numeric',
-            'episodes' => 'required|numeric',
+            'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
+            'seasons' => 'numeric|nullable',
+            'episodes' => 'numeric|nullable',
             'watched' => 'boolean',
-            'effort' => 'required|string|max:6'
+            'effort' => 'required|string|max:6',
+            'rating' => 'numeric|nullable'
         ]);
 
         if ($request->get('watched') == null) {
@@ -102,20 +108,28 @@ class TVShowController extends Controller
             'seasons' => request('seasons'),
             'episodes' => request('episodes'),
             'watched' => $watched,
-            'effort' => request('effort')
+            'effort' => request('effort'),
+            'rating' => request('rating')
         ]);
 
-        return redirect('/')->with('success', 'TV show Updated!');
+        return redirect('/')->with('success', 'TV show updated!');
     }
 
     public function destroy($id)
     {
         $tvshow = TVShow::findOrFail($id);
+
+        //check image path, dont delete if default
         $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
-        unlink($old_image_path);
+        if ($tvshow->image == 'no-photo-available.png') {
+            //do nothing
+        } else {
+            unlink($old_image_path);
+        }
+
         $tvshow->delete();
 
-        return back()->with('danger', 'TV show Deleted!');
+        return back()->with('danger', 'TV show deleted!');
     }
 
     public function watched(TVShow $tvshow)

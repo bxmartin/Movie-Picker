@@ -3,6 +3,7 @@
          x-init="setTimeout(() => show = false, 4000)"
          x-show="show"
          class="w-full fixed px-4 py-2 text-white bg-green-500 bottom-3"
+         x-transition
     >
         <p class="text-center font-bold">{{ session('success') }}</p>
     </div>

@@ -36,7 +36,7 @@ class GenreController extends Controller
             'name' => request('name'),
         ]);
 
-        return redirect('/addgenre')->with('status', 'Genre added!');
+        return redirect('/addgenre')->with('success', 'Genre added!');
     }
 
     public function edit(Genre $genre)

@@ -4,17 +4,9 @@
         <div
             class="my-8 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center">
                 {{ __('Edit a genre') }}
             </h2>
-
-            @if (session('status'))
-                <div class="px-5">
-                    <div class="p-4 text-green-700 bg-green-100 border-l-4 border-green-500">
-                        {{ session('status') }}
-                    </div>
-                </div>
-            @endif
 
             <form method="POST" action="/genre/{{ $genre->id }}/update" class="w-full pb-6"
                 enctype="multipart/form-data">
@@ -36,6 +28,12 @@
                 </div>
 
             </form>
+
+            <p>
+                <x-secondary-link class="" :href="route('genres')">
+                    {{ __('Go back to genre list') }}
+                </x-secondary-link>
+            </p>
 
         </div>
 

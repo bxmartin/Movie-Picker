@@ -3,7 +3,7 @@
     <section>
         <div class="my-8 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center">
                 {{ __('Add a genre') }}
             </h2>
 
