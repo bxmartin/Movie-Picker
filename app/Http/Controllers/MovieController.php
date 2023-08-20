@@ -140,4 +140,11 @@ class MovieController extends Controller
 
         return back()->with('success', 'Movie marked watched!');
     }
+
+    public function archive()
+    {
+        return view('archive.movies', [
+            'movies' => Movie::latest()->where('watched', '=', 1)->filter(request(['search', 'genre']))->get()
+        ]);
+    }
 }

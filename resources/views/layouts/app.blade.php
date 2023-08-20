@@ -41,6 +41,8 @@
 
             <!-- Page Content -->
             <main class="container px-3 w-full mx-auto mb-8 overflow-hidden">
+
+
                 {{ $slot }}
             </main>
 

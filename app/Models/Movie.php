@@ -18,4 +18,12 @@ class Movie extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query
+                ->where('name', 'like', '%' . $search . '%'));
+                //->orWhere('body', 'like', '%' . $search . '%'));
+    }
+
 }

@@ -51,6 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/tvshow/{tvshow}/delete', [TVShowController::class, 'destroy']);
     Route::patch('/tvshow/{tvshow}/watched', [TVShowController::class, 'watched']);
 
+    //archive of watched titles
+    Route::get('/archive/movies', [MovieController::class, 'archive']);
+
 
 });
 
