@@ -1,10 +1,9 @@
 <x-app-layout>
 
     <section>
-        <div
-            class="my-8 container">
+        <div class="container my-8">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
+            <h2 class="text-2xl font-semibold leading-tight text-center text-gray-800 dark:text-gray-200">
                 {{ __('Edit a movie') }}
             </h2>
 
@@ -32,6 +31,9 @@
                     <x-input-label for="image" :value="__('Image')" />
                     @if (isset($movie->image))
                         <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
+                            class="w-full rounded-lg md:w-80">
+                    @else
+                        <img src="{{ asset('images/movie-no-photo-available.png' . $movie->image) }}" alt=""
                             class="w-full rounded-lg md:w-80">
                     @endif
                     <input class="block w-full mt-1" id="image" type="file" name="image" />
@@ -86,7 +88,8 @@
                 </div>
                 <div class="flex items-center mb-4">
                     <input type="hidden" name="watched" value="0" />
-                    <input type="checkbox" name="watched" value="1" @if (isset($movie)) @if ($movie->watched == 1) checked @endif @endif />
+                    <input type="checkbox" name="watched" value="1"
+                        @if (isset($movie)) @if ($movie->watched == 1) checked @endif @endif />
                     <x-input-label for="watched" :value="__('Watched')"
                         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" />
                     <x-input-error :messages="$errors->get('watched')" class="mt-2" />

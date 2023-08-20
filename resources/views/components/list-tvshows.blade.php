@@ -47,7 +47,7 @@
                                 <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
                                     class="w-full rounded-xl md:w-60">
                             @else
-                                <img src="{{ asset('images/no-photo-available.png') }}" alt="no image"
+                                <img src="{{ asset('images/tvshow-no-photo-available.png') }}" alt="no image"
                                     class="w-full rounded-xl md:w-60">
                             @endif
                         </td>
