@@ -27,7 +27,7 @@ class TVShowController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048|nullable',
+            'image' => 'nullable|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
             'seasons' => 'numeric|nullable',
@@ -36,12 +36,12 @@ class TVShowController extends Controller
             'effort' => 'required|string|max:6'
         ]);
 
-        //set a default image if not set
+        //set a default movie image if not set
         if ($request->get('image') == null) {
-            $imageName = 'no-photo-available.png';
+            $imageName = null;
         } else {
             $imageName = time() . '.' . $request->image->extension();
-            $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+            $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
         }
 
         if ($request->get('watched') == null) {
@@ -90,12 +90,16 @@ class TVShowController extends Controller
         }
 
         if (isset($attributes['image'])) {
-            //delete old image path
-            $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
-            unlink($old_image_path);
-            //update new image
-            $imageName = time() . '.' . $request->image->extension();
-            $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+            //if image was null, don't try to delete the old image
+            if ($request->get('image') == null) {
+                $imageName = time() . '.' . $request->image->extension();
+                $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+            } else {
+                $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
+                unlink($old_image_path);
+                $imageName = time() . '.' . $request->image->extension();
+                $attributes['image'] = request()->file('image')->move(public_path('images/tvshows'), $imageName);
+            }
         } else {
             $imageName = $tvshow->image;
         }
@@ -121,7 +125,7 @@ class TVShowController extends Controller
 
         //check image path, dont delete if default
         $old_image_path = public_path('images/tvshows') . '/' . $tvshow->image;
-        if ($tvshow->image == 'no-photo-available.png') {
+        if ($tvshow->image == null) {
             //do nothing
         } else {
             unlink($old_image_path);

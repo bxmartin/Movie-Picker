@@ -47,7 +47,7 @@
                                 <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}"
                                     class="w-full rounded-xl md:w-60">
                             @else
-                                <img src="{{ asset('images/no-photo-available.png') }}" alt="no image"
+                                <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
                                     class="w-full rounded-xl md:w-60">
                             @endif
                         </td>
@@ -91,7 +91,7 @@
                                 {{ $movie->rating }}/10
                             @endif
                         </td>
-                        <td class="px-5 py-3 border-b-0 sm:border-b border-gray-200">
+                        <td class="px-5 py-3 border-b-0 border-gray-200 sm:border-b">
                             @if ($movie->watched == 0)
                                 <form method="POST" action="/movie/{{ $movie->id }}/watched"
                                     id="watched-{{ $movie->id }}">

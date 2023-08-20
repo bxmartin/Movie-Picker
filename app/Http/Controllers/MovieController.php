@@ -27,7 +27,7 @@ class MovieController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,gif,svg,png,jpg|max:2048|nullable',
+            'image' => 'nullable|image|mimes:jpeg,gif,svg,png,jpg|max:2048',
             'genre_id' => ['required', Rule::exists('genres', 'id')],
             'releaseyear' => 'digits:4|integer|min:1900|nullable|max:' . (date('Y') + 1),
             'runtime' => 'numeric|nullable',
@@ -37,7 +37,7 @@ class MovieController extends Controller
 
         //set a default movie image if not set
         if ($request->get('image') == null) {
-            $imageName = 'no-photo-available.png';
+            $imageName = null;
         } else {
             $imageName = time() . '.' . $request->image->extension();
             $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
@@ -48,9 +48,6 @@ class MovieController extends Controller
         } else {
             $watched = request('watched');
         }
-
-        // $imageName = time() . '.' . $request->image->extension();
-        // $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
 
         Movie::create([
             'name' => request('name'),
@@ -91,17 +88,16 @@ class MovieController extends Controller
         }
 
         if (isset($attributes['image'])) {
-            //delete old image path
-            $old_image_path = public_path('images/movies') . '/' . $movie->image;
-            $default = 'no-photo-available.png';
-            //dont delete if default image
-            if (strpos($old_image_path, $default) == true) {
+            //if image was null, don't try to delete the old image
+            if ($request->get('image') == null) {
+                $imageName = time() . '.' . $request->image->extension();
+                $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
+            } else {
+                $old_image_path = public_path('images/movies') . '/' . $movie->image;
                 unlink($old_image_path);
+                $imageName = time() . '.' . $request->image->extension();
+                $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
             }
-
-            //update new image
-            $imageName = time() . '.' . $request->image->extension();
-            $attributes['image'] = request()->file('image')->move(public_path('images/movies'), $imageName);
         } else {
             $imageName = $movie->image;
         }
@@ -124,13 +120,8 @@ class MovieController extends Controller
     {
         $movie = Movie::findOrFail($id);
 
-        //check image path, dont delete if default
         $old_image_path = public_path('images/movies') . '/' . $movie->image;
-        if ($movie->image == 'no-photo-available.png') {
-            //do nothing
-        } else {
-            unlink($old_image_path);
-        }
+        unlink($old_image_path);
         $movie->delete();
 
         return back()->with('danger', 'Movie Deleted!');
