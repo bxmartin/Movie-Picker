@@ -8,19 +8,19 @@
     <section>
         <div class="my-8 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
                 {{ __('Add a movie') }}
             </h2>
 
-            @if (session('status'))
+            {{-- @if (session('status'))
                 <div class="px-5">
                     <div class="p-4 text-green-700 bg-green-100 border-l-4 border-green-500">
                         {{ session('status') }}
                     </div>
                 </div>
-            @endif
+            @endif --}}
 
-            <form method="POST" action="{{ route('createmovie') }}" class="w-full px-8 pb-6" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('createmovie') }}" class="w-full px-8 py-6" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-4">

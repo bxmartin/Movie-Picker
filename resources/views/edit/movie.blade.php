@@ -4,7 +4,7 @@
         <div
             class="my-8 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
                 {{ __('Edit a movie') }}
             </h2>
 

@@ -61,7 +61,7 @@ class TVShowController extends Controller
             'effort' => request('effort')
         ]);
 
-        return redirect('/addtvshow')->with('status', 'TV show added!');
+        return redirect('/addtvshow')->with('success', 'TV show added!');
     }
     public function edit(TVShow $tvshow)
     {
@@ -112,7 +112,7 @@ class TVShowController extends Controller
             'rating' => request('rating')
         ]);
 
-        return redirect('/')->with('success', 'TV show Updated!');
+        return redirect('/')->with('success', 'TV show updated!');
     }
 
     public function destroy($id)
@@ -129,7 +129,7 @@ class TVShowController extends Controller
 
         $tvshow->delete();
 
-        return back()->with('danger', 'TV show Deleted!');
+        return back()->with('danger', 'TV show deleted!');
     }
 
     public function watched(TVShow $tvshow)

@@ -38,7 +38,7 @@
             <tbody class="flex-1 text-gray-700 sm:flex-none">
                 @foreach ($movies as $movie)
                     <tr class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-slate-50 even:bg-slate-100"
-                        x-show.transition.in="{{ $movie->watched == 1 ? 'show' : '' }}">
+                        x-show="{{$movie->watched === 1 ? 'show' : '' }}">
                         <td class="px-5 py-3 font-bold border-b border-gray-200">
                             <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                 for="">Name</label>
@@ -103,6 +103,8 @@
                                         Mark watched
                                     </x-primary-button>
                                 </form>
+                                @else
+                                Marked watched {{ $movie->updated_at->diffForHumans(); }}
                             @endif
 
                             <div class="inline-flex">
