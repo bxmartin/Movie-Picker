@@ -1,15 +1,22 @@
 <x-app-layout>
 
     <section>
-        <div class="my-8 container">
+        <div class="my-8 px-2 container">
 
             <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center">
                 {{ __('Archive - watched movies') }}
             </h2>
 
-            <x-genre-dropdown />
+            <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
 
-            <x-searchbox />
+                <div class="relative lg:inline-flex">
+                    <x-archive-searchbox />
+                </div>
+                <div class="relative lg:inline-flex">
+                    <x-archive-genre-dropdown />
+                </div>
+
+            </div>
 
             @if ($movies->count())
 
@@ -127,14 +134,7 @@
 
                 </div>
             @else
-                <p class="text-center">There are no movies yet. </p>
-
-                <div class="flex flex-col items-center">
-                    <x-primary-link href="{{ route('addmovie') }}"
-                        class="mb-4 !text-left !from-purple-700 !to-purple-500">
-                        {{ __('Add a new movie') }}
-                    </x-primary-link>
-                </div>
+                <x-no-results />
 
             @endif
 

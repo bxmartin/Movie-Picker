@@ -1,9 +1,15 @@
-<form method="GET" action="#">
+<form method="GET" action="/movies">
+    @if (request('genre'))
+        <input type="hidden" name="genre" value="{{ request('genre') }}">
+    @endif
 
-    <x-text-input class="mt-1" type="text" name="search" placeholder="Find something"
-        value="{{ request('search') }}" />
+    <x-text-input
+        class="w-full bg-gray-100 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+        type="text" name="search" placeholder="Find something" value="{{ request('search') }}" />
 
-    <x-primary-button class="my-4 !text-left">
+    <x-genre-dropdown />
+
+    <x-primary-button class="mb-4 w-full text-center">
         {{ __('Search') }}
     </x-primary-button>
 

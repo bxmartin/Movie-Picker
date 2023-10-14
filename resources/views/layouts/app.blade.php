@@ -40,9 +40,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="container px-3 w-full mx-auto mb-8 overflow-hidden">
-
-
+            <main class="container w-full mx-auto mb-8 overflow-hidden">
                 {{ $slot }}
             </main>
 

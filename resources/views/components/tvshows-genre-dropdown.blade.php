@@ -9,21 +9,16 @@
                       clip-rule="evenodd"/>
             </svg>
         </div>
-        {{-- <button
-            class="p-2 w-full bg-gray-100 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
-            {{ isset($currentGenre) ? ucwords($currentGenre->name) : 'Genres' }}
-            >
-        </button> --}}
     </x-slot>
 
-    <x-dropdown-link href="/?{{ http_build_query(request()->except('genre', 'page')) }}" :active="request()->routeIs('/')">
+    <x-dropdown-link href="/tvshows/?{{ http_build_query(request()->except('genre', 'page')) }}" :active="request()->routeIs('tvshows')">
         All
     </x-dropdown-link>
 
     @foreach ($genres->sortBy('name') as $genre)
         <x-dropdown-link
-            href="/movies/?genre={{ $genre->name }}&{{ http_build_query(request()->except('genre', 'page')) }}"
-            :active='request()->is("/movies/?genre={$genre->name}")'>
+            href="/tvshows/?genre={{ $genre->name }}&{{ http_build_query(request()->except('genre', 'page')) }}"
+            :active='request()->is("/tvshows/?genre={$genre->name}")'>
             {{ ucwords($genre->name) }}
             </x-dropdown-item>
     @endforeach

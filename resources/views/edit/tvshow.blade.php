@@ -2,7 +2,7 @@
 
     <section>
         <div
-            class="my-8 container">
+            class="my-8 px-2 container">
 
             <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
                 {{ __('Edit a TV show') }}
@@ -16,7 +16,7 @@
             </div>
             @endif
 
-            <form method="POST" action="/tvshow/{{ $tvshow->id }}/update" class="w-full px-8 pb-6"
+            <form method="POST" action="/tvshow/{{ $tvshow->id }}/update" class="w-full pb-6"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')

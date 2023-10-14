@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <section>
-        <div class="container my-8">
+        <div class="container px-2 my-8">
 
             <h2 class="text-2xl font-semibold leading-tight text-center text-gray-800 dark:text-gray-200">
                 {{ __('Edit a movie') }}
@@ -15,7 +15,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="/movie/{{ $movie->id }}/update" class="w-full px-8 pb-6"
+            <form method="POST" action="/movie/{{ $movie->id }}/update" class="w-full pb-6"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')

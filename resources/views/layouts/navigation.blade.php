@@ -29,6 +29,12 @@
             <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('movies')" :active="request()->routeIs('movies')">
+                {{ __('Movies') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tvshows')" :active="request()->routeIs('tvshows')">
+                {{ __('TV Shows') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
                 {{ __('Add a Movie') }}
             </x-responsive-nav-link>

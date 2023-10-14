@@ -28,7 +28,7 @@
         <p class="mb-2">{{ $movie->runtime }}min</p>
 
 
-        <x-primary-button wire:click="$refresh" class="mb-4">
+        <x-primary-button wire:click="$refresh" class="mb-4 w-full">
             <x-heroicon-o-arrow-path-rounded-square class="inline-block h-8 mr-1" />
             {{ __('Pick another Movie') }}
         </x-primary-button>

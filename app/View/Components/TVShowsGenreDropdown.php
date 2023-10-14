@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class GenreDropdown extends Component
+class TvShowsGenreDropdown extends Component
 {
     /**
      * Create a new component instance.
@@ -22,7 +22,7 @@ class GenreDropdown extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.genre-dropdown', [
+        return view('components.tvshows-genre-dropdown', [
             'genres' => Genre::all(),
             'currentGenre' => Genre::firstWhere('name', request('genre'))
         ]);
