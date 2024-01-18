@@ -2,13 +2,12 @@
 
 namespace App\View\Components;
 
+use App\Models\Genre;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Movie;
-use App\Models\Genre;
 
-class MoviesList extends Component
+class GenreDropdown extends Component
 {
     /**
      * Create a new component instance.
@@ -23,9 +22,9 @@ class MoviesList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.list-movies', [
-            'movies' => Movie::orderBy('name')->filter(request(['search', 'genre']))->get(),
-            'genre' => Genre::all()
+        return view('components.genre-dropdown', [
+            'genres' => Genre::all(),
+            'currentGenre' => Genre::firstWhere('name', request('genre'))
         ]);
     }
 }

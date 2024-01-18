@@ -10,6 +10,7 @@ use Illuminate\Validation;
 
 class MovieController extends Controller
 {
+
     public function random()
     {
         return view('randommovie', [
@@ -140,4 +141,26 @@ class MovieController extends Controller
 
         return back()->with('success', 'Movie marked watched!');
     }
+
+    public function archive()
+    {
+        return view('archive.movies', [
+            'movies' => Movie::latest()->where('watched', '=', 1)->filter(request(['search', 'genre']))->get()
+        ]);
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query
+                ->where('name', 'like', '%' . $search . '%')
+        );
+
+        $query->when($filters['genre'] ?? false, fn($query, $genre) =>
+            $query->whereHas('genre', fn ($query) =>
+                $query->where('name', $genre)
+            )
+        );
+    }
+
 }

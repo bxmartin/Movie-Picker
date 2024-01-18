@@ -7,7 +7,7 @@
 
     <section>
         <div
-            class="my-8 container">
+            class="my-8 px-2 container">
 
             <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
                 {{ __('Add a TV Show') }}
@@ -21,7 +21,7 @@
             </div>
             @endif
 
-        <form method="POST" action="{{ route('createtvshow') }}" class="w-full px-8 py-6" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('createtvshow') }}" class="w-full py-6" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">

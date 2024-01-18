@@ -1,6 +1,6 @@
 <x-app-layout>
     <section>
-        <div class="my-8 container">
+        <div class="my-8 px-2 container">
 
             <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                 {{ __('Edit your profile') }}
