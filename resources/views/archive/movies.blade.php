@@ -7,12 +7,11 @@
                 {{ __('Archive - watched movies') }}
             </h2>
 
-            <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
-
-                <div class="relative lg:inline-flex">
+            <div class="flex flex-wrap mt-4 gap-2 justify-center">
+                <div class="w-full lg:w-1/3">
                     <x-archive-searchbox />
                 </div>
-                <div class="relative lg:inline-flex">
+                <div class="w-full lg:w-1/3">
                     <x-archive-genre-dropdown />
                 </div>
 
@@ -21,73 +20,74 @@
             @if ($movies->count())
 
                 <div x-data="{ show: false }">
-                    <table class="table w-full leading-normal table-auto" id="moviesTable">
-                        <thead class="table-header-group">
-                            <tr class="hidden md:table-row">
-                                <th
+                    <div class="w-full mt-4" id="moviesTable">
+                        {{-- <div class="table-header-group">
+                            <div class="hidden md:table-row">
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl min-w-">
-                                    Title</th>
-                                <th
+                                    Title</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                                    Genre</th>
-                                <th
+                                    Genre</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                                    Release Year</th>
-                                <th
+                                    Release Year</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                                    Runtime</th>
-                                <th
+                                    Runtime</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                                    Effort</th>
-                                <th
+                                    Effort</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                                    Rating</th>
-                                <th
+                                    Rating</div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
                                     Date watched<br> (last updated)
-                                </th>
-                                <th
+                                </div>
+                                <div
                                     class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tr-2xl">
-                                    Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="flex-1 text-gray-700 sm:flex-none">
+                                    Actions</div>
+                            </div>
+                        </div> --}}
+                        <div class="grid auto-rows-fr grid-cols-2 xl:grid-cols-4 gap-4 text-gray-700">
                             @foreach ($movies as $movie)
-                                <tr
-                                    class="flex flex-col flex-wrap w-full p-1 border-t first:border-t-0 md:p-3 md:table-row odd:bg-slate-50 even:bg-slate-100">
-                                    <td class="px-5 py-3 font-bold border-b border-gray-200">
-                                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
-                                            for="">Name</label>
+                                <div class="w-full p-1 md:p-3 h-full flex flex-col">
+                                    <div class=" flex-1 px-md-5 py-3 mt-auto font-bold text-center">
+                                        {{-- <label class="text-xs font-semibold text-gray-500 uppercase"
+                                            for="">Name</label> --}}
                                         {{ $movie->name }}<br>
+                                        <div class="bg-gray-50 rounded-xl h-60 w-full md:w-60 m-auto">
                                         @if (isset($movie->image))
                                             <img src="{{ asset('images/movies/' . $movie->image) }}"
-                                                alt="{{ $movie->name }}" class="w-full rounded-xl md:w-60">
+                                                alt="{{ $movie->name }}" class="w-full rounded-xl h-60 object-contain" onerror="this.src='{{ asset('images/movie-no-photo-available.png') }}'">
                                         @else
                                             <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
-                                                class="w-full rounded-xl md:w-60">
+                                                class="w-full rounded-xl h-60 object-contain">
                                         @endif
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
-                                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
+                                    </div>
+                                    </div>
+                                    <div class="p-3 hidden md:block">
+                                        <label class="text-xs font-semibold text-gray-500 uppercase"
                                             for="">Genre</label>
                                         {{ $movie->genre->name }}
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
-                                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
+                                    </div>
+                                    <div class="p-3 hidden md:block">
+                                        <label class="text-xs font-semibold text-gray-500 uppercase"
                                             for="">Release
                                             year</label>
                                         {{ $movie->releaseyear }}
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
-                                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
+                                    </div>
+                                    <div class="p-3 hidden md:block">
+                                        <label class="text-xs font-semibold text-gray-500 uppercase"
                                             for="">Runtime</label>
                                         @if (isset($movie->runtime))
                                             {{ $movie->runtime }}min
                                         @endif
 
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
-                                        <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
+                                    </div>
+                                    <div class="px-3">
+                                        <label class="text-xs font-semibold text-gray-500 uppercase"
                                             for="">Effort</label>
                                         @if ($movie->effort == 'Easy')
                                             <x-heroicon-o-face-smile class="block w-auto h-8 text-green-500" />
@@ -97,8 +97,8 @@
                                             <x-heroicon-o-face-smile class="block w-auto h-8 text-red-500" />
                                         @endif
                                         {{-- {{ $movie->effort }} --}}
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
+                                    </div>
+                                    <div class="p-3 hidden md:block">
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                             for="">Rating</label>
                                         @if (is_null($movie->rating))
@@ -106,31 +106,34 @@
                                         @else
                                             {{ $movie->rating }}/10
                                         @endif
-                                    </td>
-                                    <td class="px-5 py-3 border-b border-gray-200">
-                                        {{ $movie->updated_at->diffForHumans() }}
-                                    </td>
-                                    <td class="px-5 py-3 border-b-0 border-gray-200 sm:border-b">
-                                        <div class="inline-flex">
+                                    </div>
+                                    <div class="mt-2 p-3 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                                        role="alert">
+                                        We watched this <span
+                                            class="font-medium">{{ $movie->updated_at->diffForHumans() }}</span>
+                                    </div>
+                                    <div class="py-3">
+                                        <div class="flex">
                                             <x-primary-link href="/movie/{{ $movie->id }}/edit"
-                                                class="rounded-none rounded-l-lg">
+                                                class="rounded-none !rounded-l-lg w-1/2">
                                                 {{ __('Edit') }}
                                             </x-primary-link>
 
-                                            <form method="POST" action="/movie/{{ $movie->id }}/delete">
+                                            <form method="POST" action="/movie/{{ $movie->id }}/delete"
+                                                class="w-1/2">
                                                 @csrf
                                                 @method('DELETE')
-                                                <x-danger-button class="rounded-none rounded-r-lg"
+                                                <x-danger-button class="rounded-none !rounded-r-lg w-full"
                                                     onclick="return confirm('Are you sure?')">
                                                     {{ __('Delete') }}
                                                 </x-danger-button>
                                             </form>
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
                             @endforeach
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
 
                 </div>
             @else

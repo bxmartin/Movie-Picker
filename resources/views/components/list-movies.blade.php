@@ -99,17 +99,19 @@
                                     </x-primary-button>
                                 </form>
                             @else
-                                We watched this {{ $movie->updated_at->diffForHumans() }}
+                                <span class="p-3">We watched this {{ $movie->updated_at->diffForHumans() }}</span>
                             @endif
                             <div class="flex">
-                                <x-primary-link href="/movie/{{ $movie->id }}/edit" class="rounded-none !rounded-l-lg w-50">
+                                <x-primary-link href="/movie/{{ $movie->id }}/edit"
+                                    class="rounded-none !rounded-l-lg w-1/2">
                                     {{ __('Edit') }}
                                 </x-primary-link>
 
-                                <form method="POST" action="/movie/{{ $movie->id }}/delete">
+                                <form method="POST" action="/movie/{{ $movie->id }}/delete" class=" w-1/2">
                                     @csrf
                                     @method('DELETE')
-                                    <x-danger-button class="rounded-none !rounded-r-lg w-50" onclick="return confirm('Are you sure?')">
+                                    <x-danger-button class="rounded-none !rounded-r-lg w-full"
+                                        onclick="return confirm('Are you sure?')">
                                         {{ __('Delete') }}
                                     </x-danger-button>
                                 </form>
