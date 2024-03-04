@@ -122,7 +122,7 @@ class MovieController extends Controller
         $movie = Movie::findOrFail($id);
 
         $old_image_path = public_path('images/movies') . '/' . $movie->image;
-        unlink($old_image_path);
+        //unlink($old_image_path);
         $movie->delete();
 
         return back()->with('danger', 'Movie Deleted!');

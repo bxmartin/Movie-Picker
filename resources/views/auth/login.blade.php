@@ -5,7 +5,6 @@
 
     <form method="POST" action="{{ route('login') }}" id="loginForm">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
         {{-- @csrf --}}
 
         <!-- Email Address -->
@@ -44,27 +43,10 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3 g-recaptcha"
-            data-sitekey="{{ config('services.recaptcha_v3.siteKey') }}"
-            data-callback="onSubmit"
-            data-action="submitContact">
+            <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
 
-    @push('scripts')
-    <script>
-        grecaptcha.ready(function () {
-            document.getElementById('loginForm').addEventListener("submit", function (event) {
-                event.preventDefault();
-                grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', { action: 'login' })
-                    .then(function (token) {
-                        document.getElementById("recaptcha_token").value = token;
-                        document.getElementById('loginForm').submit();
-                    });
-            });
-        });
-    </script>
-@endpush
 </x-guest-layout>

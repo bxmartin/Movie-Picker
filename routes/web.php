@@ -22,6 +22,19 @@ use App\Models\Movie;
 |
 */
 
+Route::get('/cleareverything', function () {
+
+    $clearcache = Artisan::call('cache:clear');
+    echo "Cache cleared<br>";
+
+    $clearview = Artisan::call('view:clear');
+    echo "View cleared<br>";
+
+    $clearconfig = Artisan::call('config:cache');
+    echo "Config cleared<br>";
+
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/movies', [IndexController::class, 'movies'])->name('movies');
