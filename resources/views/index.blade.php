@@ -28,14 +28,14 @@
 
                     @if ($movies->count())
                         <x-primary-button class="mb-2 !text-left" id="movie-fire">
-                            <x-heroicon-o-film class="inline-block h-8 mr-3" />
+                        <img src="{{ asset('vendor/blade-heroicons/o-film.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Pick a Movie') }}
                         </x-primary-button>
                     @endif
 
                     @if ($tvshows->count())
                         <x-primary-button class="mb-2 !text-left from-purple-700 to-purple-500" id="tvshow-fire">
-                            <x-heroicon-o-play class="inline-block h-8 mr-3" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-play.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Pick a TV Show') }}
                         </x-primary-button>
                     @endif
@@ -49,11 +49,11 @@
 
                     <div class="flex flex-row gap-2">
                         <x-hero-link :href="route('movies')" class="mb-2 !text-left basis-1/2">
-                            <x-heroicon-o-film class="inline-block h-8 mr-3" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-film.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Movies') }}
                         </x-hero-link>
                         <x-hero-link :href="route('tvshows')" class="mb-2 !text-left basis-1/2">
-                            <x-heroicon-o-play class="inline-block h-8 mr-3" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-play.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('TV Shows') }}
                         </x-hero-link>
                     </div>

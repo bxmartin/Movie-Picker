@@ -71,11 +71,11 @@
                         <div class="px-3">
                             <label class="text-xs font-semibold text-gray-500 uppercase" for="">Effort</label>
                             @if ($movie->effort == 'Easy')
-                                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-green-500" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-green" />
                             @elseif($movie->effort == 'Medium')
-                                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-orange-500" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-orange" />
                             @elseif($movie->effort == 'Hard')
-                                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-red-500" />
+                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-red" />
                             @endif
                             {{-- {{ $movie->effort }} --}}
                         </div>

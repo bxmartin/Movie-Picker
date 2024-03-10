@@ -29,7 +29,7 @@
 
 
         <x-primary-button wire:click="$refresh" class="mb-4 w-full">
-            <x-heroicon-o-arrow-path-rounded-square class="inline-block h-8 mr-1" />
+            <img src="{{ asset('vendor/blade-heroicons/o-arrow-path-rounded-square.svg') }}" class="svg-white inline-block h-8 mr-3" />
             {{ __('Pick another Movie') }}
         </x-primary-button>
 
