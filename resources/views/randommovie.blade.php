@@ -12,23 +12,34 @@
 
             <h3 class="text-4xl font-bold">{{ $movie->name }}</h3>
 
-            @if(isset($movie->image))
-            <img src="{{ asset('images/movies/' . $movie->image) }}" alt="" class="w-1/2 mx-auto border-2 rounded-xl">
+            @if (isset($movie->image))
+                <img src="{{ asset('images/movies/' . $movie->image) }}" alt="{{ $movie->name }}"
+                    class="w-full rounded-xl md:w-60 m-auto">
+            @else
+                <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
+                    class="w-full rounded-xl md:w-60 m-auto">
             @endif
 
-            <p class="mb-2">Released: {{ $movie->releaseyear }}</p>
+            @if (isset($movie->releaseyear))
+                <p class="mb-2">Released: {{ $movie->releaseyear }}</p>
+            @endif
 
-            <p class="mb-2">Genre: {{ $movie->genre }}</p>
+            <p class="mb-2">Genre: {{ $movie->genre->name }}</p>
 
-            <p class="mb-2">{{ $movie->runtime }}min</p>
+            @if (isset($movie->runtime))
+                <p class="mb-2">{{ $movie->runtime }}min</p>
+            @endif
 
-            <p class="mb-2">
-                @if($movie->effort =='Easy')
-                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-green" />
-                @elseif($movie->effort =='Medium')
-                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-orange" />
-                @elseif($movie->effort =='Hard')
-                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-red" />
+            <p class="mb-2">Effort:
+                @if ($movie->effort == 'Easy')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-green" />
+                @elseif($movie->effort == 'Medium')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-orange" />
+                @elseif($movie->effort == 'Hard')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-red" />
                 @endif
             </p>
 

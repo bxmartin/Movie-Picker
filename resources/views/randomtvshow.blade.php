@@ -10,8 +10,11 @@
 
             <p class="text-2xl">Tonight you're watching: </p>
 
-            @if(isset($tvshow->image))
-            <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="" class="w-1/2 mx-auto rounded-lg">
+            @if (isset($tvshow->image))
+                <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}" class="w-1/2 mx-auto rounded-lg">
+            @else
+                <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
+                    class="w-full rounded-xl md:w-60 m-auto">
             @endif
 
             <h3 class="text-4xl font-bold">{{ $tvshow->name }}</h3>
@@ -20,17 +23,18 @@
 
             <p class="mb-2">Genre: {{ $tvshow->genre->name }}</p>
 
-            <p class="mb-2">
-                @if($tvshow->effort =='Easy')
-                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-green-500" />
-                @elseif($tvshow->effort =='Medium')
-                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-orange-500" />
-                @elseif($tvshow->effort =='Hard')
-                <x-heroicon-o-face-smile class="inline-block w-auto h-8 text-red-500" />
+            <p class="mb-2">Effort:
+                @if ($tvshow->effort == 'Easy')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-green" />
+                @elseif($tvshow->effort == 'Medium')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-orange" />
+                @elseif($tvshow->effort == 'Hard')
+                    <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                        class="inline-block w-auto h-8 svg-red" />
                 @endif
             </p>
-
-
 
         </div>
     </section>
