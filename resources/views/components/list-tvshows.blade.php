@@ -105,11 +105,11 @@
                                 </form>
                             @endif
 
-                            <x-links.primary href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-lg w-full">
+                            <x-links.primary href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-lg w-1/2">
                                 {{ __('Edit') }}
                             </x-links.primary>
 
-                            <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
+                            <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete" class=" w-1/2">
                                 @csrf
                                 @method('DELETE')
                                 <x-buttons.danger class="rounded-lg w-full" onclick="return confirm('Are you sure?')">

@@ -13,7 +13,7 @@
                     <x-inputs.archive-searchbox />
                 </div>
                 <div class="relative lg:inline-flex">
-                    <x-inputs.archive-genre-dropdown />
+                    <x-dropdown.archive-genre />
                 </div>
 
             </div>

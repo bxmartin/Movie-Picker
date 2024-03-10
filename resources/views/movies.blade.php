@@ -29,7 +29,7 @@
 
     <div class="w-full mx-auto py-4 px-2">
 
-        <x-searchbox />
+        <x-inputs.movies-searchbox />
 
         <x-movies-list />
 

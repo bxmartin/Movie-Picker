@@ -22,7 +22,7 @@
                     </form>
                 </div>
                 <div class="relative lg:inline-flex">
-                    <x-genre-dropdown />
+                    <x-dropdown.movies-genre />
                 </div>
                 <div class="relative lg:inline-flex">
                     <x-buttons.primary class="!text-left">

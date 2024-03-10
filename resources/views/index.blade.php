@@ -62,8 +62,6 @@
         </div>
     </div>
 
-
-
 </x-app-layout>
 
 <script src="{{ asset('/scripts/home-picks.js') }}"></script>
