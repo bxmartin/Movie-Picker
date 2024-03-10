@@ -7,6 +7,8 @@
                 {{ __('Archive - watched movies') }}
             </h2>
 
+            <x-movies-chart />
+
             <div class="flex flex-wrap mt-4 gap-2 justify-center">
                 <div class="w-full lg:w-1/3">
                     <x-archive-searchbox />
@@ -58,14 +60,17 @@
                                             for="">Name</label> --}}
                                         {{ $movie->name }}<br>
                                         <div class="bg-gray-50 rounded-xl h-60 w-full md:w-60 m-auto">
-                                        @if (isset($movie->image))
-                                            <img src="{{ asset('images/movies/' . $movie->image) }}"
-                                                alt="{{ $movie->name }}" class="w-full rounded-xl h-60 object-contain" onerror="this.src='{{ asset('images/movie-no-photo-available.png') }}'">
-                                        @else
-                                            <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
-                                                class="w-full rounded-xl h-60 object-contain">
-                                        @endif
-                                    </div>
+                                            @if (isset($movie->image))
+                                                <img src="{{ asset('images/movies/' . $movie->image) }}"
+                                                    alt="{{ $movie->name }}"
+                                                    class="w-full rounded-xl h-60 object-contain"
+                                                    onerror="this.src='{{ asset('images/movie-no-photo-available.png') }}'">
+                                            @else
+                                                <img src="{{ asset('images/movie-no-photo-available.png') }}"
+                                                    alt="no image"
+                                                    class="w-full rounded-xl h-60 object-contain">
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="p-3 hidden md:block">
                                         <label class="text-xs font-semibold text-gray-500 uppercase"

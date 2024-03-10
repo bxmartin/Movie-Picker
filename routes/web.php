@@ -24,14 +24,23 @@ use App\Models\Movie;
 
 Route::get('/cleareverything', function () {
 
+    $clearcache = Artisan::call('key:generate');
+    echo "Key generated<br>";
+
     $clearcache = Artisan::call('cache:clear');
     echo "Cache cleared<br>";
+
+    $clearcache = Artisan::call('route:clear');
+    echo "Route cleared<br>";
 
     $clearview = Artisan::call('view:clear');
     echo "View cleared<br>";
 
     $clearconfig = Artisan::call('config:cache');
     echo "Config cleared<br>";
+
+    $clearconfig = Artisan::call('optimize:clear');
+    echo "Optimised<br>";
 
 });
 
