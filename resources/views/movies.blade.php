@@ -16,10 +16,10 @@
                         <livewire:pick-movie />
                     </div>
 
-                    <x-hero-link href="{{ route('addmovie') }}" class="">
+                    <x-links.hero href="{{ route('addmovie') }}" class="">
                         <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                         {{ __('Add a Movie') }}
-                    </x-hero-link>
+                    </x-links.hero>
 
                 </div>
             @endif

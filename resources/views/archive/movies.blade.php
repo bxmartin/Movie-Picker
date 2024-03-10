@@ -10,10 +10,10 @@
             <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
 
                 <div class="relative lg:inline-flex">
-                    <x-archive-searchbox />
+                    <x-inputs.archive-searchbox />
                 </div>
                 <div class="relative lg:inline-flex">
-                    <x-archive-genre-dropdown />
+                    <x-inputs.archive-genre-dropdown />
                 </div>
 
             </div>
@@ -112,18 +112,18 @@
                                     </td>
                                     <td class="px-5 py-3 border-b-0 border-gray-200 sm:border-b">
                                         <div class="inline-flex">
-                                            <x-primary-link href="/movie/{{ $movie->id }}/edit"
+                                            <x-links.primary href="/movie/{{ $movie->id }}/edit"
                                                 class="rounded-none rounded-l-lg">
                                                 {{ __('Edit') }}
-                                            </x-primary-link>
+                                            </x-links.primary>
 
                                             <form method="POST" action="/movie/{{ $movie->id }}/delete">
                                                 @csrf
                                                 @method('DELETE')
-                                                <x-danger-button class="rounded-none rounded-r-lg"
+                                                <x-buttons.danger class="rounded-none rounded-r-lg"
                                                     onclick="return confirm('Are you sure?')">
                                                     {{ __('Delete') }}
-                                                </x-danger-button>
+                                                </x-buttons.danger>
                                             </form>
                                         </div>
                                     </td>

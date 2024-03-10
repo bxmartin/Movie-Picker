@@ -21,10 +21,10 @@
         @endif
     </h3>
 
-    <x-primary-button wire:click="$refresh" class="mb-4 !from-purple-700 !to-purple-500 w-full">
+    <x-buttons.primary wire:click="$refresh" class="mb-4 !from-purple-700 !to-purple-500 w-full">
         <x-heroicon-o-arrow-path-rounded-square class="inline-block h-8 mr-1" />
         {{ __('Pick another TV show') }}
-    </x-primary-button>
+    </x-buttons.primary>
 
     @endisset
 

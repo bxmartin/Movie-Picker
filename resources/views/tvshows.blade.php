@@ -16,11 +16,11 @@
                         <livewire:pick-tv-show />
                     </div>
 
-                    <x-hero-link href="{{ route('addtvshow') }}"
+                    <x-links.hero href="{{ route('addtvshow') }}"
                         class="mb-4 !text-center !from-purple-700 !to-purple-500 w-full">
                         <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                         {{ __('Add a TV Show') }}
-                    </x-hero-link>
+                    </x-links.hero>
                 </div>
             @endif
 

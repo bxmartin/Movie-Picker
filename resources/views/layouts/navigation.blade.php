@@ -26,27 +26,27 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
+            <x-links.nav-responsive :href="route('index')" :active="request()->routeIs('index')">
                 {{ __('Home') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('movies')" :active="request()->routeIs('movies')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('movies')" :active="request()->routeIs('movies')">
                 {{ __('Movies') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tvshows')" :active="request()->routeIs('tvshows')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('tvshows')" :active="request()->routeIs('tvshows')">
                 {{ __('TV Shows') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('addmovie')" :active="request()->routeIs('addmovie')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('addmovie')" :active="request()->routeIs('addmovie')">
                 {{ __('Add a Movie') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('addtvshow')" :active="request()->routeIs('addtvshow')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('addtvshow')" :active="request()->routeIs('addtvshow')">
                 {{ __('Add a TV Show') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('addgenre')" :active="request()->routeIs('addgenre')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('addgenre')" :active="request()->routeIs('addgenre')">
                 {{ __('Add a Genre') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('genres')" :active="request()->routeIs('genres')">
+            </x-links.nav-responsive>
+            <x-links.nav-responsive :href="route('genres')" :active="request()->routeIs('genres')">
                 {{ __('View all Genres') }}
-            </x-responsive-nav-link>
+            </x-links.nav-responsive>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -57,19 +57,19 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                <x-links.nav-responsive :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
+                </x-links.nav-responsive>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                    <x-links.nav-responsive :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                    </x-links.nav-responsive>
                 </form>
             </div>
         </div>

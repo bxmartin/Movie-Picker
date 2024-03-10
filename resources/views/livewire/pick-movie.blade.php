@@ -28,10 +28,10 @@
         <p class="mb-2">{{ $movie->runtime }}min</p>
 
 
-        <x-primary-button wire:click="$refresh" class="mb-4 w-full">
+        <x-buttons.primary wire:click="$refresh" class="mb-4 w-full">
             <img src="{{ asset('vendor/blade-heroicons/o-arrow-path-rounded-square.svg') }}" class="svg-white inline-block h-8 mr-3" />
             {{ __('Pick another Movie') }}
-        </x-primary-button>
+        </x-buttons.primary>
 
     @endisset
 

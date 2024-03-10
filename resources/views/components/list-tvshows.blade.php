@@ -2,10 +2,10 @@
 
     <div x-data="{ show: false }">
         <div class="flex justify-end">
-            <x-secondary-button class="rounded-lg" @click="show = ! show"
+            <x-buttons.secondary class="rounded-lg" @click="show = ! show"
                 x-text="show ? 'Hide watched shows' : 'Include watched shows'">
                 Include watched shows
-            </x-secondary-button>
+            </x-buttons.secondary>
         </div>
 
         <div class="" id="tvshowsTable">
@@ -98,23 +98,23 @@
                                     id="watched-{{ $tvshow->id }}">
                                     @csrf
                                     @method('PATCH')
-                                    <x-primary-button class="rounded-lg w-full"
+                                    <x-buttons.primary class="rounded-lg w-full"
                                         onclick="document.getElementById('watched-{{ $tvshow->id }}').submit();">
                                         Mark watched
-                                    </x-primary-button>
+                                    </x-buttons.primary>
                                 </form>
                             @endif
 
-                            <x-primary-link href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-lg w-full">
+                            <x-links.primary href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-lg w-full">
                                 {{ __('Edit') }}
-                            </x-primary-link>
+                            </x-links.primary>
 
                             <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete">
                                 @csrf
                                 @method('DELETE')
-                                <x-danger-button class="rounded-lg w-full" onclick="return confirm('Are you sure?')">
+                                <x-buttons.danger class="rounded-lg w-full" onclick="return confirm('Are you sure?')">
                                     {{ __('Delete') }}
-                                </x-danger-button>
+                                </x-buttons.danger>
                             </form>
                         </div>
                     </div>
@@ -131,9 +131,9 @@
     <p class="text-center">There are no TV shows yet. </p>
 
     <div class="flex flex-col items-center">
-        <x-primary-link href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+        <x-links.primary href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
             {{ __('Add a new TV Show') }}
-        </x-primary-link>
+        </x-links.primary>
 
     </div>
 

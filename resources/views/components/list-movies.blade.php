@@ -2,10 +2,10 @@
 
     <div x-data="{ show: false }">
         <div class="flex justify-end">
-            <x-secondary-button class="rounded-lg" @click="show = ! show"
+            <x-buttons.secondary class="rounded-lg" @click="show = ! show"
                 x-text="show ? 'Hide watched movies' : 'Include watched movies'">
                 Include watched movies
-            </x-secondary-button>
+            </x-buttons.secondary>
         </div>
 
         <div class="" id="moviesTable">
@@ -93,25 +93,25 @@
                                     id="watched-{{ $movie->id }}">
                                     @csrf
                                     @method('PATCH')
-                                    <x-primary-button class="rounded-lg w-full"
+                                    <x-buttons.primary class="rounded-lg w-full"
                                         onclick="document.getElementById('watched-{{ $movie->id }}').submit();">
                                         Mark watched
-                                    </x-primary-button>
+                                    </x-buttons.primary>
                                 </form>
                             @else
                                 We watched this {{ $movie->updated_at->diffForHumans() }}
                             @endif
                             <div class="flex">
-                                <x-primary-link href="/movie/{{ $movie->id }}/edit" class="rounded-none !rounded-l-lg w-50">
+                                <x-links.primary href="/movie/{{ $movie->id }}/edit" class="rounded-none !rounded-l-lg w-50">
                                     {{ __('Edit') }}
-                                </x-primary-link>
+                                </x-links.primary>
 
                                 <form method="POST" action="/movie/{{ $movie->id }}/delete">
                                     @csrf
                                     @method('DELETE')
-                                    <x-danger-button class="rounded-none !rounded-r-lg w-50" onclick="return confirm('Are you sure?')">
+                                    <x-buttons.danger class="rounded-none !rounded-r-lg w-50" onclick="return confirm('Are you sure?')">
                                         {{ __('Delete') }}
-                                    </x-danger-button>
+                                    </x-buttons.danger>
                                 </form>
                             </div>
                         </div>
@@ -130,9 +130,9 @@
     <p class="text-center">There are no movies yet. </p>
 
     <div class="flex flex-col items-center">
-        <x-primary-link href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+        <x-links.primary href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
             {{ __('Add a new movie') }}
-        </x-primary-link>
+        </x-links.primary>
     </div>
 
 @endif
