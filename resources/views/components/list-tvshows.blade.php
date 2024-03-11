@@ -1,7 +1,7 @@
 @if ($tvshows->count())
 
     <div x-data="{ show: false }">
-        <div class="flex justify-end">
+        <div class="flex justify-end my-4">
             <x-buttons.secondary class="rounded-lg" @click="show = ! show"
                 x-text="show ? 'Hide watched shows' : 'Include watched shows'">
                 Include watched shows
@@ -9,90 +9,67 @@
         </div>
 
         <div class="" id="tvshowsTable">
-            {{-- <div class="table-header-group">
-                <div class="hidden md:table-row">
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tl-2xl">
-                        Title</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Genre</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Release Year</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Length</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Effort</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50">
-                        Rating</th>
-                    <th
-                        class="px-5 py-3 font-semibold tracking-wider text-left uppercase bg-indigo-600 border-b-2 border-gray-200 text-slate-50 rounded-tr-2xl">
-                        Actions</th>
-                </div>
-            </div> --}}
-            <div class="text-gray-700 grid grid-cols-2 gap-y-2">
+            <div class="grid auto-rows-fr grid-cols-2 xl:grid-cols-4 gap-4">
                 @foreach ($tvshows as $tvshow)
-                    <div class="p-1 md:p-3" x-show.transition.in="{{ $tvshow->watched == 1 ? 'show' : '' }}">
-                        <div class="px-md-5 py-3 mt-auto font-bold text-center">
-                            {{-- <label class="text-xs font-semibold text-gray-500 uppercase"
-                                for="">Name</label> --}}
-                            {{ $tvshow->name }}<br>
-
-                            @if (isset($tvshow->image))
-                                <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
-                                    class="w-full rounded-xl md:w-60 m-auto">
-                            @else
-                                <img src="{{ asset('images/tvshow-no-photo-available.png') }}" alt="no image"
-                                    class="w-full rounded-xl md:w-60 m-auto">
-                            @endif
+                    <div class="w-full border border-gray-200 rounded-xl h-full flex flex-col"
+                        x-show.transition.in="{{ $tvshow->watched == 1 ? 'show' : '' }}">
+                        <div class="p-1 mt-auto font-bold text-center">
+                            <h4 class="mb-1">{{ $tvshow->name }}</h4>
+                            <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                                @if (isset($tvshow->image))
+                                    <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
+                                        class="w-full h-60 object-contain"
+                                        onerror="this.src='{{ asset('images/movie-no-photo-available.png') }}'">
+                                @else
+                                    <img src="{{ asset('images/tvshow-no-photo-available.png') }}" alt="no image"
+                                        class="w-full h-60 object-contain">
+                                @endif
+                            </div>
                         </div>
                         <div class="p-3 hidden md:block">
-                            <label class="text-xs font-semibold text-gray-500 uppercase" for="">Genre</label>
+                            <x-inputs.label :value="__('Genre')" class="!inline-block" />
                             @props(['genre'])
                             {{ $tvshow->genre->name }}
                         </div>
                         <div class="p-3 hidden md:block">
-                            <label class="text-xs font-semibold text-gray-500 uppercase" for="">Release
-                                year</label>
+                            <x-inputs.label :value="__('Release year')" class="!inline-block" />
                             {{ $tvshow->releaseyear }}
                         </div>
                         <div class="p-3 hidden md:block">
-                            <label class="text-xs font-semibold text-gray-500 uppercase" for="">Length</label>
+                            <x-inputs.label :value="__('Length')" class="!inline-block" />
                             @if (isset($tvshow->seasons))
                                 @if ($tvshow->seasons == 1)
-                                    {{ $tvshow->seasons }} season <br>
+                                    {{ $tvshow->seasons }} season
                                 @else
-                                    {{ $tvshow->seasons }} seasons <br>
+                                    {{ $tvshow->seasons }} seasons
                                 @endif
                             @endif
                             @if (isset($tvshow->episodes))
                                 {{ $tvshow->episodes }} episodes
                             @endif
                         </div>
-                        <div class="px-3">
-                            <label class="text-xs font-semibold text-gray-500 uppercase" for="">Effort</label>
+                        <div class="p-3">
+                            <x-inputs.label :value="__('Effort')" class="!inline-block" />
                             @if ($tvshow->effort == 'Easy')
-                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-green" />
+                                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                    class="inline-block w-auto h-8 svg-green" />
                             @elseif($tvshow->effort == 'Medium')
-                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-orange" />
+                                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                    class="inline-block w-auto h-8 svg-orange" />
                             @elseif($tvshow->effort == 'Hard')
-                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}" class="inline-block w-auto h-8 svg-red" />
+                                <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                    class="inline-block w-auto h-8 svg-red" />
                             @endif
                         </div>
                         <div class="p-3 hidden md:block">
-                            <label class="text-xs font-semibold text-gray-500 uppercase" for="">Rating</label>
+                            <x-inputs.label :value="__('Rating')" class="!inline-block" />
                             @if (is_null($tvshow->rating))
                                 No rating yet!
                             @else
                                 {{ $tvshow->rating }}/10
                             @endif
                         </div>
-
-                        <div class="py-3">
+                        <div class="p-3">
                             @if ($tvshow->watched == 0)
                                 <form method="POST" action="/tvshow/{{ $tvshow->id }}/watched"
                                     id="watched-{{ $tvshow->id }}">
@@ -100,22 +77,35 @@
                                     @method('PATCH')
                                     <x-buttons.primary class="rounded-lg w-full"
                                         onclick="document.getElementById('watched-{{ $tvshow->id }}').submit();">
-                                        Mark watched
+                                        <img src="{{ asset('vendor/blade-heroicons/s-eye.svg') }}"
+                                            class="inline-block h-5 mr-1 svg-white" />
+                                        <span class="mt-0.5">Mark watched</span>
                                     </x-buttons.primary>
                                 </form>
+                            @else
+                                <x-alerts.watched>
+                                    <span class="hidden lg:inline-flex">We watched this </span>
+                                    <span
+                                        class="inline-flex"><strong>{{ $tvshow->updated_at->diffForHumans() }}</strong></span>
+                                </x-alerts.watched>
                             @endif
+                            <div class="md:flex md:gap-2">
 
-                            <x-links.primary href="/tvshow/{{ $tvshow->id }}/edit" class="rounded-lg w-1/2">
-                                {{ __('Edit') }}
-                            </x-links.primary>
+                                <x-links.edit href="/tvshow/{{ $tvshow->id }}/edit"
+                                    class="!md:rounded-l-lg w-full md:w-1/2 mt-2">
+                                    {{ __('Edit') }}
+                                </x-links.edit>
 
-                            <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete" class=" w-1/2">
-                                @csrf
-                                @method('DELETE')
-                                <x-buttons.danger class="rounded-lg w-full" onclick="return confirm('Are you sure?')">
-                                    {{ __('Delete') }}
-                                </x-buttons.danger>
-                            </form>
+                                <form method="POST" action="/tvshow/{{ $tvshow->id }}/delete"
+                                    class="w-full md:w-1/2 mt-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-buttons.danger class="rounded-lg !md:rounded-r-lg w-full"
+                                        onclick="return confirm('Are you sure you want to delete {{ $tvshow->name }}?')">
+                                        {{ __('Delete') }}
+                                    </x-buttons.danger>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach

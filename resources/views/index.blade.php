@@ -27,17 +27,17 @@
                     <hr />
 
                     @if ($movies->count())
-                        <x-buttons.primary class="mb-2 !text-left" id="movie-fire">
+                        <x-buttons.primary class="mb-2" id="movie-fire">
                         <img src="{{ asset('vendor/blade-heroicons/o-film.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Pick a Movie') }}
                         </x-buttons.primary>
                     @endif
 
                     @if ($tvshows->count())
-                        <x-buttons.primary class="mb-2 !text-left from-purple-700 to-purple-500" id="tvshow-fire">
+                        <x-buttons.primary-alt class="mb-2" id="tvshow-fire">
                             <img src="{{ asset('vendor/blade-heroicons/o-play.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Pick a TV Show') }}
-                        </x-buttons.primary>
+                        </x-buttons.primary-alt>
                     @endif
 
                 </div>
@@ -48,14 +48,14 @@
                 <h4 class="text-xl font-bold text-center mb-3">View the full collection</h2>
 
                     <div class="flex flex-row gap-2">
-                        <x-links.hero :href="route('movies')" class="mb-2 !text-left basis-1/2">
+                        <x-links.hero :href="route('movies')" class="mb-2 basis-1/2">
                             <img src="{{ asset('vendor/blade-heroicons/o-film.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('Movies') }}
                         </x-links.hero>
-                        <x-links.hero :href="route('tvshows')" class="mb-2 !text-left basis-1/2">
+                        <x-links.hero-alt :href="route('tvshows')" class="mb-2 basis-1/2">
                             <img src="{{ asset('vendor/blade-heroicons/o-play.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                             {{ __('TV Shows') }}
-                        </x-links.hero>
+                        </x-links.hero-alt>
                     </div>
 
             </div>

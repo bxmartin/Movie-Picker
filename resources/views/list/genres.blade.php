@@ -16,8 +16,8 @@
             @endif
 
             <div class="flex justify-end">
-                <x-links.primary href="/addgenre" class="rounded-lg">
-                    <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                <x-links.primary href="/addgenre">
+                    <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-8 mr-2 svg-white" />
                     {{ __('Add genre') }}
                 </x-links.primary>
             </div>

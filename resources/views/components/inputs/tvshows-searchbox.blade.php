@@ -10,8 +10,8 @@
         <x-dropdown.tvshows-genre />
     </div>
     <div class="relative lg:inline-flex">
-        <x-buttons.primary class="w-full !from-purple-700 !to-purple-500 text-center">
+        <x-buttons.primary-alt class="w-full text-center">
             {{ __('Search') }}
-        </x-buttons.primary>
+        </x-buttons.primary-alt>
     </div>
 </form>

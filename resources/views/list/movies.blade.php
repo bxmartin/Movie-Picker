@@ -34,11 +34,11 @@
                     {{ __('Add a Movie') }}
                 </x-links.hero>
 
-                <x-links.hero href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+                <x-links.hero-alt href="{{ route('addtvshow') }}" class="mb-4 !text-left">
                     <x-heroicon-o-play class="inline-block h-10" />
                     <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a TV Show') }}
-                </x-links.hero>
+                </x-links.hero-alt>
 
             </div>
         </div>

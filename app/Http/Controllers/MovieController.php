@@ -60,7 +60,7 @@ class MovieController extends Controller
             'effort' => request('effort')
         ]);
 
-        return redirect('/addmovie')->with('success', 'Movie added!');
+        return redirect('/addmovie')->with('success', $movie->name . ' added!');
     }
 
     public function edit(Movie $movie)

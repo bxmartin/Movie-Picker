@@ -1,7 +1,7 @@
 @if ($movies->count())
 
     <div x-data="{ show: false }">
-        <div class="flex justify-end mb-4">
+        <div class="flex justify-end my-4">
             <x-buttons.secondary class="rounded-lg" @click="show = ! show"
                 x-text="show ? 'Hide watched movies' : 'Include watched movies'">
                 Include watched movies
@@ -15,7 +15,7 @@
                         x-show="{{ $movie->watched === 1 ? 'show' : '' }}">
                         <div class="p-1 mt-auto font-bold text-center">
                             <h4 class="mb-1">{{ $movie->name }}</h4>
-                            <div class="bg-gray-50 h-60 px-2 w-full mx-auto mb-3">
+                            <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
                                 @if (isset($movie->image))
                                     <img src="{{ asset('images/movies/' . $movie->image) }}"
                                         alt="{{ $movie->name }}"
@@ -42,7 +42,7 @@
                                 {{ $movie->runtime }}min
                             @endif
                         </div>
-                        <div class="px-3">
+                        <div class="p-3">
                             <x-inputs.label :value="__('Effort')" class="!inline-block" />
                             @if ($movie->effort == 'Easy')
                                 <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
@@ -54,7 +54,6 @@
                                 <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
                                     class="inline-block w-auto h-8 svg-red" />
                             @endif
-                            {{-- {{ $movie->effort }} --}}
                         </div>
                         <div class="p-3 hidden md:block">
                             <x-inputs.label :value="__('Rating')" class="!inline-block" />
@@ -70,9 +69,10 @@
                                     id="watched-{{ $movie->id }}">
                                     @csrf
                                     @method('PATCH')
-                                    <x-buttons.primary class="rounded-lg w-full"
+                                    <x-buttons.primary class="w-full"
                                         onclick="document.getElementById('watched-{{ $movie->id }}').submit();">
-                                        Mark watched
+                                        <img src="{{ asset('vendor/blade-heroicons/s-eye.svg') }}" class="inline-block h-5 mr-1 svg-white" />
+                                        <span class="mt-0.5">Mark watched</span>
                                     </x-buttons.primary>
                                 </form>
                             @else
@@ -81,16 +81,16 @@
                                     <span class="inline-flex"><strong>{{ $movie->updated_at->diffForHumans() }}</strong></span>
                                 </x-alerts.watched>
                             @endif
-                            <div class="flex">
-                                <x-links.primary href="/movie/{{ $movie->id }}/edit"
-                                    class="rounded-none !rounded-l-lg w-1/2">
+                            <div class="md:flex md:gap-2">
+                                <x-links.edit href="/movie/{{ $movie->id }}/edit"
+                                    class="!md:rounded-l-lg w-full md:w-1/2 mt-2">
                                     {{ __('Edit') }}
-                                </x-links.primary>
+                                </x-links.edit>
 
-                                <form method="POST" action="/movie/{{ $movie->id }}/delete" class=" w-1/2">
+                                <form method="POST" action="/movie/{{ $movie->id }}/delete" class="w-full md:w-1/2 mt-2">
                                     @csrf
                                     @method('DELETE')
-                                    <x-buttons.danger class="rounded-none !rounded-r-lg w-full"
+                                    <x-buttons.danger class="rounded-lg !md:rounded-r-lg w-full"
                                         onclick="return confirm('Are you sure you want to delete {{ $movie->name }}?')">
                                         {{ __('Delete') }}
                                     </x-buttons.danger>
@@ -112,7 +112,7 @@
     <p class="text-center">There are no movies yet. </p>
 
     <div class="flex flex-col items-center">
-        <x-links.primary href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+        <x-links.primary href="{{ route('addmovie') }}" class="mb-4 !text-left">
             {{ __('Add a new movie') }}
         </x-links.primary>
     </div>

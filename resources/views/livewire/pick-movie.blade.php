@@ -6,7 +6,7 @@
             <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
                 class="w-1/2 mx-auto mb-3 outline outline-offset-4 outline-gray-500 outline-1 rounded-xl">
         @else
-            <img src="{{ asset('images/no-photo-available.png') }}" alt="no image"
+            <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
                 class="w-1/2 mx-auto mb-3 outline outline-offset-4 outline-gray-500 outline-1 rounded-xl">
         @endif
 
