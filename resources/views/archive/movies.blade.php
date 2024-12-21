@@ -59,13 +59,18 @@
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                             for="">Name</label>
                                         {{ $movie->name }}<br>
-                                        @if (isset($movie->image))
-                                            <img src="{{ asset('images/movies/' . $movie->image) }}"
-                                                alt="{{ $movie->name }}" class="w-full rounded-xl md:w-60">
-                                        @else
-                                            <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
-                                                class="w-full rounded-xl md:w-60">
-                                        @endif
+                                        <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                                            @if (isset($movie->image))
+                                                <img src="{{ asset('images/movies/' . $movie->image) }}"
+                                                    alt="{{ $movie->name }}"
+                                                    class="w-full h-60 object-contain"
+                                                    onerror="this.src='{{ asset('images/movie-no-photo-available.png') }}'">
+                                            @else
+                                                <img src="{{ asset('images/movie-no-photo-available.png') }}"
+                                                    alt="no image"
+                                                    class="w-full h-60 object-contain">
+                                            @endif
+                                        </div>
                                     </td>
                                     <td class="px-5 py-3 border-b border-gray-200">
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
@@ -90,11 +95,14 @@
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                             for="">Effort</label>
                                         @if ($movie->effort == 'Easy')
-                                            <x-heroicon-o-face-smile class="block w-auto h-8 text-green-500" />
+                                            <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                                class="inline-block w-auto h-8 svg-green" />
                                         @elseif($movie->effort == 'Medium')
-                                            <x-heroicon-o-face-smile class="block w-auto h-8 text-orange-500" />
+                                        <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                            class="inline-block w-auto h-8 svg-orange" />
                                         @elseif($movie->effort == 'Hard')
-                                            <x-heroicon-o-face-smile class="block w-auto h-8 text-red-500" />
+                                        <img src="{{ asset('vendor/blade-heroicons/o-face-smile.svg') }}"
+                                            class="inline-block w-auto h-8 svg-red" />
                                         @endif
                                         {{-- {{ $movie->effort }} --}}
                                     </td>
@@ -112,10 +120,10 @@
                                     </td>
                                     <td class="px-5 py-3 border-b-0 border-gray-200 sm:border-b">
                                         <div class="inline-flex">
-                                            <x-links.primary href="/movie/{{ $movie->id }}/edit"
+                                            <x-links.edit href="/movie/{{ $movie->id }}/edit"
                                                 class="rounded-none rounded-l-lg">
                                                 {{ __('Edit') }}
-                                            </x-links.primary>
+                                            </x-links.edit>
 
                                             <form method="POST" action="/movie/{{ $movie->id }}/delete">
                                                 @csrf

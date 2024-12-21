@@ -116,7 +116,7 @@ class TVShowController extends Controller
             'rating' => request('rating')
         ]);
 
-        return redirect('/')->with('success', $tvshow->name . ' updated!');
+        return redirect('/tvshows')->with('success', $tvshow->name . ' updated!');
     }
 
     public function destroy($id)

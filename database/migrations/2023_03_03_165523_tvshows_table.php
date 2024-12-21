@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('rating')->nullable();
             $table->boolean('watched')->default(false);
             $table->string('effort');
-            $table->string('image')->nullable();;
+            $table->string('image')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
         });

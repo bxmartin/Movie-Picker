@@ -60,7 +60,7 @@ class MovieController extends Controller
             'effort' => request('effort')
         ]);
 
-        return redirect('/addmovie')->with('success', $movie->name . ' added!');
+        return redirect('/addmovie')->with('success', 'Movie added!');
     }
 
     public function edit(Movie $movie)
@@ -120,9 +120,10 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
-
+        if ($movie->image) {
         $old_image_path = public_path('images/movies') . '/' . $movie->image;
-        //unlink($old_image_path);
+        unlink($old_image_path);
+        }
         $movie->delete();
 
         return back()->with('danger', $movie->name . ' Deleted!');
