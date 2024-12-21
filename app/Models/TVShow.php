@@ -18,4 +18,19 @@ class TVShow extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn ($query, $search) =>
+        $query
+            ->where('name', 'like', '%' . $search . '%'));
+        $query->when(
+            $filters['genre'] ?? false,
+            fn ($query, $genre) =>
+            $query->whereHas(
+                'genre',
+                fn ($query) =>
+                $query->where('name', $genre)
+            )
+        );
+    }
 }

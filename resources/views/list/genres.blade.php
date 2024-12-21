@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <section>
-        <div class="my-8 container">
+        <div class="my-8  px-2 container">
 
             <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                 {{ __('Genres') }}
@@ -16,10 +16,10 @@
             @endif
 
             <div class="flex justify-end">
-                <x-primary-link href="/addgenre" class="rounded-lg">
-                    <x-heroicon-o-plus class="inline-block h-8 mr-2" />
+                <x-links.primary href="/addgenre">
+                    <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-8 mr-2 svg-white" />
                     {{ __('Add genre') }}
-                </x-primary-link>
+                </x-links.primary>
             </div>
 
             <ul class="w-96">
@@ -27,15 +27,15 @@
                     <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
                         {{ $genre->name }}
                         <div class="inline-flex">
-                            <x-primary-link href="/genre/{{ $genre->id }}/edit" class="mx-2">
+                            <x-links.primary href="/genre/{{ $genre->id }}/edit" class="mx-2">
                                 {{ __('Edit') }}
-                            </x-primary-link>
+                            </x-links.primary>
                             <form method="POST" action="/genre/{{ $genre->id }}/delete">
                                 @csrf
                                 @method('DELETE')
-                                <x-danger-button class="" onclick="return confirm('Are you sure?')">
+                                <x-buttons.danger class="" onclick="return confirm('Are you sure?')">
                                     {{ __('Delete') }}
-                                </x-danger-button>
+                                </x-buttons.danger>
                             </form>
                         </div>
                     </li>
