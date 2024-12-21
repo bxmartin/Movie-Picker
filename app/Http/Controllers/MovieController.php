@@ -114,18 +114,19 @@ class MovieController extends Controller
             'rating' => request('rating')
         ]);
 
-        return redirect('/')->with('success', 'Movie Updated!');
+        return redirect('/movies')->with('success', $movie->name . ' Updated!');
     }
 
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
-
+        if ($movie->image) {
         $old_image_path = public_path('images/movies') . '/' . $movie->image;
-        //unlink($old_image_path);
+        unlink($old_image_path);
+        }
         $movie->delete();
 
-        return back()->with('danger', 'Movie Deleted!');
+        return back()->with('danger', $movie->name . ' Deleted!');
     }
 
     public function watched(Movie $movie)
@@ -139,7 +140,7 @@ class MovieController extends Controller
             'watched' => 1
         ]);
 
-        return back()->with('success', 'Movie marked watched!');
+        return back()->with('success', $movie->name . ' marked as watched!');
     }
 
     public function archive()

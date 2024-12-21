@@ -1,13 +1,13 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Dropdown;
 
 use App\Models\Genre;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TvShowsGenreDropdown extends Component
+class ArchiveGenre extends Component
 {
     /**
      * Create a new component instance.
@@ -22,7 +22,7 @@ class TvShowsGenreDropdown extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tvshows-genre-dropdown', [
+        return view('components.dropdown.archive-genre', [
             'genres' => Genre::all(),
             'currentGenre' => Genre::firstWhere('name', request('genre'))
         ]);

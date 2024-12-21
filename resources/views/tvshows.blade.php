@@ -16,11 +16,11 @@
                         <livewire:pick-tv-show />
                     </div>
 
-                    <x-hero-link href="{{ route('addtvshow') }}"
-                        class="mb-4 !text-center !from-purple-700 !to-purple-500 w-full">
+                    <x-links.hero-alt href="{{ route('addtvshow') }}"
+                        class="mb-4 !text-centerw-full">
                         <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-8 mr-3 svg-white" />
                         {{ __('Add a TV Show') }}
-                    </x-hero-link>
+                    </x-links.hero-alt>
                 </div>
             @endif
 
@@ -29,7 +29,7 @@
 
     <div class="w-full mx-auto py-4 px-2">
 
-        <x-tvshows-searchbox />
+        <x-inputs.tvshows-searchbox />
 
         <x-tvshows-list />
     </div>

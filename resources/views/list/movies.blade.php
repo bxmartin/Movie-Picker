@@ -22,23 +22,23 @@
 
             <div class="flex flex-col px-2">
                 @if ($movies->count())
-                    <x-primary-button class="mb-4 !text-left" id="movie-fire">
+                    <x-buttons.primary class="mb-4 !text-left" id="movie-fire">
                         <x-heroicon-o-film class="inline-block h-12 mr-3" />
                         {{ __('Pick a Movie') }}
-                    </x-primary-button>
+                    </x-buttons.primary>
                 @endif
 
-                <x-hero-link href="{{ route('addmovie') }}" class="mb-4 !text-left">
+                <x-links.hero href="{{ route('addmovie') }}" class="mb-4 !text-left">
                     <x-heroicon-o-film class="inline-block h-10" />
                     <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a Movie') }}
-                </x-hero-link>
+                </x-links.hero>
 
-                <x-hero-link href="{{ route('addtvshow') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
+                <x-links.hero-alt href="{{ route('addtvshow') }}" class="mb-4 !text-left">
                     <x-heroicon-o-play class="inline-block h-10" />
                     <x-heroicon-o-plus class="inline-block h-8 mr-2" />
                     {{ __('Add a TV Show') }}
-                </x-hero-link>
+                </x-links.hero-alt>
 
             </div>
         </div>

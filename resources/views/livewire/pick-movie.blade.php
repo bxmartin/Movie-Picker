@@ -6,7 +6,7 @@
             <img src="{{ asset('images/movies/' . $movie->image) }}" alt=""
                 class="w-1/2 mx-auto mb-3 outline outline-offset-4 outline-gray-500 outline-1 rounded-xl">
         @else
-            <img src="{{ asset('images/no-photo-available.png') }}" alt="no image"
+            <img src="{{ asset('images/movie-no-photo-available.png') }}" alt="no image"
                 class="w-1/2 mx-auto mb-3 outline outline-offset-4 outline-gray-500 outline-1 rounded-xl">
         @endif
 
@@ -28,10 +28,10 @@
         <p class="mb-2">{{ $movie->runtime }}min</p>
 
 
-        <x-primary-button wire:click="$refresh" class="mb-4 w-full">
+        <x-buttons.primary wire:click="$refresh" class="mb-4 w-full">
             <img src="{{ asset('vendor/blade-heroicons/o-arrow-path-rounded-square.svg') }}" class="svg-white inline-block h-8 mr-3" />
             {{ __('Pick another Movie') }}
-        </x-primary-button>
+        </x-buttons.primary>
 
     @endisset
 
