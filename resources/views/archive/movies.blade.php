@@ -3,7 +3,7 @@
     <section>
         <div class="my-8 px-2 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 mb-4 text-center">
                 {{ __('Archive - watched movies') }}
             </h2>
 
