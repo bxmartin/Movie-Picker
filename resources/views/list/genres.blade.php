@@ -3,7 +3,7 @@
     <section>
         <div class="my-8  px-2 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800">
                 {{ __('Genres') }}
             </h2>
 
@@ -24,7 +24,7 @@
 
             <ul class="w-96">
                 @foreach ($genres as $genre)
-                    <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
+                    <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4">
                         {{ $genre->name }}
                         <div class="inline-flex">
                             <x-links.primary href="/genre/{{ $genre->id }}/edit" class="mx-2">

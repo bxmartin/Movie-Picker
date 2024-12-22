@@ -3,7 +3,7 @@
     <section>
         <div class="my-8 px-2 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-4 text-center">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 mb-4 text-center">
                 {{ __('Archive - watched movies') }}
             </h2>
 
@@ -59,7 +59,7 @@
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                             for="">Name</label>
                                         {{ $movie->name }}<br>
-                                        <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                                        <div class="bg-slate-100 h-60 px-2 w-full mx-auto mb-3">
                                             @if (isset($movie->image))
                                                 <img src="{{ asset('images/movies/' . $movie->image) }}"
                                                     alt="{{ $movie->name }}"

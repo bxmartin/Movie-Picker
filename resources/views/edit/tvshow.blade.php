@@ -4,7 +4,7 @@
         <div
             class="my-8 px-2 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 text-center">
                 {{ __('Edit a TV show') }}
             </h2>
 
@@ -38,7 +38,7 @@
                 <div class="mb-4">
                     <x-inputs.label for="genre" :value="__('Genre')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="genre_id" name="genre_id"
-                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         required>
 
                         @foreach (\App\Models\Genre::all()->sortBy('name') as $genre)
@@ -75,7 +75,7 @@
                 <div class="mb-4">
                     <x-inputs.label for="effort" :value="__('Effort')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                     <select id="effort"
-                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         type="text" name="effort" required>
                         <option value="Easy" @if (old('effort', $tvshow->effort) == "Easy") {{ 'selected' }} @endif>Easy</option>
                         <option value="Medium" @if (old('effort', $tvshow->effort) == "Medium") {{ 'selected' }} @endif>Medium</option>
@@ -87,7 +87,7 @@
                     <input type="hidden" name="watched" value="0" />
                     <input type="checkbox" name="watched" value="1" @if (isset($tvshow)) @if ($tvshow->watched == 1) checked @endif @endif />
                     <x-inputs.label for="watched" :value="__('Watched')"
-                        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" />
+                        class="w-full py-4 ml-2 text-sm font-medium text-gray-900" />
                     <x-inputs.error :messages="$errors->get('watched')" class="mt-2" />
                 </div>
                 <div class="mb-4">

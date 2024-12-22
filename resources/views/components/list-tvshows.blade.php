@@ -15,7 +15,7 @@
                         x-show.transition.in="{{ $tvshow->watched == 1 ? 'show' : '' }}">
                         <div class="p-1 mt-auto font-bold text-center">
                             <h4 class="mb-1">{{ $tvshow->name }}</h4>
-                            <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                            <div class="bg-slate-100 h-60 px-2 w-full mx-auto mb-3">
                                 @if (isset($tvshow->image))
                                     <img src="{{ asset('images/tvshows/' . $tvshow->image) }}" alt="{{ $tvshow->name }}"
                                         class="w-full h-60 object-contain"

@@ -1,6 +1,6 @@
 
 <select name="movie_genre" onchange="location = this.value;"
-    class="block w-full mb-4 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
     required>
     <option>{{ isset($currentGenre) ? ucwords($currentGenre->name) : 'Genres' }}</option>
     <hr />
@@ -15,7 +15,7 @@
 {{-- <x-dropdown>
     <x-slot name="trigger">
         <div
-            class="flex justify-between p-2 border-1 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 w-full">
+            class="flex justify-between p-2 border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 w-full">
             <span class="">{{ isset($currentGenre) ? ucwords($currentGenre->name) : 'Genres' }}</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"

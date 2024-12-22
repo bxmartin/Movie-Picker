@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Movie Picker') }}
         </h2>
     </x-slot> --}}
@@ -10,7 +10,7 @@
 
             @if ($movies->count())
                 {{-- Shown only if atleast one movie or tv show exists --}}
-                <div class="flex flex-col justify-center px-8 py-5 mb-4 text-center bg-gray-100">
+                <div class="flex flex-col justify-center px-8 py-5 mb-4 text-center bg-slate-100">
 
                     @if ($movies->count())
                         <div id="movie-result" class="">

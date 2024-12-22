@@ -149,4 +149,18 @@ class TVShowController extends Controller
 
         return back()->with('success', $tvshow->name . ' was marked as watched!');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query
+                ->where('name', 'like', '%' . $search . '%')
+        );
+
+        $query->when($filters['genre'] ?? false, fn($query, $genre) =>
+            $query->whereHas('genre', fn ($query) =>
+                $query->where('name', $genre)
+            )
+        );
+    }
 }

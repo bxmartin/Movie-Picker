@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Add a TV Show') }}
         </h2>
     </x-slot> --}}
@@ -9,7 +9,7 @@
         <div
             class="my-8 px-2 container">
 
-            <h2 class="text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-200 text-center">
+            <h2 class="text-2xl font-semibold leading-tight text-gray-800 text-center">
                 {{ __('Add a TV Show') }}
             </h2>
 
@@ -39,7 +39,7 @@
             <div class="mb-4">
                 <x-inputs.label for="genre" :value="__('Genre')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                 <select id="genre_id" name="genre_id"
-                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     required>
                     @foreach (\App\Models\Genre::all()->sortBy('name') as $genre)
                     <option
@@ -76,7 +76,7 @@
             <div class="mb-4">
                 <x-inputs.label for="effort" :value="__('Effort')" class="!inline-block" required /><span class="inline-block font-bold">*</span>
                 <select id="effort"
-                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     type="text" name="effort" :value="old('effort')" required>
                     <option value="Easy">Easy</option>
                     <option value="Medium">Medium</option>
@@ -87,7 +87,7 @@
             <div class="flex items-center mb-4">
                 <x-inputs.checkbox name="watched" id="watched" value="0" />
                 <x-inputs.label for="watched" :value="__('Watched')"
-                    class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" />
+                    class="w-full py-4 ml-2 text-sm font-medium text-gray-900" />
                 <x-inputs.error :messages="$errors->get('watched')" class="mt-2" />
             </div>
 

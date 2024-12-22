@@ -10,8 +10,8 @@ class Movie extends Model
 {
     use HasFactory;
     public $table = 'movies';
-    protected $fillable = ['name', 'image', 'releaseyear', 'effort', 'runtime', 'rating', 'watched'];
-    protected $with = ['genre'];
+    protected $fillable = ['name', 'image', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'watched'];
+    //protected $with = ['genre'];
 
     public function genre()
     {
