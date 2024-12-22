@@ -13,7 +13,7 @@
 
             <!-- Hamburger -->
             <div class="flex items-center -mr-2">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-slate-100">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -30,20 +30,27 @@
                 {{ __('Home') }}
             </x-links.nav-responsive>
             <x-links.nav-responsive :href="route('movies')" :active="request()->routeIs('movies')">
+                <img src="{{ asset('vendor/blade-heroicons/o-film.svg') }}" class="inline-block h-4 mr-1 svg-black" />
                 {{ __('Movies') }}
             </x-links.nav-responsive>
             <x-links.nav-responsive :href="route('tvshows')" :active="request()->routeIs('tvshows')">
+                <img src="{{ asset('vendor/blade-heroicons/o-play.svg') }}" class="inline-block h-4 mr-1 svg-black" />
                 {{ __('TV Shows') }}
             </x-links.nav-responsive>
+            <hr />
             <x-links.nav-responsive :href="route('addmovie')" :active="request()->routeIs('addmovie')">
+                <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-4 mr-1 svg-black" />
                 {{ __('Add a Movie') }}
             </x-links.nav-responsive>
             <x-links.nav-responsive :href="route('addtvshow')" :active="request()->routeIs('addtvshow')">
+                <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-4 mr-1 svg-black" />
                 {{ __('Add a TV Show') }}
             </x-links.nav-responsive>
             <x-links.nav-responsive :href="route('addgenre')" :active="request()->routeIs('addgenre')">
+                <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}" class="inline-block h-4 mr-1 svg-black" />
                 {{ __('Add a Genre') }}
             </x-links.nav-responsive>
+            <hr />
             <x-links.nav-responsive :href="route('genres')" :active="request()->routeIs('genres')">
                 {{ __('View all Genres') }}
             </x-links.nav-responsive>

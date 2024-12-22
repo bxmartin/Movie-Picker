@@ -59,7 +59,7 @@
                                         <label class="text-xs font-semibold text-gray-500 uppercase md:hidden"
                                             for="">Name</label>
                                         {{ $movie->name }}<br>
-                                        <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                                        <div class="bg-slate-100 h-60 px-2 w-full mx-auto mb-3">
                                             @if (isset($movie->image))
                                                 <img src="{{ asset('images/movies/' . $movie->image) }}"
                                                     alt="{{ $movie->name }}"

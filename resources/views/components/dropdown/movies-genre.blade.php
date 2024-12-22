@@ -1,5 +1,5 @@
 <select name="movie_genre" onchange="location = this.value;"
-    class="block w-full border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600"
+    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
     required>
     <option>{{ isset($currentGenre) ? ucwords($currentGenre->name) : 'Genres' }}</option>
     <option value="/movies?{{ http_build_query(request()->except('genre', 'page')) }}"

@@ -11,11 +11,11 @@
         <div class="" id="moviesTable">
             <div class="grid auto-rows-fr grid-cols-2 xl:grid-cols-4 gap-4">
                 @foreach ($movies as $movie)
-                    <div class="w-full border border-gray-200 rounded-xl h-full flex flex-col"
+                    <div class="w-full border border-gray-200 bg-white rounded-xl h-full flex flex-col"
                         x-show="{{ $movie->watched === 1 ? 'show' : '' }}">
                         <div class="p-1 mt-auto font-bold text-center">
-                            <h4 class="mb-1">{{ $movie->name }}</h4>
-                            <div class="bg-gray-100 h-60 px-2 w-full mx-auto mb-3">
+                            <h4 class="mb-2">{{ $movie->name }}</h4>
+                            <div class="bg-slate-100 h-60 w-full mx-auto mb-2">
                                 @if (isset($movie->image))
                                     <img src="{{ asset('images/movies/' . $movie->image) }}"
                                         alt="{{ $movie->name }}"
@@ -112,7 +112,7 @@
     <p class="text-center">There are no movies yet. </p>
 
     <div class="flex flex-col items-center">
-        <x-links.primary href="{{ route('addmovie') }}" class="mb-4 !text-left">
+        <x-links.primary href="{{ route('addmovie') }}" class="mb-4 !text-left !from-purple-700 !to-purple-500">
             {{ __('Add a new movie') }}
         </x-links.primary>
     </div>

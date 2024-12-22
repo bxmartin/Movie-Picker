@@ -10,7 +10,7 @@
 
             @if ($tvshows->count() or $movies->count())
                 {{-- Shown only if atleast one movie or tv show exists --}}
-                <div class="flex flex-col justify-center px-8 py-5 mb-4 text-center bg-gray-100">
+                <div class="flex flex-col justify-center px-8 py-5 mb-4 text-center bg-slate-100">
 
                     @if ($movies->count())
                         <div id="movie-result" class="">
