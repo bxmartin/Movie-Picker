@@ -33,6 +33,7 @@
 
         <div>
             @sortablelink('effort') <br>
+            @sortablelink('genre_id', 'Genre') <br>
             @sortablelink('releaseyear', 'Release Year') <br>
             @sortablelink('runtime') <br>
             @sortablelink('created_at')
@@ -150,9 +151,9 @@
 
             </div>
 
-            <div class="mt-3 d-flex justify-content-center">
+            {{-- <div class="mt-3 d-flex justify-content-center">
                 {!! $movies->links() !!}
-            </div>
+            </div> --}}
         @else
             <p class="text-center">There are no movies yet. </p>
 

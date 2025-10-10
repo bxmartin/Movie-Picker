@@ -15,7 +15,7 @@ return [
             'class' => 'fa fa-sort-amount',
         ],
         'numeric' => [
-            'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number', 'releaseyear'],
+            'rows'  => ['created_at', 'updated_at', 'id', 'releaseyear', 'genre_id'],
             'class' => 'fa fa-sort-numeric',
         ],
     ],
@@ -33,7 +33,7 @@ return [
     /*
     icon that shows when generating sortable link while column is not sorted
      */
-    'sortable_icon'                 => 'fa fa-sort',
+    'sortable_icon'                 => 'fa fa-sort text-blue-600',
 
     /*
     generated icon is clickable non-clickable (default)
@@ -105,7 +105,7 @@ return [
     /*
     default direction for non-sorted columns
      */
-    'default_direction_unsorted'    => 'asc',
+    'default_direction_unsorted'    => 'desc',
 
     /*
     use the first defined sortable column (Model::$sortable) as default

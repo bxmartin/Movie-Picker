@@ -23,7 +23,7 @@ class IndexController extends Controller
     public function movies()
     {
 
-        $movies = Movie::sortable('name')->paginate(25);
+        $movies = Movie::sortable(['name' => 'asc'])->get();
         $genres = Genre::all();
 
         return view('movies', compact ('movies', 'genres'));
