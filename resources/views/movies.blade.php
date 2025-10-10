@@ -1,20 +1,15 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Movie Picker') }}
-        </h2>
-    </x-slot> --}}
 
     <div class="justify-center my-1">
-        <div class="">
+        <div>
 
             @if ($movies->count())
                 {{-- Shown only if atleast one movie exists --}}
                 <div class="flex flex-col justify-center px-8 py-5 mb-2 text-center bg-slate-100">
 
-                    <div id="movie-result" class="">
+                    {{-- <div id="movie-result" class="">
                         <livewire:pick-movie />
-                    </div>
+                    </div> --}}
 
                     <x-links.hero href="{{ route('addmovie') }}" class="">
                         <img src="{{ asset('vendor/blade-heroicons/o-plus.svg') }}"
@@ -28,31 +23,32 @@
         </div>
     </div>
 
-    <div class="w-full mx-auto p-4">
-
-
-        <div>
-            @sortablelink('effort') <br>
-            @sortablelink('genre_id', 'Genre') <br>
-            @sortablelink('releaseyear', 'Release Year') <br>
-            @sortablelink('runtime') <br>
-            @sortablelink('created_at')
-        </div>
-
-        <x-inputs.movies-searchbox />
+    <div class="w-full mx-auto p-2">
 
         @if ($movies->count())
-            <div x-data="{ show: false }">
-                <div class="flex justify-end my-4 gap-x-2">
-                    <x-buttons.secondary class="rounded-lg" @click="show = ! show"
+            <div x-data="{ show: false, searchmodalIsOpen: false, modalIsOpen: false }">
+
+                <div class="flex flex-row gap-2">
+                    <x-buttons.secondary x-on:click="searchmodalIsOpen = true" type="button" class="w-1/2 block mb-1"><i
+                            class="fa-solid fa-magnifying-glass mr-2"></i>
+                        Search</x-buttons.secondary>
+                    <x-buttons.secondary class="w-1/2 block mb-1" x-on:click="modalIsOpen = true" type="button"><i
+                            class="fa-solid fa-up-down mr-2"></i> Sort</x-buttons.secondary>
+                </div>
+
+                <div class="flex flex-row gap-2 mb-4">
+                    <x-buttons.secondary class="w-1/2 block mb-1" @click="show = ! show"
                         x-text="show ? 'Hide watched movies' : 'Include watched movies'">
                         Include watched movies
                     </x-buttons.secondary>
-                    <x-links.secondary class="rounded-lg" href="{{ route('movie.archive') }}">
+                    <a class="items-center px-4 py-3.5 bg-white border border-gray-200 rounded-md font-semibold text-xs text-black uppercase shadow-sm hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 w-1/2 block mb-1" href="{{ route('movie.archive') }}"><i class="fa-solid fa-box-archive mr-2"></i>
                         View archive
-                    </x-links.secondary>
-
+                    </a>
                 </div>
+
+                <x-sort />
+
+                <x-inputs.movies-searchbox />
 
                 <div class="" id="moviesTable">
                     <div class="grid auto-rows-fr grid-cols-2 xl:grid-cols-4 gap-4">

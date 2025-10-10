@@ -23,10 +23,13 @@ class IndexController extends Controller
     public function movies()
     {
 
-        $movies = Movie::sortable(['name' => 'asc'])->get();
+        $movies = Movie::sortable(['name' => 'asc'])->filter(request(['search', 'genre']))->get();
         $genres = Genre::all();
 
-        return view('movies', compact ('movies', 'genres'));
+        return view('movies', [
+            'movies' => $movies,
+            'genres' => Genre::all()
+        ]);
     }
 
     public function tvshows()

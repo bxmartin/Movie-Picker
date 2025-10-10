@@ -1,0 +1,32 @@
+<div>
+
+    <div x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="modalIsOpen"
+        x-on:keydown.esc.window="modalIsOpen = false" x-on:click.self="modalIsOpen = false"
+        class="fixed inset-0 z-30 items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-md sm:items-center lg:p-8"
+        role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
+        <!-- Modal Dialog -->
+        <div x-show="modalIsOpen"
+            class="flex max-w-xl flex-col overflow-hidden rounded-sm border border-neutral-300 bg-white text-neutral-600">
+            <!-- Dialog Header -->
+            <div
+                class="flex items-center justify-between border-b border-neutral-300 bg-neutral-50/60 p-4 dark:border-neutral-700 dark:bg-neutral-950/20">
+                <h3 id="defaultModalTitle" class="font-semibold tracking-wide text-neutral-900 dark:text-white">Sort</h3>
+                <button x-on:click="modalIsOpen = false" aria-label="close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor"
+                        fill="none" stroke-width="1.4" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Dialog Body -->
+            <div class="p-4">
+                @sortablelink('effort')
+                @sortablelink('genre_id', 'Genre')
+                @sortablelink('releaseyear', 'Release Year')
+                @sortablelink('runtime')
+                @sortablelink('created_at', 'Date added')
+            </div>
+
+        </div>
+    </div>
+</div>

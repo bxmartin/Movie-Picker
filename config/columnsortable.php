@@ -23,7 +23,7 @@ return [
     /*
     whether icons should be enabled
      */
-    'enable_icons'                  => true,
+    'enable_icons'                  => false,
 
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
@@ -33,12 +33,12 @@ return [
     /*
     icon that shows when generating sortable link while column is not sorted
      */
-    'sortable_icon'                 => 'fa fa-sort text-blue-600',
+    'sortable_icon'                 => 'fa fa-sort',
 
     /*
     generated icon is clickable non-clickable (default)
      */
-    'clickable_icon'                => false,
+    'clickable_icon'                => true,
 
     /*
     icon and text separator (any string)
@@ -59,7 +59,7 @@ return [
     /*
     default anchor class, if value is null none is added
      */
-    'anchor_class'                  => null,
+    'anchor_class'                  => 'block text-white bg-green-600 hover:bg-green-700 rounded-lg border-b-4 border-green-700 hover:border-green-800 text-sm px-5 py-2.5 text-center font-semibold uppercase mb-2',
 
     /*
     default active anchor class, if value is null none is added
