@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Genre;
+use Kyslik\ColumnSortable\Sortable;
 
 class Movie extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
     public $table = 'movies';
     protected $fillable = ['name', 'image', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'watched'];
+    public $sortable = ['name', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'created_at'];
     //protected $with = ['genre'];
 
     public function genre()

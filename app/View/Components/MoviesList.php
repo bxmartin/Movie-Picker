@@ -24,7 +24,7 @@ class MoviesList extends Component
     public function render(): View|Closure|string
     {
         return view('components.list-movies', [
-            'movies' => Movie::orderBy('name')->filter(request(['search', 'genre']))->get(),
+            'movies' => Movie::orderBy('name')->sortable()->filter(request(['search', 'genre']))->get(),
             'genre' => Genre::all()
         ]);
     }

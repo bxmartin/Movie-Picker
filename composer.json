@@ -9,6 +9,7 @@
         "blade-ui-kit/blade-heroicons": "^2.1",
         "blade-ui-kit/blade-icons": "^1.5",
         "guzzlehttp/guzzle": "^7.2",
+        "kyslik/column-sortable": "^7.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",

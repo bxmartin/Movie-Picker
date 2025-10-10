@@ -1,5 +1,6 @@
 @if ($movies->count())
 
+
     <div x-data="{ show: false }">
         <div class="flex justify-end my-4 gap-x-2">
             <x-buttons.secondary class="rounded-lg" @click="show = ! show"

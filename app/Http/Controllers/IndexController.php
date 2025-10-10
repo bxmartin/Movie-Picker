@@ -13,6 +13,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+
         return view('index', [
             'movies' => Movie::orderBy('name')->get(),
             'tvshows' => TVShow::orderBy('name')->get()
@@ -21,10 +22,11 @@ class IndexController extends Controller
 
     public function movies()
     {
-        return view('movies', [
-            'movies' => Movie::orderBy('name')->get(),
-            'genres' => Genre::all()
-        ]);
+
+        $movies = Movie::sortable('name')->paginate(25);
+        $genres = Genre::all();
+
+        return view('movies', compact ('movies', 'genres'));
     }
 
     public function tvshows()
