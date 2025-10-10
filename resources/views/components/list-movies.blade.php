@@ -1,11 +1,15 @@
 @if ($movies->count())
 
     <div x-data="{ show: false }">
-        <div class="flex justify-end my-4">
+        <div class="flex justify-end my-4 gap-x-2">
             <x-buttons.secondary class="rounded-lg" @click="show = ! show"
                 x-text="show ? 'Hide watched movies' : 'Include watched movies'">
                 Include watched movies
             </x-buttons.secondary>
+            <x-links.secondary class="rounded-lg" href="{{ route('movie.archive') }}">
+                View archive
+            </x-links.secondary>
+
         </div>
 
         <div class="" id="moviesTable">

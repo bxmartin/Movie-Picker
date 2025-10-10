@@ -146,7 +146,7 @@ class MovieController extends Controller
     public function archive()
     {
         return view('archive.movies', [
-            'movies' => Movie::latest()->where('watched', '=', 1)->filter(request(['search', 'genre']))->get()
+            'movies' => Movie::where('watched', '=', 1)->orderByDesc('updated_at')->filter(request(['search', 'genre']))->get()
         ]);
     }
 
