@@ -7,6 +7,7 @@ use App\Models\Genre;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Validation;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -50,6 +51,8 @@ class MovieController extends Controller
             $watched = request('watched');
         }
 
+        $user = Auth::user();
+
         Movie::create([
             'name' => request('name'),
             'image' => $imageName,
@@ -57,7 +60,8 @@ class MovieController extends Controller
             'releaseyear' => request('releaseyear'),
             'runtime' => request('runtime'),
             'watched' => $watched,
-            'effort' => request('effort')
+            'effort' => request('effort'),
+            'created_by' => $user->id
         ]);
 
         return redirect('/addmovie')->with('success', 'Movie added!');
@@ -138,7 +142,8 @@ class MovieController extends Controller
         ]);
 
         $movie->update([
-            'watched' => 1
+            'watched' => 1,
+            'archived_at' => now(),
         ]);
 
         return back()->with('success', $movie->name . ' marked as watched!');
@@ -147,7 +152,7 @@ class MovieController extends Controller
     public function archive()
     {
         return view('archive.movies', [
-            'movies' => Movie::where('watched', '=', 1)->orderByDesc('updated_at')->filter(request(['search', 'genre']))->get()
+            'movies' => Movie::where('watched', '=', 1)->orderByDesc('archived_at')->filter(request(['search', 'genre']))->get()
         ]);
     }
 

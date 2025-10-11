@@ -6,7 +6,7 @@
         :active="request() - > routeIs('/')">All</option>
     @foreach (\App\Models\Genre::all()->sortBy('name') as $genre)
         <option value="/movies/?genre={{ $genre->name }}&{{ http_build_query(request()->except('genre', 'page')) }}"
-            :active='request() - > is("/movies/?genre={$genre->name}")'>
+            :active='request()->is("/movies/?genre={$genre->name}")'>
             {{ ucwords($genre->name) }}</option>
     @endforeach
 </select>

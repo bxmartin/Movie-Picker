@@ -16,7 +16,7 @@ class IndexController extends Controller
 
         return view('index', [
             'movies' => Movie::orderBy('name')->get(),
-            'tvshows' => TVShow::orderBy('name')->get()
+            'tvshows' => TVShow::orderBy('name')->get(),
         ]);
     }
 

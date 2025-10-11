@@ -32,7 +32,14 @@
                                     class="w-full h-32 object-contain">
                             @endif
                         </div>
-                        <h4 class="mb-2 text-center"><span class="font-lg font-semibold">{{ $movie->name }}</span> - {{ $movie->updated_at->diffForHumans() }}</h4>
+                        <h4 class="mb-2 text-center">
+                            <span class="font-lg font-semibold">{{ $movie->name }}</span>
+                            @if (isset($movie->archived_at))
+                             - {{ Carbon\Carbon::parse($movie->archived_at)->diffForHumans() }}
+                             @else
+                             - last updated {{ $movie->updated_at->diffForHumans() }}
+                            @endif
+                            </h4>
                         <button
                             class="flex items-center justify-between w-full p-3 font-medium text-gray-500 border border-gray-200 bg-white rounded hover:bg-gray-100"
                             @click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }">
