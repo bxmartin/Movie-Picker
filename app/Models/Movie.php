@@ -11,7 +11,7 @@ class Movie extends Model
 {
     use HasFactory, Sortable;
     public $table = 'movies';
-    protected $fillable = ['name', 'image', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'watched'];
+    protected $fillable = ['name', 'image', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'watched', 'updated_at'];
     public $sortable = ['name', 'releaseyear', 'effort', 'genre', 'runtime', 'rating', 'created_at'];
     //protected $with = ['genre'];
 

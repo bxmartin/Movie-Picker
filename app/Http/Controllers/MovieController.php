@@ -111,7 +111,8 @@ class MovieController extends Controller
             'runtime' => request('runtime'),
             'watched' => $watched,
             'effort' => request('effort'),
-            'rating' => request('rating')
+            'rating' => request('rating'),
+            'updated_at' => now(),
         ]);
 
         return redirect('/movies')->with('success', $movie->name . ' Updated!');
